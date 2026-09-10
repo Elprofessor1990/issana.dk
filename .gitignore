@@ -1,0 +1,13 @@
+# graft's local graph cache — regenerable, not committed (run `graft build`).
+/graft/
+
+# Private source material and local project notes are not part of the public site.
+/*.pdf
+/*.csv
+/*.zone
+/*.md
+/*.png
+/.ignore
+
+# The public repository overview is intentionally included.
+!/README.md
