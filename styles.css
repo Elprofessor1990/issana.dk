@@ -266,6 +266,58 @@ button, input, textarea { font: inherit; }
 .service-card p { max-width: 720px; margin: 0; color: var(--ink-soft); }
 .service-mark { justify-self: end; font-family: var(--mono); font-size: 2.6rem; color: var(--copper); }
 
+.projects { background: #e3ded2; }
+.projects-inner { padding-block: clamp(7rem, 12vw, 12rem); }
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  border: 1px solid var(--line);
+  background: var(--line);
+}
+.project-card { min-width: 0; background: var(--paper-light); }
+.project-card-wide {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(320px, .6fr);
+}
+.project-image { position: relative; margin: 0; aspect-ratio: 4 / 3; overflow: hidden; background: #c9c3b7; }
+.project-card-wide .project-image { min-height: 600px; aspect-ratio: auto; }
+.project-image img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.82) contrast(1.03); transition: transform .8s cubic-bezier(.22,1,.36,1), filter .4s; }
+.project-card:hover .project-image img { transform: scale(1.025); filter: saturate(1) contrast(1.03); }
+.project-image figcaption {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: .55rem .7rem;
+  background: rgba(19,33,31,.88);
+  color: var(--paper-light);
+  font-family: var(--mono);
+  font-size: .63rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.project-copy { display: flex; flex-direction: column; padding: clamp(2rem, 4vw, 4rem); }
+.project-index { font-family: var(--mono); color: var(--copper-dark); font-size: .68rem; letter-spacing: .08em; }
+.project-copy h3 { margin: auto 0 1.2rem; padding-top: 5rem; font-size: clamp(2.4rem, 5vw, 5.2rem); font-weight: 500; letter-spacing: -.06em; line-height: .95; }
+.project-card:not(.project-card-wide) .project-copy h3 { padding-top: 3.5rem; font-size: clamp(2.3rem, 4vw, 4rem); }
+.project-copy p { max-width: 620px; margin: 0; color: var(--ink-soft); }
+.project-copy ul { display: flex; flex-wrap: wrap; gap: .5rem; margin: 2.5rem 0 0; padding: 0; list-style: none; }
+.project-copy li { padding: .45rem .65rem; border: 1px solid var(--line-strong); font-family: var(--mono); font-size: .62rem; letter-spacing: .04em; text-transform: uppercase; }
+.project-note {
+  display: grid;
+  grid-template-columns: .45fr 1fr 1fr;
+  align-items: center;
+  gap: 3rem;
+  margin-top: 1.5rem;
+  padding: clamp(2rem, 4vw, 3.5rem);
+  background: var(--ink);
+  color: var(--paper-light);
+}
+.project-note span { align-self: start; font-family: var(--mono); color: var(--copper); font-size: .66rem; letter-spacing: .08em; }
+.project-note h3 { margin: 0; font-size: clamp(1.8rem, 3.3vw, 3.3rem); font-weight: 500; letter-spacing: -.045em; line-height: 1.05; }
+.project-note p { margin: 0; color: rgba(250,248,241,.66); }
+
 .process { background: var(--ink); color: var(--paper-light); }
 .process-inner { padding-block: clamp(7rem, 12vw, 12rem); }
 .section-heading-light > p { color: rgba(250,248,241,.66); }
@@ -291,16 +343,19 @@ button, input, textarea { font: inherit; }
   gap: clamp(3rem, 8vw, 9rem);
   padding-block: clamp(7rem, 13vw, 13rem);
 }
-.about-visual { position: relative; min-height: 580px; border: 1px solid var(--line); overflow: hidden; }
+.about-visual { position: relative; min-height: 580px; margin: 0; border: 1px solid var(--line); overflow: hidden; background: #c9c3b7; }
 .about-visual::before {
   content: "";
   position: absolute;
+  z-index: 1;
   inset: 0;
   background: repeating-linear-gradient(0deg, transparent 0 39px, var(--line) 40px), repeating-linear-gradient(90deg, transparent 0 39px, var(--line) 40px);
-  opacity: .5;
+  opacity: .25;
 }
-.about-visual svg { position: absolute; inset: 8% 7%; width: 86%; height: 84%; fill: none; stroke: var(--copper); stroke-width: 1.2; }
-.about-big { position: absolute; z-index: 2; left: 7%; top: 2%; font-size: 18rem; font-weight: 500; line-height: 1; opacity: .07; }
+.about-visual img { width: 100%; height: 100%; min-height: 580px; object-fit: cover; }
+.about-visual figcaption { position: absolute; z-index: 2; left: 1.25rem; right: 1.25rem; bottom: 1.25rem; display: grid; gap: .2rem; padding: 1rem 1.1rem; background: rgba(19,33,31,.9); color: var(--paper-light); }
+.about-visual figcaption span { font-family: var(--mono); color: var(--copper); font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; }
+.about-visual figcaption strong { font-size: 1rem; font-weight: 600; }
 .about-copy { max-width: 750px; }
 .about-copy h2 { margin-bottom: 2.5rem; }
 .large-copy { font-size: clamp(1.35rem, 2.2vw, 2rem); line-height: 1.42; letter-spacing: -.025em; }
@@ -405,9 +460,13 @@ button, input, textarea { font: inherit; }
   .statement { grid-template-columns: 1fr; gap: 1.5rem; }
   .section-heading { grid-template-columns: 1fr; gap: 1.5rem; }
   .section-heading > p { max-width: 580px; }
+  .project-card-wide { grid-template-columns: 1fr; }
+  .project-card-wide .project-image { min-height: 0; aspect-ratio: 16 / 10; }
+  .project-note { grid-template-columns: 1fr 1.5fr; }
+  .project-note p { grid-column: 2; }
   .process-steps { grid-template-columns: 1fr 1fr; }
   .about { grid-template-columns: 1fr; }
-  .about-visual { min-height: 460px; }
+  .about-visual, .about-visual img { min-height: 460px; }
   .site-footer { grid-template-columns: 1fr 1fr; }
   .footer-links { grid-column: 1 / -1; }
 }
@@ -426,10 +485,16 @@ button, input, textarea { font: inherit; }
   .statement { padding-block: 6rem; }
   .service-card { grid-template-columns: 42px 1fr; gap: 1rem; min-height: 0; padding: 2rem 0; }
   .service-mark { display: none; }
+  .project-grid { grid-template-columns: 1fr; }
+  .project-card-wide { grid-column: auto; }
+  .project-card-wide .project-image, .project-image { aspect-ratio: 4 / 3; }
+  .project-copy h3, .project-card:not(.project-card-wide) .project-copy h3 { padding-top: 3rem; }
+  .project-note { grid-template-columns: 1fr; gap: 1.2rem; }
+  .project-note p { grid-column: auto; }
   .process-steps { grid-template-columns: 1fr; }
   .process-steps li, .process-steps li:not(:first-child) { min-height: 200px; padding: 1.6rem 0; border-right: 0; border-bottom: 1px solid rgba(250,248,241,.16); }
   .process-steps h3 { margin-top: 3.2rem; }
-  .about-visual { min-height: 360px; }
+  .about-visual, .about-visual img { min-height: 360px; }
   .about-meta { grid-template-columns: 1fr; }
   .contact { min-height: 620px; }
   .contact-details { flex-direction: column; gap: .6rem; }
