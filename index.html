@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="preload" href="assets/hero-vanloese.webp" as="image" type="image/webp">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20260911-3">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"ProfessionalService","name":"ISSANA","legalName":"Byg & Miljø Rådgivning ApS","url":"https://issana.dk/","email":"info@issana.dk","telephone":"+4542604770","description":"Rådgivende ingeniør inden for statik, byggetilladelser, ombygning, tilbygning, bygningsfysik, afløb og LCA.","areaServed":"Danmark","founder":{"@type":"Person","name":"Ali Kadum Hassan"},"address":{"@type":"PostalAddress","streetAddress":"Njalsgade 21 F, 2.","postalCode":"2300","addressLocality":"København S","addressCountry":"DK"},"hasOfferCatalog":{"@type":"OfferCatalog","name":"Ingeniørrådgivning","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Statiske beregninger og bærende konstruktioner"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Byggetilladelse og myndighedsprojekt"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Bygningsfysik"}}]}}
   </script>
@@ -84,15 +84,15 @@
           <p>Illustrative visualiseringer af de analyser, der kan indgå i et projekt. Den endelige dokumentation beregnes altid på det konkrete byggeri.</p>
         </div>
         <div class="calc-tabs" role="tablist" aria-label="Vælg beregningstype">
-          <button class="calc-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="calc-statik" id="tab-statik" data-calc-target="statik"><span>01</span>Statik</button>
-          <button class="calc-tab" type="button" role="tab" aria-selected="false" aria-controls="calc-varme" id="tab-varme" data-calc-target="varme" tabindex="-1"><span>02</span>Varme</button>
-          <button class="calc-tab" type="button" role="tab" aria-selected="false" aria-controls="calc-fugt" id="tab-fugt" data-calc-target="fugt" tabindex="-1"><span>03</span>Fugt</button>
-          <button class="calc-tab" type="button" role="tab" aria-selected="false" aria-controls="calc-lyd" id="tab-lyd" data-calc-target="lyd" tabindex="-1"><span>04</span>Lyd</button>
-          <button class="calc-tab" type="button" role="tab" aria-selected="false" aria-controls="calc-sommer" id="tab-sommer" data-calc-target="sommer" tabindex="-1"><span>05</span>Sommerkomfort</button>
-          <button class="calc-tab" type="button" role="tab" aria-selected="false" aria-controls="calc-lca" id="tab-lca" data-calc-target="lca" tabindex="-1"><span>06</span>LCA</button>
+          <button class="calc-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="calc-varme" id="tab-varme" data-calc-target="varme"><span>01</span>Varme</button>
+          <button class="calc-tab" type="button" role="tab" aria-selected="false" aria-controls="calc-fugt" id="tab-fugt" data-calc-target="fugt" tabindex="-1"><span>02</span>Fugt</button>
+          <button class="calc-tab" type="button" role="tab" aria-selected="false" aria-controls="calc-lyd" id="tab-lyd" data-calc-target="lyd" tabindex="-1"><span>03</span>Lyd</button>
+          <button class="calc-tab" type="button" role="tab" aria-selected="false" aria-controls="calc-sommer" id="tab-sommer" data-calc-target="sommer" tabindex="-1"><span>04</span>Sommerkomfort</button>
+          <button class="calc-tab" type="button" role="tab" aria-selected="false" aria-controls="calc-lca" id="tab-lca" data-calc-target="lca" tabindex="-1"><span>05</span>LCA</button>
+          <button class="calc-tab" type="button" role="tab" aria-selected="false" aria-controls="calc-statik" id="tab-statik" data-calc-target="statik" tabindex="-1"><span>06</span>Statik</button>
         </div>
         <div class="calc-stage">
-          <article class="calc-panel is-active" id="calc-statik" role="tabpanel" aria-labelledby="tab-statik" data-calc-panel="statik">
+          <article class="calc-panel" id="calc-statik" role="tabpanel" aria-labelledby="tab-statik" data-calc-panel="statik" hidden>
             <div class="calc-copy"><span class="calc-status">Illustrativ visualisering</span><p class="calc-number">M<sub>Ed</sub> <small>/ deformation / brud</small></p><h4>Fra last til moment og kapacitet</h4><p>Lasten føres gennem konstruktionen, momentkurven beregnes, og bjælkens deformation og udnyttelse kontrolleres før detaljen fastlægges.</p><ul><li>Lastkombination</li><li>Moment</li><li>Brudgrænsetilstand</li></ul></div>
             <div class="calc-visual" aria-hidden="true">
               <svg viewBox="0 0 720 420">
@@ -110,7 +110,7 @@
             </div>
           </article>
 
-          <article class="calc-panel" id="calc-varme" role="tabpanel" aria-labelledby="tab-varme" data-calc-panel="varme" hidden>
+          <article class="calc-panel is-active" id="calc-varme" role="tabpanel" aria-labelledby="tab-varme" data-calc-panel="varme">
             <div class="calc-copy"><span class="calc-status">Illustrativ visualisering</span><p class="calc-number">U = 0,18 <small>W/m²K</small></p><h4>Temperatur gennem konstruktionen</h4><p>Lagopbygning, U-værdi og temperaturprofil viser, hvor varmen møder modstand — og hvor en kuldebro kræver ekstra opmærksomhed.</p><ul><li>DS 418-princip</li><li>Lag-for-lag</li><li>Inde → ude</li></ul></div>
             <div class="calc-visual" aria-hidden="true">
               <svg viewBox="0 0 720 420">
@@ -210,6 +210,6 @@
   </main>
 
   <footer class="site-footer"><div class="footer-brand"><strong>ISSANA</strong><span>Rådgivende ingeniører</span></div><div class="footer-legal"><p>Byg & Miljø Rådgivning ApS · CVR 45821307</p><p>c/o LegalDesk.dk ApS · Njalsgade 21 F, 2. · 2300 København S</p></div><div class="footer-links"><a href="privacy.html">Privatliv</a><a href="mailto:info@issana.dk">E-mail</a><a href="#top">Til toppen ↑</a></div></footer>
-  <script src="script.js"></script>
+  <script src="script.js?v=20260911-3"></script>
 </body>
 </html>

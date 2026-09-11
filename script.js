@@ -76,7 +76,7 @@ if (calcLab) {
   const startCalcLoop = () => {
     stopCalcLoop();
     if (reducedMotion.matches || !calcLabVisible || calcLabPaused) return;
-    calcTimer = window.setInterval(() => showCalculation(activeCalc + 1), 4800);
+    calcTimer = window.setInterval(() => showCalculation(activeCalc + 1), 3200);
   };
 
   calcTabs.forEach((tab, index) => {
