@@ -301,6 +301,10 @@ button { color: inherit; }
 .form-footer p { max-width: 430px; margin: 0; color: var(--ink-soft); font-size: .72rem; }
 .form-footer .button { flex: 0 0 auto; }
 .form-status { margin: 1rem 0 0; color: var(--copper-dark); font-size: .8rem; }
+.form-status.is-success { color: #256444; }
+.form-status.is-error { color: #a33b25; }
+.project-form .button:disabled { cursor: wait; opacity: .65; }
+.form-honeypot { position: absolute !important; left: -9999px !important; width: 1px !important; height: 1px !important; overflow: hidden !important; }
 
 .site-footer { display: grid; grid-template-columns: .7fr 1.3fr auto; gap: 3rem; padding: 3.5rem clamp(1.25rem,4vw,4.5rem); background: var(--paper-light); border-top: 1px solid var(--line); font-size: .75rem; }
 .footer-brand { display: grid; align-content: start; }

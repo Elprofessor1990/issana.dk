@@ -116,49 +116,65 @@ const projectForm = document.querySelector('[data-project-form]');
 const fileInput = projectForm?.querySelector('input[type="file"]');
 const fileLabel = projectForm?.querySelector('[data-file-label]');
 const formStatus = projectForm?.querySelector('[data-form-status]');
+const submitButton = projectForm?.querySelector('[data-submit-button]');
+const defaultFileLabel = 'Vælg PDF, PNG eller JPG — maks. 10 MB';
+const maxFileSize = 10 * 1024 * 1024;
+
+const setFormStatus = (message, type = '') => {
+  if (!formStatus) return;
+  formStatus.textContent = message;
+  formStatus.classList.toggle('is-success', type === 'success');
+  formStatus.classList.toggle('is-error', type === 'error');
+};
 
 fileInput?.addEventListener('change', () => {
   const selectedFile = fileInput.files?.[0];
-  if (fileLabel) {
-    fileLabel.textContent = selectedFile
-      ? `${selectedFile.name} — husk at vedhæfte den i mailen`
-      : 'Vælg fil — den vedhæftes i din mail';
+  setFormStatus('');
+
+  if (selectedFile && selectedFile.size > maxFileSize) {
+    fileInput.value = '';
+    if (fileLabel) fileLabel.textContent = defaultFileLabel;
+    setFormStatus('Filen er større end 10 MB. Vælg en mindre fil.', 'error');
+    return;
   }
+
+  if (fileLabel) fileLabel.textContent = selectedFile?.name || defaultFileLabel;
 });
 
-projectForm?.addEventListener('submit', (event) => {
+projectForm?.addEventListener('submit', async (event) => {
   event.preventDefault();
 
   if (!projectForm.reportValidity()) return;
 
-  const values = new FormData(projectForm);
-  const fileName = fileInput?.files?.[0]?.name || 'Ingen fil valgt';
-  const subject = `Projektforespørgsel — ${values.get('adresse') || values.get('navn')}`;
-  const body = [
-    'Hej ISSANA',
-    '',
-    'Jeg vil gerne have vurderet mit projekt.',
-    '',
-    `Navn: ${values.get('navn')}`,
-    `Telefon: ${values.get('telefon')}`,
-    `E-mail: ${values.get('email')}`,
-    `Projektadresse: ${values.get('adresse') || 'Ikke angivet'}`,
-    '',
-    'Opgave:',
-    values.get('beskrivelse'),
-    '',
-    `Valgt fil: ${fileName}`,
-    fileName === 'Ingen fil valgt' ? '' : 'HUSK: Vedhæft filen til denne mail, før den sendes.',
-    '',
-    'Venlig hilsen',
-    values.get('navn')
-  ].filter(Boolean).join('\n');
+  const originalButtonContent = submitButton?.innerHTML;
+  setFormStatus('Sender din henvendelse…');
 
-  if (formStatus) {
-    formStatus.textContent = fileName === 'Ingen fil valgt'
-      ? 'Dit mailprogram åbnes nu.'
-      : 'Dit mailprogram åbnes nu. Husk at vedhæfte den valgte fil.';
+  if (submitButton) {
+    submitButton.disabled = true;
+    submitButton.setAttribute('aria-busy', 'true');
+    submitButton.textContent = 'Sender…';
   }
 
-  window.location.href = `mailto:info@issana.dk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  try {
+    const response = await fetch(projectForm.action, {
+      method: 'POST',
+      body: new FormData(projectForm),
+      headers: { Accept: 'application/json' }
+    });
+
+    if (!response.ok) throw new Error(`Formularen svarede med status ${response.status}`);
+
+    projectForm.reset();
+    if (fileLabel) fileLabel.textContent = defaultFileLabel;
+    setFormStatus('Tak — din henvendelse er sendt. ISSANA vender tilbage hurtigst muligt.', 'success');
+  } catch (error) {
+    console.error(error);
+    setFormStatus('Henvendelsen kunne ikke sendes. Prøv igen, eller skriv til info@issana.dk.', 'error');
+  } finally {
+    if (submitButton) {
+      submitButton.disabled = false;
+      submitButton.removeAttribute('aria-busy');
+      if (originalButtonContent) submitButton.innerHTML = originalButtonContent;
+    }
+  }
 });
