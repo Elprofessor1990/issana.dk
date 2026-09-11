@@ -76,13 +76,14 @@ if (calcLab) {
   const startCalcLoop = () => {
     stopCalcLoop();
     if (reducedMotion.matches || !calcLabVisible || calcLabPaused) return;
-    calcTimer = window.setInterval(() => showCalculation(activeCalc + 1), 3200);
+    calcTimer = window.setInterval(() => showCalculation(activeCalc + 1), 2500);
   };
 
   calcTabs.forEach((tab, index) => {
     tab.addEventListener('click', () => {
       showCalculation(index);
-      startCalcLoop();
+      calcLabPaused = true;
+      stopCalcLoop();
     });
     tab.addEventListener('keydown', (event) => {
       if (!['ArrowRight', 'ArrowLeft', 'Home', 'End'].includes(event.key)) return;
@@ -91,16 +92,16 @@ if (calcLab) {
         : event.key === 'End' ? calcTabs.length - 1
           : activeCalc + (event.key === 'ArrowRight' ? 1 : -1);
       showCalculation(nextIndex, true);
-      startCalcLoop();
+      calcLabPaused = true;
+      stopCalcLoop();
     });
   });
 
-  calcLab.addEventListener('mouseenter', () => { calcLabPaused = true; stopCalcLoop(); });
-  calcLab.addEventListener('mouseleave', () => { calcLabPaused = false; startCalcLoop(); });
-  calcLab.addEventListener('focusin', () => { calcLabPaused = true; stopCalcLoop(); });
+  calcLab.addEventListener('mouseenter', stopCalcLoop);
+  calcLab.addEventListener('mouseleave', startCalcLoop);
+  calcLab.addEventListener('focusin', stopCalcLoop);
   calcLab.addEventListener('focusout', (event) => {
     if (calcLab.contains(event.relatedTarget)) return;
-    calcLabPaused = false;
     startCalcLoop();
   });
 
