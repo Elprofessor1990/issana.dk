@@ -35,6 +35,82 @@ document.querySelectorAll('.reveal').forEach((element, index) => {
   revealObserver.observe(element);
 });
 
+const calcLab = document.querySelector('[data-calc-lab]');
+
+if (calcLab) {
+  const calcTabs = [...calcLab.querySelectorAll('[data-calc-target]')];
+  const calcPanels = [...calcLab.querySelectorAll('[data-calc-panel]')];
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let activeCalc = 0;
+  let calcTimer;
+  let calcLabVisible = false;
+  let calcLabPaused = false;
+
+  const showCalculation = (index, moveFocus = false) => {
+    activeCalc = (index + calcTabs.length) % calcTabs.length;
+    const selectedName = calcTabs[activeCalc].dataset.calcTarget;
+
+    calcTabs.forEach((tab, tabIndex) => {
+      const selected = tabIndex === activeCalc;
+      tab.classList.toggle('is-active', selected);
+      tab.setAttribute('aria-selected', String(selected));
+      tab.tabIndex = selected ? 0 : -1;
+    });
+
+    calcPanels.forEach((panel) => {
+      const selected = panel.dataset.calcPanel === selectedName;
+      panel.hidden = !selected;
+      panel.classList.toggle('is-active', selected);
+    });
+
+    calcTabs[activeCalc].scrollIntoView({
+      behavior: reducedMotion.matches ? 'auto' : 'smooth',
+      block: 'nearest',
+      inline: 'nearest'
+    });
+
+    if (moveFocus) calcTabs[activeCalc].focus();
+  };
+
+  const stopCalcLoop = () => window.clearInterval(calcTimer);
+  const startCalcLoop = () => {
+    stopCalcLoop();
+    if (reducedMotion.matches || !calcLabVisible || calcLabPaused) return;
+    calcTimer = window.setInterval(() => showCalculation(activeCalc + 1), 6500);
+  };
+
+  calcTabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => {
+      showCalculation(index);
+      startCalcLoop();
+    });
+    tab.addEventListener('keydown', (event) => {
+      if (!['ArrowRight', 'ArrowLeft', 'Home', 'End'].includes(event.key)) return;
+      event.preventDefault();
+      const nextIndex = event.key === 'Home' ? 0
+        : event.key === 'End' ? calcTabs.length - 1
+          : activeCalc + (event.key === 'ArrowRight' ? 1 : -1);
+      showCalculation(nextIndex, true);
+      startCalcLoop();
+    });
+  });
+
+  calcLab.addEventListener('mouseenter', () => { calcLabPaused = true; stopCalcLoop(); });
+  calcLab.addEventListener('mouseleave', () => { calcLabPaused = false; startCalcLoop(); });
+  calcLab.addEventListener('focusin', () => { calcLabPaused = true; stopCalcLoop(); });
+  calcLab.addEventListener('focusout', (event) => {
+    if (calcLab.contains(event.relatedTarget)) return;
+    calcLabPaused = false;
+    startCalcLoop();
+  });
+
+  reducedMotion.addEventListener?.('change', startCalcLoop);
+  new IntersectionObserver(([entry]) => {
+    calcLabVisible = entry.isIntersecting;
+    startCalcLoop();
+  }, { threshold: 0.25 }).observe(calcLab);
+}
+
 const projectForm = document.querySelector('[data-project-form]');
 const fileInput = projectForm?.querySelector('input[type="file"]');
 const fileLabel = projectForm?.querySelector('[data-file-label]');

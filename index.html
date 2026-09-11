@@ -78,6 +78,91 @@
 
     <section class="technical" id="dokumentation">
       <div class="section-shell technical-heading reveal"><p class="section-kicker">03 / TEKNISK DOKUMENTATION</p><h2>Vi dokumenterer løsningen.<br>Vi nøjes ikke med at tegne den.</h2><p>Et projekt skal ikke kun se rigtigt ud. Det skal kunne forklares, kontrolleres og fungere i praksis.</p></div>
+      <div class="calc-lab section-shell reveal" data-calc-lab>
+        <div class="calc-lab-topline">
+          <div><span class="calc-eyebrow">BYGFYS / BEREGNINGSPRINCIPPER</span><h3>Fra konstruktion til dokumenteret performance.</h3></div>
+          <p>Illustrative visualiseringer af de analyser, der kan indgå i et projekt. Den endelige dokumentation beregnes altid på det konkrete byggeri.</p>
+        </div>
+        <div class="calc-tabs" role="tablist" aria-label="Vælg beregningstype">
+          <button class="calc-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="calc-varme" id="tab-varme" data-calc-target="varme"><span>01</span>Varme</button>
+          <button class="calc-tab" type="button" role="tab" aria-selected="false" aria-controls="calc-fugt" id="tab-fugt" data-calc-target="fugt" tabindex="-1"><span>02</span>Fugt</button>
+          <button class="calc-tab" type="button" role="tab" aria-selected="false" aria-controls="calc-lyd" id="tab-lyd" data-calc-target="lyd" tabindex="-1"><span>03</span>Lyd</button>
+          <button class="calc-tab" type="button" role="tab" aria-selected="false" aria-controls="calc-sommer" id="tab-sommer" data-calc-target="sommer" tabindex="-1"><span>04</span>Sommerkomfort</button>
+          <button class="calc-tab" type="button" role="tab" aria-selected="false" aria-controls="calc-lca" id="tab-lca" data-calc-target="lca" tabindex="-1"><span>05</span>LCA</button>
+        </div>
+        <div class="calc-stage">
+          <article class="calc-panel is-active" id="calc-varme" role="tabpanel" aria-labelledby="tab-varme" data-calc-panel="varme">
+            <div class="calc-copy"><span class="calc-status">Illustrativ visualisering</span><p class="calc-number">U = 0,18 <small>W/m²K</small></p><h4>Temperatur gennem konstruktionen</h4><p>Lagopbygning, U-værdi og temperaturprofil viser, hvor varmen møder modstand — og hvor en kuldebro kræver ekstra opmærksomhed.</p><ul><li>DS 418-princip</li><li>Lag-for-lag</li><li>Inde → ude</li></ul></div>
+            <div class="calc-visual" aria-hidden="true">
+              <svg viewBox="0 0 720 420">
+                <defs><linearGradient id="heat-fill" x1="0" x2="1"><stop offset="0" stop-color="#d56d3e"/><stop offset=".45" stop-color="#d9b35b"/><stop offset="1" stop-color="#6d91a5"/></linearGradient></defs>
+                <text x="46" y="54" class="svg-label">INDE · 20°C</text><text x="674" y="54" text-anchor="end" class="svg-label">UDE · −12°C</text>
+                <g class="wall-layers"><rect x="48" y="104" width="72" height="208"/><rect x="120" y="104" width="46" height="208"/><rect x="166" y="104" width="230" height="208"/><rect x="396" y="104" width="34" height="208"/><rect x="430" y="104" width="182" height="208"/><rect x="612" y="104" width="62" height="208"/></g>
+                <rect x="48" y="104" width="626" height="208" fill="url(#heat-fill)" opacity=".62"/>
+                <g class="heat-flow"><path d="M82 150h520"/><path d="M82 208h520"/><path d="M82 266h520"/></g>
+                <path class="calc-trace heat-trace" d="M48 86 C135 94 170 123 222 161 S320 198 396 220 S520 284 674 324"/>
+                <circle class="trace-dot" cx="396" cy="220" r="7"/><text x="408" y="211" class="svg-note">kritisk overgang</text>
+                <g class="layer-notes"><text x="84" y="344">GIPS</text><text x="281" y="344">ISOLERING</text><text x="521" y="344">MURVÆRK</text></g>
+              </svg>
+            </div>
+          </article>
+
+          <article class="calc-panel" id="calc-fugt" role="tabpanel" aria-labelledby="tab-fugt" data-calc-panel="fugt" hidden>
+            <div class="calc-copy"><span class="calc-status">Illustrativ visualisering</span><p class="calc-number">RF <small>/ kondensrisiko</small></p><h4>Fugtens vej gennem lagene</h4><p>Damptryk sammenholdes med mætningstrykket. Nærmer kurverne sig hinanden, undersøges konstruktionen for kondens og skimmelrisiko.</p><ul><li>Glaser-princip</li><li>Dugpunkt</li><li>Fugtsikkerhed</li></ul></div>
+            <div class="calc-visual" aria-hidden="true">
+              <svg viewBox="0 0 720 420">
+                <text x="48" y="54" class="svg-label">DAMPTRYK GENNEM KONSTRUKTIONEN</text>
+                <g class="chart-grid"><path d="M70 92v252h590"/><path d="M70 155h590M70 218h590M70 281h590"/><path d="M188 92v252M306 92v252M424 92v252M542 92v252"/></g>
+                <path class="calc-trace saturation-trace" d="M70 126 C180 132 250 148 336 178 S470 232 660 296"/>
+                <path class="calc-trace vapor-trace" d="M70 226 C178 218 252 202 336 188 S492 176 660 168"/>
+                <circle class="moisture-risk" cx="350" cy="184" r="10"/><path class="drop" d="M350 204c-18 25-22 33-22 43a22 22 0 0 0 44 0c0-10-4-18-22-43Z"/>
+                <g class="chart-legend"><line x1="430" y1="116" x2="475" y2="116" class="legend-sat"/><text x="486" y="120">Mætningstryk</text><line x1="430" y1="140" x2="475" y2="140" class="legend-vapor"/><text x="486" y="144">Damptryk</text></g>
+                <text x="350" y="374" text-anchor="middle" class="svg-note">INDE · KONSTRUKTIONSLAG · UDE</text>
+              </svg>
+            </div>
+          </article>
+
+          <article class="calc-panel" id="calc-lyd" role="tabpanel" aria-labelledby="tab-lyd" data-calc-panel="lyd" hidden>
+            <div class="calc-copy"><span class="calc-status">Illustrativ visualisering</span><p class="calc-number">R<sub>w</sub> = 54 <small>dB</small></p><h4>Lydreduktion på tværs af frekvenser</h4><p>Konstruktionens masse, lagdeling og samlinger vurderes samlet. Resultatet viser den forventede dæmpning fra lave til høje frekvenser.</p><ul><li>125–2.000 Hz</li><li>Luftlyd</li><li>Detaljefokus</li></ul></div>
+            <div class="calc-visual" aria-hidden="true">
+              <svg viewBox="0 0 720 420">
+                <text x="48" y="54" class="svg-label">FORVENTET LYDREDUKTION</text>
+                <g class="sound-wall"><rect x="320" y="92" width="30" height="254"/><rect x="360" y="92" width="78" height="254"/><rect x="448" y="92" width="30" height="254"/></g>
+                <g class="sound-waves sound-in"><path d="M62 152c70 0 70 132 140 132s70-132 140-132"/><path d="M62 184c58 0 58 68 116 68s58-68 116-68"/><path d="M62 216c46 0 46 20 92 20s46-20 92-20"/></g>
+                <g class="sound-waves sound-out"><path d="M478 202c34 0 34 42 68 42s34-42 68-42 34 42 68 42"/><path d="M478 226c26 0 26 18 52 18s26-18 52-18 26 18 52 18"/></g>
+                <g class="sound-scale"><text x="75" y="370">KILDE</text><text x="399" y="370" text-anchor="middle">KONSTRUKTION</text><text x="650" y="370" text-anchor="end">MODTAGER</text></g>
+              </svg>
+            </div>
+          </article>
+
+          <article class="calc-panel" id="calc-sommer" role="tabpanel" aria-labelledby="tab-sommer" data-calc-panel="sommer" hidden>
+            <div class="calc-copy"><span class="calc-status">Illustrativ visualisering</span><p class="calc-number">Δt = 8,4 <small>timer</small></p><h4>Sommerkomfort og termisk respons</h4><p>Den termiske masse kan forskyde og dæmpe døgnets varmetop. Kurverne gør effekten af konstruktionen tydelig over 24 timer.</p><ul><li>ISO 13786-princip</li><li>Faseforskydning</li><li>Dæmpning</li></ul></div>
+            <div class="calc-visual" aria-hidden="true">
+              <svg viewBox="0 0 720 420">
+                <text x="48" y="54" class="svg-label">TEMPERATURRESPONS · 24 TIMER</text>
+                <g class="chart-grid"><path d="M70 92v252h590"/><path d="M70 155h590M70 218h590M70 281h590"/><path d="M218 92v252M365 92v252M512 92v252"/></g>
+                <path class="comfort-area" d="M70 235 C164 112 230 105 318 212 S484 324 660 210 L660 344H70Z"/>
+                <path class="calc-trace outside-trace" d="M70 235 C164 112 230 105 318 212 S484 324 660 210"/>
+                <path class="calc-trace inside-trace" d="M70 236 C186 232 268 176 364 190 S512 260 660 236"/>
+                <g class="time-labels"><text x="70" y="370">00</text><text x="218" y="370">06</text><text x="365" y="370">12</text><text x="512" y="370">18</text><text x="660" y="370" text-anchor="end">24</text></g>
+                <g class="phase-arrow"><path d="M218 118h198"/><path d="m406 110 10 8-10 8"/><text x="317" y="106" text-anchor="middle">8,4 TIMERS FORSKYDNING</text></g>
+              </svg>
+            </div>
+          </article>
+
+          <article class="calc-panel" id="calc-lca" role="tabpanel" aria-labelledby="tab-lca" data-calc-panel="lca" hidden>
+            <div class="calc-copy"><span class="calc-status">Illustrativ visualisering</span><p class="calc-number">kg CO₂e <small>/ m² / år</small></p><h4>Klimaaftryk over livscyklussen</h4><p>Materialer, udskiftninger og endt levetid kan samles i ét overblik, så de tunge poster bliver synlige før valgene låses.</p><ul><li>EN 15978-princip</li><li>A–B–C–D</li><li>Materialevalg</li></ul></div>
+            <div class="calc-visual" aria-hidden="true">
+              <svg viewBox="0 0 720 420">
+                <text x="48" y="54" class="svg-label">BYGNINGENS LIVSCYKLUS</text>
+                <g class="lca-grid"><path d="M70 90v254h590"/><path d="M70 154h590M70 217h590M70 280h590"/></g>
+                <g class="lca-bars"><g><rect x="104" y="150" width="72" height="194"/><text x="140" y="370">A1–A3</text></g><g><rect x="208" y="258" width="72" height="86"/><text x="244" y="370">A4–A5</text></g><g><rect x="312" y="196" width="72" height="148"/><text x="348" y="370">B4</text></g><g><rect x="416" y="286" width="72" height="58"/><text x="452" y="370">C3–C4</text></g><g class="lca-credit"><rect x="520" y="344" width="72" height="42"/><text x="556" y="410">D</text></g></g>
+                <g class="lca-groups"><text x="192" y="106">OPFØRELSE</text><text x="348" y="106">BRUG</text><text x="452" y="106">ENDT LEVETID</text><text x="556" y="106">POTENTIALE</text></g>
+              </svg>
+            </div>
+          </article>
+        </div>
+      </div>
       <div class="technical-board section-shell reveal">
         <figure class="physics-figure"><img src="assets/teknisk-dokumentation.webp" alt="Bygningsfysisk analyse med lagopbygning, temperaturprofil og dugpunkt" width="1600" height="900" loading="lazy"><figcaption>Bygningsfysik / lag-for-lag analyse</figcaption></figure>
         <figure class="detail-figure"><img src="assets/detalje-sammenlaegning.webp" alt="Dimensioneret konstruktionsdetalje for stålsamling" width="1209" height="804" loading="lazy"><figcaption>Statik / konstruktionsdetalje</figcaption></figure>
