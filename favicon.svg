@@ -1,5 +1,2 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="8" fill="#13211f"/>
-  <path d="M13 51V13h38v38H13Zm10-10V23h18v18H23Zm0-9h18M32 23v18" fill="none" stroke="#f2efe6" stroke-width="2"/>
-  <circle cx="51" cy="13" r="5" fill="#c86d45"/>
-</svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200" role="img" aria-labelledby="title"><title id="title">ISSANA symbol</title><path d="M22.6 22.6H177.4V177.4H22.6Z M42.4 42.4V157.6H157.6V42.4Z" fill="#11201D" fill-rule="evenodd"/><path d="M58.6 55H141.4V76.6H110.8V123.4H141.4V145H58.6V123.4H89.2V76.6H58.6Z" fill="#11201D"/><rect x="146.8" y="146.8" width="19.8" height="19.8" fill="#C8653E"/></svg>

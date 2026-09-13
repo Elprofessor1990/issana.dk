@@ -30,10 +30,8 @@ button { color: inherit; }
 .site-header { position: fixed; z-index: 50; inset: 0 0 auto; height: var(--header-height); display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding: 0 clamp(1.25rem, 4vw, 4.5rem); border-bottom: 1px solid transparent; transition: height .3s, background .3s, border-color .3s; }
 .site-header.scrolled { height: 72px; background: rgba(241, 238, 229, .94); border-color: var(--line); backdrop-filter: blur(16px); }
 .brand { display: inline-flex; align-items: center; gap: .75rem; text-decoration: none; }
-.brand-mark { width: 40px; height: 40px; fill: none; stroke: currentColor; stroke-width: 1.45; }
-.brand-type { display: grid; line-height: 1; }
-.brand-type strong { font-size: 1.18rem; letter-spacing: .2em; }
-.brand-type small { margin-top: .4rem; font: 400 .56rem/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+.brand-logo { width: clamp(220px, 20vw, 300px); height: auto; transition: width .3s; }
+.site-header.scrolled .brand-logo { width: clamp(205px, 18vw, 265px); }
 .site-nav { display: flex; align-items: center; gap: clamp(1rem, 2vw, 2.1rem); }
 .site-nav a { font-size: .73rem; font-weight: 600; letter-spacing: .055em; text-decoration: none; text-transform: uppercase; }
 .site-nav > a:not(.nav-cta) { position: relative; }
@@ -308,9 +306,10 @@ button { color: inherit; }
 
 .site-footer { display: grid; grid-template-columns: .7fr 1.3fr auto; gap: 3rem; padding: 3.5rem clamp(1.25rem,4vw,4.5rem); background: var(--paper-light); border-top: 1px solid var(--line); font-size: .75rem; }
 .footer-brand { display: grid; align-content: start; }
-.footer-brand strong { letter-spacing: .18em; }
-.footer-brand span, .footer-legal { color: var(--ink-soft); }
+.footer-logo { width: min(100%, 380px); height: auto; }
+.footer-legal { color: var(--ink-soft); }
 .footer-legal p { margin: 0 0 .25rem; }
+.footer-legal a { text-underline-offset: .2rem; }
 .footer-links { display: flex; gap: 1.2rem; }
 .footer-links a { text-underline-offset: .25rem; }
 
@@ -390,8 +389,7 @@ button { color: inherit; }
 }
 
 @media (max-width: 560px) {
-  .brand-mark { width: 34px; height: 34px; }
-  .brand-type small { display: none; }
+  .brand-logo, .site-header.scrolled .brand-logo { width: 205px; }
   .hero h1 { font-size: clamp(3.15rem, 15vw, 5rem); }
   .hero-actions .button { width: 100%; }
   .hero-media { min-height: 480px; }
