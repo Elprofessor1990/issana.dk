@@ -1,0 +1,37 @@
+{
+  "scope": "Alle ti syntetiske modeldele, generiske installationer og eksplicit antaget drift/byggeplads. Ikke et virkeligt byggeprojekt eller en myndighedseftervisning.",
+  "referenceAreaM2": 49.28,
+  "genericKeys": {
+    "concrete": "#B1425@24",
+    "wool": "#D1541@83",
+    "window": "#D1634@170"
+  },
+  "b6": {
+    "opvarmetAreal": 49.28,
+    "varme": 35,
+    "el": 4,
+    "forsyning": "district_heat",
+    "ibrugtagning": 2026,
+    "kilde": "SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt"
+  },
+  "byggeplads": {
+    "aar": 2026,
+    "elKwh": 100,
+    "varmeKwh": 20,
+    "dieselLiter": 0,
+    "jord": false,
+    "affald": [
+      {
+        "fraktion": "Beton",
+        "kg": 20
+      }
+    ],
+    "kilde": "SYNTETISK UNDERVISNINGSANTAGELSE: 100kWh el,20kWh varme,0liter diesel og20kg betonaffald; ingen bortkørt jord"
+  },
+  "installations": "Generiske tabel7-standarder for other, anvendt på49.28m²",
+  "limitations": [
+    "Komplet input til denne erklærede beregningsmodel er ikke en komplet fysisk bygningsbeskrivelse",
+    "Beton er uden særskilt armering; ingen døre eller finishlag er modelleret",
+    "U-værdier er selvstændige øvelsesantagelser, ikke udledt af den forenklede lagopbygning"
+  ]
+}

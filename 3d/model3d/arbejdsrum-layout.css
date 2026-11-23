@@ -1,0 +1,340 @@
+/* ISSANA 3D (3.0): layoutet i 3D-arbejdsrummet. Bygges af arbejdsrum-layout.js, som sætter klassen v3 på #app.
+   Grundreglen: 3D dækkes aldrig. Midterpanel (mindmap, søg, lag, klip, opbygning, indstillinger og arbejdsrummets
+   skuffe) og højrepaneler står VED SIDEN AF 3D i #app's grid; bundlinjen og AI-feltet står UNDER 3D. Ét panel ad
+   gangen, og 3D får altid mindst 50 % af bredden. Farverne følger viewerens variabler (lys/mørk tema), venstre bjælke
+   har sin egen tone: Lys (standard), Mørk eller Grøn via body[data-bjaelke]. Måltal er taget fra skitsen (Main.dc.html). */
+
+/* ---- Venstre bjælke ---- */
+#v3rail{flex:none;width:76px;display:flex;flex-direction:column;gap:2px;padding:0 0 10px;min-height:0;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;
+  background:#FFFFFF;color:#3F4D50;border-right:1px solid #DCE2E4}
+#v3rail::-webkit-scrollbar{width:0}
+body.morke #v3rail{background:var(--bg-paper);color:var(--text);border-right-color:var(--border)}
+body[data-bjaelke="moerk"] #v3rail{background:#23292B;color:#D5DBDC;border-right-color:#353D40}
+body[data-bjaelke="groen"] #v3rail{background:#0D4A4D;color:#D3E6E5;border-right-color:#1B5F62}
+.v3-logo{display:grid;place-items:center;height:60px;border-bottom:1px solid #E6EAEB;margin-bottom:6px;flex:none}
+body[data-bjaelke="moerk"] .v3-logo{border-bottom-color:#353D40}
+body[data-bjaelke="groen"] .v3-logo{border-bottom-color:#1B5F62}
+.v3-logo span{display:block;width:50px;height:50px;overflow:hidden}
+.v3-logo img{display:block;height:50px;width:auto}  /* logoets mærke står yderst til venstre i filen; resten klippes */
+body[data-bjaelke="moerk"] .v3-logo img,body[data-bjaelke="groen"] .v3-logo img,body.morke .v3-logo img{filter:brightness(0) invert(1)}
+.v3-rknap{display:flex;flex-direction:column;align-items:center;gap:5px;padding:9px 2px;border:0;border-left:3px solid transparent;background:transparent;color:inherit;
+  font:inherit;font-size:11px;cursor:pointer;min-height:56px;flex:none;line-height:1.1;text-align:center}
+.v3-rknap svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.v3-rknap:hover{background:#F1F4F4}
+.v3-rknap.on{background:#EAF3F2;color:#0B4F50;border-left-color:#0E6E6E;font-weight:600}
+body.morke .v3-rknap:hover{background:var(--bg-elev)}
+body.morke .v3-rknap.on{background:var(--bg-elev);color:var(--accent);border-left-color:var(--accent)}
+body[data-bjaelke="moerk"] .v3-rknap:hover{background:#2E3537}
+body[data-bjaelke="moerk"] .v3-rknap.on{background:#3A4346;color:#FFFFFF;border-left-color:#7FD6CE}
+body[data-bjaelke="groen"] .v3-rknap:hover{background:#13585B}
+body[data-bjaelke="groen"] .v3-rknap.on{background:#1B6A6C;color:#fff;border-left-color:#7FD6CE}
+.v3-rknap:disabled{opacity:.4;cursor:default}
+.v3-rskille{height:1px;background:#E6EAEB;margin:6px 14px;flex:none}
+body[data-bjaelke="moerk"] .v3-rskille{background:#353D40}
+body[data-bjaelke="groen"] .v3-rskille{background:#1B5F62}
+.v3-rspacer{flex:1;min-height:6px}
+.v3-rtal{position:absolute;top:6px;right:10px;min-width:16px;height:16px;border-radius:8px;background:var(--warn);color:#fff;font-size:10px;font-weight:700;display:grid;place-items:center;padding:0 4px}
+.v3-rknap{position:relative}
+
+/* ---- #app's grid med midterkolonne, bundlinje og AI-række ----
+   3D (#view) har sin egen gridcelle og får altid mindst 50 % af vinduets bredde: ethvert panel er højst
+   calc(50vw - 76px) bredt (--v3-loft; 76 px er bjælken). Kun ét panel er åbent ad gangen (arbejdsrum-paneler.js),
+   så bredderne lægges aldrig sammen. Bundlinjen (#v3bund) står i view-kolonnen lige under canvas; midter- og
+   højrepaneler spænder over begge rækker. Ingen faste bredder kan overstige vinduet. */
+#app.v3{--v3-loft:calc(50vw - 76px);--w-mid:min(424px,var(--v3-loft));
+  grid-template-columns:minmax(0,1fr) var(--w-mid) min(var(--w-types),var(--v3-loft)) min(var(--w-props),var(--v3-loft)) min(var(--w-params),var(--v3-loft));
+  grid-template-rows:auto minmax(0,1fr) auto auto auto;
+  grid-template-areas:"top top top top top" "view mid types props params" "bund mid types props params" "ai ai ai ai ai" "res res res res res"}
+#app.v3 #rail{display:none}                       /* den gamle ikon-rail; knapperne nås fra Indstillinger → Flere værktøjer */
+#app.v3.no-mid{--w-mid:0px} #app.v3.no-mid #v3mid{display:none}
+#app.v3.mid-bred{--w-mid:min(680px,var(--v3-loft))}
+/* På en fane med dock (Bygningsdele, Statik, Varmetab, Lyd, LCA) er midterpanel og højre kolonner lukkede (ét panel ad gangen) */
+#app.v3.data-tab{grid-template-columns:minmax(0,1fr) 0 0 0 0}
+#app.v3.data-tab #v3mid,#app.v3.data-tab #props,#app.v3.data-tab #types,#app.v3.data-tab #params{display:none}
+#app.v3.view-only{grid-template-columns:1fr 0 0 0 0;grid-template-rows:0 1fr 0 0 0}
+#app.v3.view-only > :not(#view){display:none}
+#app.v3 #types,#app.v3 #props,#app.v3 #params,#app.v3 #v3mid{overflow:hidden}   /* panelerne ruller indeni (.v3-pbody/.props-body), de vokser ikke ud af vinduet */
+
+/* ---- Midterpanel ---- */
+#v3mid{grid-area:mid;background:var(--bg-paper);border-left:1px solid var(--border);display:flex;flex-direction:column;min-height:0;min-width:0;position:relative}
+.v3-panel{display:none;flex-direction:column;flex:1;min-height:0}
+.v3-panel.vis{display:flex}
+.v3-phead{display:flex;align-items:center;gap:8px;padding:10px 14px 8px;border-bottom:1px solid var(--border);flex:none}
+.v3-phead h2{margin:0;font-size:var(--fs-16);font-weight:600;letter-spacing:-.01em;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.v3-phead .s{color:var(--muted);font-size:var(--fs-10)}
+.v3-pbody{flex:1;overflow:auto;padding:10px 12px 18px;min-height:0;font-size:12.5px}
+.v3-luk{border:0;background:none;font-size:18px;color:var(--muted);cursor:pointer;padding:0 4px;line-height:1}
+.v3-luk:hover{color:var(--text)}
+.v3-tom{color:var(--muted);padding:18px 4px;text-align:center}
+.v3-hint{color:var(--muted);font-size:11.5px;line-height:1.4;margin:6px 0}
+.v3-row{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin:6px 0}
+.v3-sek{font-weight:700;color:var(--accent);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;margin:12px 0 4px}
+.v3-in{font:inherit;padding:6px 9px;border:1px solid var(--border);border-radius:7px;background:var(--bg);color:var(--text);width:100%;min-width:0}
+.v3-in:focus{outline:none;border-color:var(--accent)}
+.v3-kv{display:flex;justify-content:space-between;gap:12px;font-size:12.5px;margin-top:5px}
+.v3-kv .k{color:var(--muted)} .v3-kv .v{text-align:right;font-weight:500}
+.v3-chip{display:inline-block;font-size:11px;font-weight:600;border-radius:999px;padding:2px 8px;background:var(--bg-elev);color:var(--text);white-space:nowrap}
+.v3-ok{margin-top:10px;background:var(--ok-bg);color:var(--ok);border-radius:8px;padding:8px 11px;font-size:12px;line-height:1.4}
+
+/* ---- Pris fra Sigma ---- */
+.sigma-pris-head{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 0}
+.sigma-pris-top{line-height:1.45;min-width:0}
+.sigma-pris-head #sigmaPrisFarv{flex:none;white-space:nowrap}
+.sigma-pris-status{border:0;background:none;color:var(--warn);font:inherit;font-weight:600;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+.sigma-pris-status:hover{color:var(--text)}
+.sigma-pris-advarsel{background:var(--warn-bg);color:var(--warn);padding:8px 10px;border:1px solid color-mix(in srgb,var(--warn) 25%,transparent);border-radius:6px;margin:6px 0 9px;line-height:1.4}
+.sigma-pris-detalje{padding:9px 10px;background:var(--chip-bg);border:1px solid var(--border);border-radius:7px;margin:6px 0 10px;line-height:1.45}
+.sigma-pris-kategori{color:var(--muted);font-size:11px;margin-top:1px}
+.sigma-pris-formel{margin-top:3px}
+.sigma-pris-molio{color:var(--muted);font-size:11.5px;margin-top:3px}
+.sigma-pris-mangler{color:var(--warn);font-weight:600}
+.sigma-pris-sek{font-weight:700;color:var(--accent);font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin:12px 0 4px}
+.sigma-pris-r{display:grid;grid-template-columns:minmax(120px,1fr) minmax(70px,1.6fr) 100px;align-items:center;gap:8px;width:100%;min-height:36px;border:0;border-bottom:1px solid var(--border);background:var(--bg);color:var(--text);text-align:left;cursor:pointer;padding:3px 5px}
+.sigma-pris-r:hover,.sigma-pris-r.valgt,.sigma-pris-uden-r:hover,.sigma-pris-uden-r.valgt{background:color-mix(in srgb,var(--accent) 13%,var(--bg));box-shadow:inset 3px 0 0 var(--accent)}
+.sigma-pris-r i{height:9px;background:var(--accent);border-radius:5px}
+.sigma-pris-r b{text-align:right}
+.sigma-pris-navn{min-width:0;overflow-wrap:anywhere}
+.sigma-pris-navn small{display:block;color:var(--muted);font-size:11px;margin-top:1px}
+.sigma-pris-flere{display:block;border:0;background:none;color:var(--accent);font:inherit;font-size:11.5px;padding:7px 4px;cursor:pointer;text-align:left}
+.sigma-pris-flere:hover{text-decoration:underline}
+.sigma-pris-uden{margin:4px 0 10px}
+.sigma-pris-uden-r{display:flex;flex-direction:column;gap:2px;width:100%;border:0;border-bottom:1px solid var(--border);background:var(--bg);color:var(--text);font:inherit;text-align:left;padding:7px 8px;cursor:pointer}
+.sigma-pris-uden-r span{color:var(--warn);font-size:11px}
+.sigma-pris-skala{margin:3px 0 8px;color:var(--muted);font-size:11px;line-height:1.35}
+.sigma-pris-legender{display:flex;flex-wrap:wrap;gap:5px 10px;margin-top:5px}
+.sigma-pris-leg{display:inline-flex;align-items:center;gap:4px;white-space:nowrap;font-size:11px}
+.sigma-pris-leg i{width:13px;height:13px;border:1px solid color-mix(in srgb,var(--text) 28%,transparent);border-radius:3px;flex:none}
+.sigma-pris-tom{text-align:left;padding:10px 4px}
+.sigma-pris-tom ol{margin:8px 0 0;padding-left:20px;line-height:1.7}
+/* ---- Pris: manglende oplysninger ---- */
+.sigma-pris-visninger{display:flex;gap:6px;flex-wrap:wrap;padding:2px 0 8px;border-bottom:1px solid var(--border);margin-bottom:8px}
+.sigma-pris-opl-top{line-height:1.45;padding:2px 0}
+.sigma-pris-opl-g{border:1px solid var(--border);border-radius:7px;margin:8px 0;background:var(--bg);overflow:hidden}
+.sigma-pris-opl-g.faerdig{opacity:.8}
+.sigma-pris-opl-h{display:block;width:100%;border:0;background:var(--chip-bg);color:var(--text);font:inherit;text-align:left;padding:9px 10px;cursor:pointer;line-height:1.4}
+.sigma-pris-opl-h:hover{background:color-mix(in srgb,var(--accent) 13%,var(--bg))}
+.sigma-pris-opl-h small{color:var(--muted);font-size:11.5px}
+.sigma-pris-opl-h[aria-expanded="true"]{border-bottom:1px solid var(--border);box-shadow:inset 3px 0 0 var(--accent)}
+.sigma-pris-opl-g .v3-hint{margin:4px 10px}
+.sigma-pris-opl-saet{display:flex;align-items:flex-end;gap:6px;flex-wrap:wrap;padding:9px 10px 4px}
+.sigma-pris-opl-saet label{display:flex;flex-direction:column;gap:3px;flex:1 1 120px;min-width:110px}
+.sigma-pris-opl-saet label span{color:var(--muted);font-size:11px}
+.sigma-pris-opl-r{display:grid;grid-template-columns:18px minmax(0,1fr) auto;align-items:center;gap:8px;min-height:36px;padding:4px 10px;border-top:1px solid var(--border)}
+.sigma-pris-opl-navn{border:0;background:none;color:var(--text);font:inherit;text-align:left;padding:0;cursor:pointer;min-width:0;overflow-wrap:anywhere}
+.sigma-pris-opl-navn:hover{color:var(--accent)}
+.sigma-pris-opl-navn small{display:block;color:var(--muted);font-size:11px;margin-top:1px}
+.sigma-pris-opl-v{display:flex;align-items:center;justify-content:flex-end;gap:5px;flex-wrap:wrap}
+.sigma-pris-opl-fra{color:var(--muted);font-size:11px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sigma-pris-opl-kilde{display:inline-block;font-size:11px;font-weight:600;border-radius:999px;padding:2px 8px;white-space:nowrap;background:var(--bg-elev);color:var(--text)}
+.sigma-pris-opl-kilde.assumed,.sigma-pris-opl-kilde.missing,.sigma-pris-opl-kilde.revit-none{background:var(--warn-bg);color:var(--warn)}
+.sigma-pris-opl-kilde.assumed{border:1px dashed color-mix(in srgb,var(--warn) 55%,transparent)}
+.sigma-pris-opl-kilde.entered,.sigma-pris-opl-kilde.revit-saved{background:var(--ok-bg);color:var(--ok)}
+.sigma-pris-opl-kilde.revit-pending{background:color-mix(in srgb,var(--accent) 14%,var(--bg));color:var(--accent)}
+
+/* Arbejdsrummets skuffe (#arb fra arbejdsrum.js) flyttes ind i midterpanelet og bliver et almindeligt panel */
+#app.v3 #arb{position:static;width:auto!important;height:auto;border:0;border-radius:0;box-shadow:none;display:none;flex:1;min-height:0}
+#app.v3 #arb.aaben{display:flex}
+
+/* ---- Segmentknapper (gruppering, visningsvælger, bjælke) ---- */
+.v3-seg{display:inline-flex;flex-wrap:wrap;background:var(--bg-elev);border-radius:8px;padding:3px;gap:2px}
+.v3-seg button{min-height:28px;padding:0 10px;border:0;border-radius:6px;background:transparent;font:inherit;font-size:12px;color:var(--text);cursor:pointer;display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.v3-seg button:hover{background:var(--line-soft);color:var(--accent)}
+.v3-seg button.on{background:var(--accent);color:var(--accent-ink);font-weight:600}
+.v3-seg button:disabled{opacity:.45;cursor:default}
+
+/* ---- Mindmap ---- */
+.v3-mm-vaerk{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin:0 0 8px}
+.v3-mm-vaerk .sp{flex:1}
+.v3-mm-zoom{display:flex;gap:5px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+.mm-rul{overflow:auto;min-height:0;max-height:65vh;overscroll-behavior:contain}
+.mm-flade{position:relative;transform-origin:0 0}
+.mm-links{position:absolute;left:0;top:0;pointer-events:none}
+.lca-struktur{display:grid;grid-template-columns:minmax(110px,1fr) minmax(120px,1fr) minmax(160px,1.5fr);gap:10px;overflow:auto}
+.lca-struktur h3{font-size:13px;position:sticky;top:0;background:var(--bg-paper);padding:6px 0}
+.lca-struktur [aria-pressed=true]{background:var(--accent);color:var(--accent-ink)}
+.lca-lag{border:1px solid var(--border);border-radius:8px;padding:10px;margin:8px 0;overflow-wrap:anywhere}
+.lca-lag p{margin:5px 0}
+.mm-links path{fill:none;stroke:#B5C0C2;stroke-width:1.3}
+.mm-links path.valgt{stroke:var(--accent);stroke-width:2}
+.mm-node{position:absolute;height:32px;border:1px solid #D2DADC;border-radius:8px;background:var(--bg-paper);color:var(--text);font:inherit;font-size:12.5px;cursor:pointer;padding:0 7px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:left;display:flex;align-items:center;gap:4px;box-sizing:border-box}
+body.morke .mm-node{border-color:var(--border)}
+.mm-node:hover{box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 20%,transparent)}
+.mm-node:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.mm-n0{background:var(--bg-elev);font-weight:600}
+.mm-n1.valgt-del,.mm-n1.valgt-alle{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:600}
+.mm-n2.valgt-del,.mm-n2.valgt-alle{border-color:var(--accent);border-width:2px;color:var(--accent);font-weight:600}
+.mm-blad.valgt-alle{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:600}
+.mm-blad.valgt-del{border-color:var(--accent);border-width:2px;color:var(--accent);font-weight:600}
+.mm-pil{font-size:10px;opacity:.75;flex:none}
+.mm-plus{position:absolute;width:26px;height:26px;border-radius:50%;border:1px solid #C3CDCF;background:var(--bg-paper);color:var(--accent);font:inherit;font-size:17px;line-height:1;cursor:pointer;padding:0;box-sizing:border-box}
+.mm-plus:hover,.mm-plus.valgt{border-color:var(--accent)}
+body.morke .mm-plus{border-color:var(--border)}
+
+/* ---- Klip ---- */
+.v3-kliprow{display:flex;align-items:center;gap:8px;min-height:36px;font-size:12.5px}
+.v3-kliprow .l{width:42px;font-weight:500}
+.v3-kliprow input[type=range]{flex:1;min-width:0;accent-color:var(--accent)}
+.v3-kliprow .v{width:56px;text-align:right;color:var(--muted);font-variant-numeric:tabular-nums}
+
+/* ---- Lag ---- */
+.v3-lag{display:flex;align-items:center;gap:10px;padding:7px 10px;border:1px solid var(--border);border-radius:8px;font-size:12.5px;cursor:pointer;margin:4px 0;min-height:40px}
+.v3-lag input{width:16px;height:16px;margin:0;accent-color:var(--accent)}
+.v3-lag .sw{width:14px;height:14px;border-radius:3px;border:1px solid rgba(0,0,0,.25);flex:none}
+.v3-lag .n{margin-left:auto;color:var(--muted);font-variant-numeric:tabular-nums}
+
+/* ---- Opbygning ---- */
+/* Opbygning: snittegningen af lagene over listen */
+.v3-snit{display:block;width:100%;max-width:340px;height:auto;margin:2px 0 6px;background:var(--bg-elev);border:1px solid var(--border);border-radius:8px}
+.v3-snit text{fill:var(--text);font-family:inherit}
+.v3-ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+/* Ret lagene: hver række har materiale, funktion, skelet, tykkelse og knapper til at flytte og fjerne */
+.v3-ret li{align-items:flex-start;flex-wrap:wrap}
+.v3-ret .m{display:flex;flex-direction:column;gap:4px}
+.v3-ret select,.v3-ret input[type="number"],.v3-ret-bekraeft input[type="text"]{font:inherit;font-size:12px;border:1px solid var(--border);border-radius:5px;background:var(--bg-paper);color:var(--text);padding:3px 5px;min-width:0;max-width:100%}
+.v3-ret .t input{width:58px;text-align:right}
+.v3-ret-skelet{font-size:11.5px;color:var(--muted);display:inline-flex;align-items:center;gap:4px}
+.v3-ret-sk{font-size:11.5px;color:var(--muted)} .v3-ret-sk input{width:52px}
+.v3-ret-knap{display:inline-flex;gap:2px} .v3-ret-knap button{font:inherit;width:24px;height:24px;border:1px solid var(--border);border-radius:5px;background:var(--bg-elev);color:var(--text);cursor:pointer;padding:0}
+.v3-ret-knap button:disabled{opacity:.35;cursor:default}
+.v3-ret-fod{margin:8px 0;padding:8px;border:1px solid var(--border);border-radius:8px;background:var(--bg-elev)}
+.v3-ret-bekraeft{font-size:12.5px;margin-top:6px;padding:8px;border-left:3px solid var(--accent);background:var(--bg-paper)}
+.v3-ret-bekraeft label{display:block;margin-top:6px} .v3-ret-bekraeft input[type="text"]{width:100%}
+.v3-ol li{display:flex;align-items:center;gap:8px;padding:6px 8px;border:1px solid var(--border);border-radius:8px;font-size:12.5px}
+.v3-ol .m{flex:1;min-width:0} .v3-ol .m small{display:block;color:var(--muted);font-size:11px}
+.v3-ol .t{font-variant-numeric:tabular-nums;white-space:nowrap}
+.v3-nr{width:22px;height:22px;border-radius:50%;background:var(--bg-elev);display:grid;place-items:center;font-size:11px;font-weight:700;flex:none}
+.v3-ol .sw{width:16px;height:16px;border-radius:3px;border:1px solid rgba(0,0,0,.25);flex:none}
+
+/* ---- Bundlinjen under 3D: visningsvælger, tal, måleresultat, hjælp og farveforklaring ----
+   Alt, der i 2.12 lå position:absolute oven på canvas (#stats, #selInfo, #legend, .gizmo-hint, #measureOut), står her i
+   flowet. Canvas dækkes af intet. */
+#v3bund{grid-area:bund;display:flex;align-items:center;gap:6px 12px;flex-wrap:wrap;padding:4px 10px;min-width:0;min-height:34px;
+  background:var(--bg-paper);border-top:1px solid var(--border);font-size:12px;color:var(--text)}
+#app.v3.view-only #v3bund{display:none}
+#app.v3 #v3visning,#app.v3 #stats,#app.v3 #selInfo,#app.v3 #legend,#app.v3 .gizmo-hint,#app.v3 #measureOut{
+  position:static;left:auto;right:auto;top:auto;bottom:auto;transform:none;z-index:auto;max-width:none;margin:0;backdrop-filter:none;box-shadow:none}
+#v3visning{display:none;align-items:center;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--text)}
+#v3visning.vis{display:flex}
+/* Markering og filter: «Markér flere», «Vis kun», «Skjul» og «Vis alle» med tallet for, hvad filteret viser */
+#v3valg{display:none;align-items:center;gap:6px;flex-wrap:wrap;font-size:12px;color:var(--text)}
+#v3valg.vis{display:inline-flex}
+#v3valg .v3-visalle{min-height:28px;padding:0 10px;font-size:12px;border-color:var(--accent);color:var(--accent)}
+.v3-filtertal{font-size:11.5px;color:var(--muted);white-space:nowrap}
+#app.v3 #stats{pointer-events:auto;max-width:none}
+#app.v3 #selInfo{padding:3px 8px}
+#app.v3 #measureOut{padding:3px 10px;font-size:12px;max-width:40%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#app.v3 .gizmo-hint{margin-left:auto;border:0;background:none;padding:0;text-align:right;max-width:38%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media (max-width:1300px){ #app.v3 .gizmo-hint{display:none} }
+/* Farveforklaringen: én linje (sammenklappet) med knappen «Mere»; foldet ud ruller den i højst 120 px. Statik: forslag,
+   Lyd i rum, Konstruktiv funktion og viewerens egne forklaringer står alle her, aldrig oven på scenen. */
+#v3legendRamme{display:none;flex:1 1 100%;align-items:flex-start;gap:8px;min-width:0;border-top:1px solid var(--line-soft);padding-top:4px}
+#v3legendRamme.vis{display:flex}
+#app.v3 #legend{flex:1;min-width:0;border:0;background:none;padding:0;font-size:11.5px;line-height:20px;max-height:20px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+#app.v3 #legend h4{display:inline;margin:0 10px 0 0;font-size:11px;vertical-align:baseline}
+#app.v3 #legend .legrow{display:inline-flex;padding:0;margin-right:12px;vertical-align:baseline}
+#app.v3 #legend .grad{display:inline-block;width:80px;height:8px;margin:0 6px;vertical-align:middle}
+#app.v3 #legend .arb-note{display:none}
+#v3legendRamme.ud #legend{white-space:normal;max-height:120px;overflow:auto;text-overflow:clip}
+#v3legendRamme.ud #legend .arb-note{display:block}
+.v3-legend-mere{flex:none;min-height:22px;padding:0 8px;font-size:11px}
+#v3legendRamme.pris #legend{white-space:normal;max-height:none;overflow:visible;text-overflow:clip;line-height:18px}
+#v3legendRamme.pris .v3-legend-mere{display:none}
+#app.v3 #legend .sigma-pris-legender{display:inline-flex;flex-wrap:wrap;gap:2px 10px;margin:0;vertical-align:top}
+#app.v3 #legend .sigma-pris-leg{display:inline-flex;align-items:center;gap:4px;margin:0;white-space:nowrap}
+#app.v3 #legend .sigma-pris-leg i{width:12px;height:12px;border-radius:3px;flex:none;border:1px solid rgba(0,0,0,.2)}
+#app.v3 #legend > b{display:block;line-height:18px}
+.v3-lvl{display:flex;align-items:center;gap:4px;border:1px solid var(--border);border-radius:7px;padding:1px 2px 1px 8px;min-width:110px;justify-content:space-between;background:var(--bg-paper)}
+.v3-lvl b{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:150px}
+.v3-lvl span{display:flex;flex-direction:column}
+.v3-step{width:24px;height:15px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;padding:0;color:var(--text);font-size:9px;line-height:1}
+.v3-step:hover{color:var(--accent)}
+#v3visning input[type=range]{width:130px;accent-color:var(--accent)}
+#v3visning .v3-klipchip{display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:3px 10px;font-weight:600}
+#v3visning .v3-klipchip button{border:0;background:rgba(255,255,255,.2);color:inherit;border-radius:999px;padding:1px 7px;font:inherit;font-size:11px;cursor:pointer}
+
+/* ---- AI-feltet under 3D (kompakt) ----
+   Svaret viser ca. 4 linjer og «Vis mere»; foldet ud højst 24 % af vinduets højde. Feltet som helhed er højst 38 % af
+   vinduet, så 3D (med topbar ~100 px) beholder mindst ~55 % af højden. */
+#v3ai{grid-area:ai;background:var(--bg-paper);border-top:1px solid var(--border);padding:6px 12px;display:none;flex-direction:column;gap:5px;min-width:0;max-height:38vh;overflow:hidden}
+#v3ai.vis{display:flex}
+.v3-ai-titel{display:flex;align-items:center;gap:10px;font-weight:700;font-size:13px}
+.v3-ai-titel small{font-weight:400;color:var(--muted);font-size:11.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#app.v3 #arbAi{position:static;left:auto;right:auto;bottom:auto;display:none;gap:8px;align-items:center}
+#app.v3 #arbAi.vis{display:flex}
+#app.v3 #arbAi input{background:var(--bg);border-radius:8px;min-height:34px;backdrop-filter:none;font-size:13px}
+.v3-ai-svarramme{position:relative;min-width:0}
+#app.v3 #arbAiSvar{position:relative;left:auto;bottom:auto;max-width:none;max-height:5.8em;overflow:hidden;box-shadow:none;border-radius:8px;margin:0;padding:8px 36px 8px 12px;line-height:1.35}
+.v3-ai-svarramme.ud #arbAiSvar{max-height:min(24vh,240px);overflow:auto}
+.v3-ai-mere{display:none;position:absolute;right:34px;bottom:4px;min-height:22px;padding:0 8px;font-size:11px}
+.v3-ai-svarramme.harMere .v3-ai-mere{display:inline-flex}
+#app.v3 #v3ai{background:#e7efff;border-top:3px solid #5271bd;max-height:30vh;overflow:auto;padding:8px 12px}
+body.morke #app.v3 #v3ai{background:#192740;border-color:#8faaff}
+#v3ai .v3-ai-titel{color:#233e7d}
+body.morke #v3ai .v3-ai-titel{color:#d5e1ff}
+#v3ai .v3-ai-titel button{margin-left:auto}
+#app.v3 #v3ai #arbAi input{background:var(--bg-paper);border:1px solid #8298cd}
+#v3p-ai-svar .v3-phead{background:#e7efff;color:#233e7d;border-bottom:2px solid #5271bd}
+body.morke #v3p-ai-svar .v3-phead{background:#192740;color:#d5e1ff}
+#app.v3 #v3p-ai-svar #arbAiSvar{display:block;position:relative;left:auto;bottom:auto;max-width:none;max-height:none;overflow:visible;background:var(--bg-paper);border:0;box-shadow:none;padding:8px 0;line-height:1.5;font-size:13px;white-space:normal}
+#app.v3 #v3p-ai-svar #arbAiSvar:not(.vis)::before{content:'Skriv til ISSANA AI nedenfor. Svar og modeloversigter vises her.';color:var(--muted)}
+#app.v3 #v3p-ai-svar #arbAiLuk{display:none}
+.ai-model-liste{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.ai-model-post{border:1px solid var(--border);border-radius:8px;padding:10px;overflow-wrap:anywhere}
+.ai-model-post h3{font-size:13px;margin:0 0 5px}
+.ai-model-post dl{display:grid;grid-template-columns:minmax(80px,1fr) minmax(0,2fr);gap:4px 10px;margin:8px 0;font-size:12px}
+.ai-model-post dt{color:var(--muted)}.ai-model-post dd{margin:0;overflow-wrap:anywhere}
+.ai-model-post .ai-mangler{color:var(--warn);font-weight:600}
+.ai-model-post details{margin:8px 0}.ai-model-post pre{white-space:pre-wrap;font-size:11px;overflow-wrap:anywhere}
+.ai-model-post table{width:100%;border-collapse:collapse;font-size:11px}.ai-model-post td{padding:3px;border-bottom:1px solid var(--border);overflow-wrap:anywhere}
+.ai-model-kun-mangler .ai-model-post[data-mangler="0"]{display:none}
+#app.v3 #arb.aaben~#arbAi,#app.v3 #arb.aaben.bred~#arbAi{right:auto}
+
+/* ---- Status øverst til højre ---- */
+#v3status{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--muted);white-space:nowrap}
+#v3status b{color:var(--text);font-weight:600}
+#v3gem{display:none}
+#v3gem.vis{display:inline-flex}
+
+/* ---- Docks til højre (registrerede faner og html'ens Bygningsdele/Varmetab/LCA) ----
+   Højst calc(50vw - 76px): 3D beholder mindst halvdelen. Hver dock har et tydeligt X øverst (lukker = 3D Inspektion). */
+body:has(#app.v3) .dock{width:min(440px,calc(50vw - 76px));overflow:auto}
+body:has(#app.v3) #page-varmetab.dock{width:min(560px,calc(50vw - 76px))}
+.v3-dock{width:min(440px,calc(50vw - 76px));display:flex;flex-direction:column;min-height:0}
+.v3-dock.hidden{display:none}
+.v3-dock .v3-pbody{padding:16px 16px 40px}
+.dock .v3-modelgrundlag{flex:none;margin:10px 12px;padding:10px 12px;border:1px solid var(--border);border-left:3px solid var(--warn);border-radius:6px;background:var(--bg-paper);color:var(--text);font-size:12px;line-height:1.5;white-space:normal;overflow-wrap:anywhere}
+.dock .v3-modelgrundlag strong{display:block;color:var(--warn);font-size:13px}
+.dock .v3-modelgrundlag p{margin:4px 0 0}
+/* 3.0: en fane kan bede om en bredere dock (registrerFane({bred:true}); Lyd-fanens tabel) */
+.v3-dock.bred{width:min(720px,calc(50vw - 76px))}
+.v3-dock-luk{display:flex;justify-content:flex-end;padding:6px 10px 0;position:sticky;top:0;z-index:2;background:var(--bg-paper)}
+.v3-dock-luk .v3-luk,.v3-dock .v3-phead .v3-luk{font-size:20px;width:30px;height:30px;border-radius:8px;border:1px solid var(--border);display:grid;place-items:center;padding:0}
+.v3-dock-luk .v3-luk:hover,.v3-dock .v3-phead .v3-luk:hover{border-color:var(--accent);color:var(--accent)}
+.fagpanel-greb{flex:0 0 7px;cursor:col-resize;background:var(--border);touch-action:none;position:relative}
+.fagpanel-greb[hidden]{display:none}
+.fagpanel-greb:hover,.fagpanel-greb:focus-visible{background:var(--accent);outline:0}
+.fagpanel-tools{display:flex;align-items:center;gap:5px;flex-wrap:wrap;padding:6px 10px;background:var(--bg-paper);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:4;font-size:11px;flex:none}
+.fagpanel-tools button{font:inherit;border:1px solid var(--border);border-radius:5px;background:var(--bg-elev);color:var(--text);padding:3px 7px;cursor:pointer}
+.fagpanel-tools output{margin-left:auto;color:var(--muted)}
+.fagpanel-tools button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+/* Fuld skærm for et fagpanel (ejer, 2026-11-14): panelet får hele arbejdsfladen, og 3D, bjælken og grebet er skjult,
+   til «Vis 3D igen». Den eneste undtagelse fra «3D aldrig smal»; den vælges af brugeren og huskes ikke. */
+#workspace.fagpanel-fuld>#app,#workspace.fagpanel-fuld>#v3rail,#workspace.fagpanel-fuld>.fagpanel-greb{display:none!important}
+#workspace.fagpanel-fuld>.dock.fagpanel-fuld{flex:1 1 auto!important;max-width:none!important;min-width:0}
+body:has(#app.v3) .dock{container-type:inline-size}
+#lcaBody{container-type:inline-size}
+.lca-navigation{display:none;gap:8px;margin:8px 0}
+.lca-navigation label{display:flex;flex:1;min-width:0;flex-direction:column;gap:4px;font-size:12px}
+.lca-navigation select{width:100%;min-width:0;background:var(--bg-paper);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:7px;font:inherit}
+.lca-kol-valg{max-height:55vh;overflow:auto}
+@container(max-width:620px){.lca-navigation{display:flex}.lca-struktur{grid-template-columns:minmax(0,1fr);overflow:visible}.lca-kol-valg{display:none}}
+@container(max-width:350px){.lca-navigation{flex-direction:column}}
+#v3dock-lyd .v3-pbody{padding:8px 10px 20px}
+.lyd-overblik{max-height:32vh;overflow:auto;margin:8px 0;border:1px solid var(--border);border-radius:6px}
+.lyd-overblik table{width:100%;table-layout:fixed}
+.lyd-overblik td,.lyd-overblik th{overflow-wrap:anywhere}
+.lyd-overblik select{min-width:0;max-width:100%;width:100%}
+.lyd-overblik:not(.alle-tal) .lyd-tal{display:none}
+.lyd-overblik.alle-tal table{min-width:920px;table-layout:auto}
+#v3dock-lyd .arb-status{white-space:normal;line-height:1.2;font-size:11px}

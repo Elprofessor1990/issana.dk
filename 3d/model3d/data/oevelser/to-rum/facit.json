@@ -1,0 +1,74 @@
+{
+  "schema": "issana-student-reference/1",
+  "exerciseId": "to-rum-01",
+  "provenance": {
+    "syntheticInputs": true,
+    "independentArithmetic": true,
+    "description": "Facit er udregnet direkte fra de oplyste geometrier og ligninger, ikke kopieret fra motorens output."
+  },
+  "geometry": {
+    "rooms": 2,
+    "roomArea": 20,
+    "roomVolume": 56,
+    "partitionArea": 14,
+    "partitionVolume": 2.8,
+    "southWallOpaqueArea": 9.48
+  },
+  "sound": {
+    "Rw": 55,
+    "T0": 0.5,
+    "partitionArea": 14,
+    "receiverVolume": 56,
+    "formula": "R'w = Rw (kun direkte vej); D'nT,w = R'w + 10 log10(0,16 V/(T0 S))",
+    "RwMark": 55,
+    "DnTwUnrounded": 56.07209969647868,
+    "DnTwDisplayed": 56.1,
+    "roomT": {
+      "input": 0.6,
+      "exerciseTargetMax": 0.8,
+      "calculated": false
+    },
+    "toleranceDb": 0.051
+  },
+  "energy": {
+    "formula": "H=U×A; Φ=U×A×(20−(−12))",
+    "area": 9.48,
+    "u": 0.2,
+    "deltaT": 32,
+    "H_WperK": 1.896,
+    "heatLossW": 60.672,
+    "tolerance": 1e-8
+  },
+  "lca": {
+    "formula": "V=A×t; A1–A3=V×faktor",
+    "area": 14,
+    "thickness": 0.2,
+    "volumeM3": 2.8,
+    "catalogueKey": "#B1425@24",
+    "factorA1A3": 215,
+    "A1A3kgCO2e": 602,
+    "catalogueSha256": "b450eb32046e1be036c63dda5c73f84bb6317ec50c067286394d3b4657ea1c86",
+    "sourceWorkbookSha256": "3ac0babdd803cc688e058c9b1096c9871c849362014d4da80564000b73bcdb18",
+    "workbookRow": 24,
+    "source": "Medfølgende BR18 bilag2 tabel7(2025), generiske branchedata: Fabriksbeton C20/25 SCC",
+    "scope": "Beton i skillevæg2007, A1–A3 alene; øvrige bygningsdele og moduler er udeladt",
+    "tolerance": 1e-8
+  },
+  "completeLca": {
+    "scope": "Alle ti syntetiske modeldele, generiske installationer og eksplicit antaget drift/byggeplads. Ikke et virkeligt byggeprojekt eller en myndighedseftervisning.",
+    "referenceAreaM2": 49.28,
+    "initialMaterialsFormula": "215×(73,28×0,15+14×0,20+41×0,20+49,28×0,20) + 0,5511×(73,28×0,15+49,28×0,30)/0,037 + 90,585×4",
+    "initialMaterialsA1A3": 7593.583070270271,
+    "installationFormula": "49,28×50×(0,061+0,064+1,059)",
+    "installationsA1A3": 2917.376,
+    "totalA1A3": 10510.95907027027,
+    "expectedEngineStatus": "calculated_draft",
+    "limits": "Facit for A1–A3 er uafhængig mængde×faktor-summering; øvrige moduler skal læses fra den aktuelle motorberegning. Ingen myndighedsgodkendelse."
+  },
+  "excluded": [
+    "Ingen referenceværdi for årsenergi",
+    "Ingen referenceværdi for overophedningstimer",
+    "Ingen efterklangsberegning",
+    "Ingen godkendelse af bygningen"
+  ]
+}

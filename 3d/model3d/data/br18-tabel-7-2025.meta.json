@@ -1,0 +1,33 @@
+{
+  "fil": "br18-tabel-7-2025.json",
+  "beskrivelse": "BR18 bilag 2 tabel 7 (2025): generiske materialedatasæt til klimapåvirkning. Versionslåst kopi til ISSANA 3D's AI-felt (epd-match.js, ai-lca.js); bruges KUN som generisk reservekilde mærket «generisk», når et produktbibliotek eller koblet ISSANA-data ikke har en rigtig EPD.",
+  "kopieretFra": "D:/ISSANA/22_ISSANA_LCA/prototype/data/br18-tabel-7-2025.json (ISSANA LCA, Rust-kernens datakatalog)",
+  "kopieret": "2026-11-01",
+  "sha256": "b450eb32046e1be036c63dda5c73f84bb6317ec50c067286394d3b4657ea1c86",
+  "kilde": {
+    "side": "https://www.bygningsreglementet.dk/historisk/version-18/bilag/b2/bilag_2/tabel_7/",
+    "regneark": "https://www.bygningsreglementet.dk/media/1o1nnozd/tabel-7-2025.xlsx",
+    "regnearkSha256": "3ac0babdd803cc688e058c9b1096c9871c849362014d4da80564000b73bcdb18",
+    "regelperiode": "2025-07-01 til 2025-12-31"
+  },
+  "indhold": { "materials": 492, "installation_standards_not_for_material_editor": 15, "duplicate_source_ids": 3 },
+  "felter": {
+    "key": "unik nøgle: id + '@' + regnearksrække (id'er kan gå igen, se duplicate_source_ids)",
+    "id": "datasættets id i tabel 7, fx #B1437 (B = branchedata, D = dansk generisk, G = generisk/Ökobaudat, S = standardværdi for installationer)",
+    "data_type": "Branche data | Dansk generisk data | Generisk data | Standardværdi",
+    "name_da": "dansk navn (det, epd-match.js matcher mod)",
+    "name_other": "navn på originalsproget (tysk for Ökobaudat), kan være null",
+    "a1a3": "GWP modul A1-A3, kg CO₂e pr. deklareret enhed",
+    "c3": "GWP modul C3, kg CO₂e pr. deklareret enhed",
+    "c4": "GWP modul C4, kg CO₂e pr. deklareret enhed",
+    "d": "GWP modul D (uden for systemgrænsen; tælles aldrig i totalen), kg CO₂e pr. deklareret enhed",
+    "declared_factor": "antal deklarerede enheder tallene gælder for (normalt 1); null for standardværdier",
+    "declared_unit": "deklareret enhed: m³ (74), m² (124), kg (132), stk (71), ton (27), 'm² with R=1 m²K/W' (38, isolering: pr. m² ved varmemodstand R=1; mængde kræver λ og tykkelse), m (19), m (12 mm) o.l. (plader pr. løbende meter i given tykkelse), 'stk. Ø1000 mm' (1)",
+    "mass_factor": "masse pr. enhed i mass_unit (fx 2304 for kg/m³); bruges til omregning mellem m³/m² og kg/ton, kun når enhederne passer",
+    "mass_unit": "kg/m³ | kg/m² | kg/m | kg/kg | kg/stk. | ton/m³ | g/cm³ | kg/m²/mm",
+    "underlying_source_url": "EPD/Ökobaudat-kilden bag tallet",
+    "comment": "bemærkning fra regnearket, oftest null",
+    "workbook_sheet, workbook_row": "sporbarhed til regnearket"
+  },
+  "omregning": "epd-match.js: m³-datasæt → mængde = tykkelse × areal; m²-datasæt → areal; kg/ton → volumen × mass_factor (kg/m³) eller areal × mass_factor (kg/m²); 'm² with R=1' kræver λ (ikke i issana-3d-eksporten) → «mangler omregning»; stk og m → «mangler omregning»."
+}

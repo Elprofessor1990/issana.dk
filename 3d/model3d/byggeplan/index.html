@@ -1,0 +1,1155 @@
+<!doctype html>
+<html lang="da">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ISSANA · Byggeplan</title><style>:root{--ink:#173e42;--muted:#627476;--brand:#145e61;--accent:#dfad58;--paper:#f5f5ef;--line:#dce3df;--white:#fff;--red:#a33e31;--green:#1b7268;font-family:'Bahnschrift','Aptos','Segoe UI',sans-serif;color:var(--ink);background:var(--paper);font-size:14px}
+*{box-sizing:border-box}body{margin:0}button,input,select,textarea,summary{font:inherit}button,summary{cursor:pointer}button{background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:9px 12px;white-space:nowrap}button:hover{background:#edf3ef}button:disabled{opacity:.45;cursor:default}button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #e5ac4e;outline-offset:2px}.primary{background:var(--brand);color:#fff;border-color:var(--brand)}.primary:hover{background:#0d4b4e}.quiet{background:transparent}input,select,textarea{width:100%;padding:9px;border:1px solid #ced8d3;border-radius:5px;color:var(--ink);background:#fff}textarea{resize:vertical}label{display:grid;gap:5px;font-size:12px;color:#52676b}input[type=checkbox]{width:16px;height:16px;accent-color:var(--brand)}input[type=range]{padding:0;accent-color:var(--brand)}input[type=number]{font-variant-numeric:tabular-nums}h1,h2,p{margin:0}h1{font-weight:600;font-size:30px;letter-spacing:-.8px}h2{font-size:20px}.topbar{min-height:70px;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);background:#fff}.identity{display:flex;align-items:center;gap:12px}.brand-mark{width:36px;height:36px;background:var(--brand);color:#fff;display:grid;place-items:center;font-family:Georgia,serif;font-size:27px;border-radius:4px}.identity b{font-size:17px;letter-spacing:2px}.identity span:not(.brand-mark){display:block;font-size:10px;letter-spacing:1.6px;margin-top:4px}.file-actions{display:flex;gap:7px;align-items:center}main{max-width:1920px;margin:auto;padding:26px 28px}.project-head{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-bottom:18px}.eyebrow{font-size:10px;font-weight:600;letter-spacing:1.6px;color:var(--muted);margin-bottom:7px}#provenance{margin-top:8px;font-size:12px;color:var(--muted)}.project-numbers{display:flex;gap:32px}.project-numbers span{display:block;font-size:11px;color:var(--muted);margin-bottom:7px}.project-numbers strong{font-size:24px;font-weight:500;font-variant-numeric:tabular-nums}.assumption{padding:10px 14px;background:#f1ead7;border-left:3px solid #bd964a;font-size:12px;line-height:1.5;margin-bottom:18px}.workspace{display:grid;grid-template-columns:minmax(0,1fr) 302px;gap:18px;align-items:start}.workspace-main{min-width:0;background:#fff;border:1px solid var(--line);border-radius:9px;overflow:visible}.viewbar{display:flex;gap:10px;align-items:center;padding:13px 16px;border-bottom:1px solid var(--line);flex-wrap:wrap}nav{display:flex;gap:3px;margin-right:auto;background:#eef2ef;border-radius:6px;padding:3px}nav button{background:transparent;border:0;padding:8px 14px}nav .active{background:#fff;box-shadow:0 1px 4px #183c4020}.view-description{padding:13px 16px;display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:12px;flex-wrap:wrap}.check{display:flex;align-items:center;gap:6px;font-size:12px}.plan-scroll{overflow:auto;max-height:560px;min-height:380px;border-bottom:1px solid var(--line);scrollbar-color:#b2c8c1 transparent}table{border-collapse:collapse;width:100%;font-size:12px}th{font-weight:500;text-align:left;background:#f3f5f2;position:sticky;top:0;z-index:3}td,th{padding:9px 8px;border-bottom:1px solid #edf0ed;vertical-align:middle}.row-label{min-width:190px;max-width:210px;position:sticky;left:0;background:#fff;z-index:2;border-right:1px solid var(--line)}th.row-label{z-index:4;background:#f3f5f2}.row-label button{border:0;background:transparent;padding:0;text-align:left;white-space:normal;font-size:12px;line-height:1.4;display:block;width:100%}.row-label span{display:block;font-size:10px;color:var(--muted);margin-top:3px}.selected .row-label{background:#e6f0ec}.day-head{text-align:center;min-width:29px;padding:6px 0;font-size:10px;color:var(--muted)}.gantt-track{position:relative;height:40px;padding:0;background-image:linear-gradient(to right,transparent calc(100% - 1px),#edf1ee 0);background-size:var(--day-width) 100%}.gantt-bar{position:absolute;height:20px;top:8px;border:0;border-radius:4px;padding:0;min-width:3px;background:var(--task-color);overflow:hidden}.gantt-bar:hover{background:var(--task-color);filter:brightness(1.12)}.gantt-bar span{display:block;color:white;font-size:10px;padding:4px 5px;overflow:hidden;text-overflow:ellipsis}.baseline-bar{position:absolute;top:32px;height:3px;background:#99a49f;border-radius:2px}.time-line{position:absolute;top:0;bottom:0;border-left:2px solid #c9882e;pointer-events:none}.zone-row{background:#edf2ee;font-size:11px;letter-spacing:.4px}.zone-row td{padding:7px 12px}.takt-cell{min-width:115px;padding:5px;vertical-align:top;height:75px}.takt-cell button{display:block;width:100%;margin:3px 0;text-align:left;white-space:normal;font-size:11px;background:color-mix(in srgb,var(--task-color) 12%,white);border:0;border-left:3px solid var(--task-color);line-height:1.4}.takt-cell small{display:block;color:var(--muted)}.takt-cell.current{background:#f9f0dc}.playbar{display:flex;align-items:center;gap:16px;padding:16px}.scrubber{flex:1;min-width:80px}.scrubber label{margin-bottom:8px;font-variant-numeric:tabular-nums}.time-budget{min-width:155px;text-align:right;font-size:13px}.time-budget span{display:block;color:var(--muted);font-size:10px;margin-bottom:5px}.time-budget b{font-weight:500}#legend{display:flex;gap:12px;flex-wrap:wrap;padding:0 16px 16px;font-size:11px;color:var(--muted)}.legend-item{display:flex;align-items:center;gap:5px}.dot{width:9px;height:9px;border-radius:2px;display:inline-block}#issues{padding:13px 16px;border-top:1px solid var(--line);font-size:12px}#issues ul{padding-left:18px;line-height:1.65;max-height:200px;overflow:auto}#issue-count{font-weight:500}#editor{background:#fff;padding:18px;border:1px solid var(--line);border-radius:9px;min-width:0}.editor-top{display:flex;justify-content:space-between;margin-bottom:12px}#task-id{font-size:10px;color:var(--muted)}#task-form{display:grid;gap:12px}.two{display:grid;grid-template-columns:1fr 1fr;gap:9px}.editor-actions{display:flex;gap:7px;flex-wrap:wrap}.editor-actions .primary{flex:1}.dependencies{font-size:12px}.dependencies summary{padding:8px 0}#dependencies{max-height:200px;overflow:auto}#dependencies label{display:flex;gap:8px;align-items:flex-start;margin:8px 0;font-size:11px}#dependencies input{flex:none}#calculated{background:#edf3ee;border-radius:5px;padding:10px;font-size:12px;line-height:1.7}.mapping{border-top:1px solid var(--line);padding-top:16px;margin-top:18px;font-size:11px;line-height:1.5}.mapping p{margin:7px 0;overflow-wrap:anywhere}.mapping button{font-size:11px;padding:7px}.statusline{display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:11px;padding:16px 0}.menu,#settings{position:relative}.menu summary,#settings summary{padding:9px 10px;list-style:none;border:1px solid var(--line);border-radius:6px}.menu>div,#settings-form{position:absolute;right:0;top:calc(100% + 7px);width:270px;background:#fff;box-shadow:0 10px 35px #173e4225;border:1px solid var(--line);padding:12px;border-radius:7px;z-index:10;display:grid;gap:9px}.menu button{border:0;text-align:left}#settings-form p{font-size:11px;line-height:1.5;color:var(--muted)}#canvas-host{height:440px;min-height:250px;touch-action:none;background:#edf0e9;position:relative}#canvas-host canvas{display:block;width:100%;height:100%}.model-controls{padding:0 16px 10px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}.model-controls label{display:flex;align-items:center;gap:5px}.model-controls select{max-width:180px}#model-pick{padding:12px 16px;font-size:11px;color:var(--muted);line-height:1.5;overflow-wrap:anywhere}#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;max-width:90vw;padding:13px 20px;border-radius:7px;z-index:30;font-size:13px;box-shadow:0 5px 30px #0002}dialog{border:1px solid var(--line);border-radius:10px;padding:24px;max-width:420px;color:var(--ink)}dialog::backdrop{background:#173e4250}dialog p{margin:15px 0;line-height:1.6}[hidden]{display:none!important}.blank{padding:30px;color:var(--muted)}
+.site-controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap}#site-dialog{width:min(680px,94vw);max-width:680px}#site-json{font-family:Consolas,monospace;font-size:12px;margin-bottom:14px}.playbar{border-bottom:1px solid var(--line);background:#fafbf8}.gantt-bar{touch-action:none;cursor:grab}.gantt-bar:active{cursor:grabbing}
+@media(max-width:1100px){main{padding:20px 16px}.topbar{padding:12px 16px}.workspace{grid-template-columns:minmax(0,1fr) 275px;gap:12px}.time-budget{min-width:110px}.project-numbers{gap:20px}.project-numbers strong{font-size:20px}}
+@media(max-width:820px){.workspace{grid-template-columns:1fr}#editor{max-width:none}.project-head{align-items:flex-start}.project-numbers{flex-direction:column;gap:12px}.project-numbers strong{font-size:18px}.topbar{flex-wrap:wrap}h1{font-size:25px}.plan-scroll{max-height:480px;min-height:260px}.statusline{flex-wrap:wrap}#canvas-host{height:380px}}
+@media(max-width:480px){main{padding:16px 10px}.topbar{padding:12px 10px}.identity span:not(.brand-mark){font-size:9px}.project-head{display:block}.project-numbers{flex-direction:row;margin-top:16px}.viewbar{padding:10px;gap:8px}.viewbar nav{width:100%;justify-content:center}nav button{flex:1}.playbar{flex-wrap:wrap;padding:12px}.time-budget{width:100%;text-align:left}.row-label{min-width:155px;max-width:155px}.file-actions{flex-wrap:wrap}.view-description{padding:10px}.two{gap:8px}#canvas-host{height:310px}#settings-form{right:auto;left:0;width:260px}}
+@media print{.topbar,.viewbar,.view-description,#editor,.playbar,.statusline,#issues,#toast{display:none!important}.workspace{display:block}.plan-scroll{max-height:none;overflow:visible}.workspace-main{border:0}main{padding:0}.gantt-bar{-webkit-print-color-adjust:exact;print-color-adjust:exact}.assumption{font-size:10px}}
+/* Project tools stay behind one entry point; ordinary task editing stays visible. */
+#project-dialog{width:min(1020px,94vw);max-height:90vh;padding:24px;border:1px solid #bdcac4;border-radius:14px;color:#163f43;background:#f7f7f0}#project-dialog::backdrop{background:#092c385e}.project-dialog-head{display:flex;justify-content:space-between;align-items:center}.project-dialog-head h2{margin:6px 0 18px}.project-tabs{display:flex;gap:5px;flex-wrap:wrap;border-bottom:1px solid #ced7d0;padding-bottom:14px;margin-bottom:18px}.project-tabs .active{background:#144e53;color:white}.tool-box{padding:18px;margin-top:18px;background:#fff;border:1px solid #dce2da;border-radius:10px}.tool-box h3{margin-top:0}.model-register{display:grid;gap:10px}.model-row{display:grid;grid-template-columns:2fr repeat(4,1fr);gap:10px;padding:16px;background:white;border:1px solid #dce2da;border-radius:10px}.model-row>div{grid-column:1/-1}.model-row small{display:block;color:#607573;overflow-wrap:anywhere}.model-row label.check{grid-column:span 2}.model-row button{align-self:end}.preview-card{padding:18px;background:#e2eee8;border-left:4px solid #176a6f;margin:14px 0}.scale-choice{display:flex;gap:6px;align-items:center}.scale-choice select{width:auto}.row-label small{display:block;font-size:10px;color:#627975;font-weight:400;margin-top:5px}#project-body>p{line-height:1.6}.project-numbers{flex-wrap:wrap}#carbon-card strong{font-size:20px}#ai-json,#carbon-json{font-family:Consolas,monospace;font-size:12px}.view-description{flex-wrap:wrap;gap:8px}.project-tabs button{font-size:12px}.day-head{white-space:normal!important;font-size:10px!important}.model-row input{min-width:0}
+@media(max-width:700px){#project-dialog{padding:14px}.model-row{grid-template-columns:repeat(2,minmax(0,1fr))}.project-numbers{gap:14px}.file-actions{flex-wrap:wrap}.scale-choice{width:100%}.two{grid-template-columns:1fr}}
+.waiting-for-model main,.waiting-for-model .file-actions,.waiting-for-model .project-numbers{display:none}
+.execution-panel{border-top:1px solid var(--line);background:#f8faf7}.execution-panel>summary{display:flex;justify-content:space-between;gap:12px;padding:16px;font-weight:600}.execution-panel>summary span{font-size:11px;font-weight:400;color:var(--muted)}.execution-body{padding:0 20px 20px}.execution-intro{max-width:620px;padding:8px 0 20px}.execution-intro h2{font-size:22px;font-weight:500;margin-bottom:8px}.execution-body p{font-size:12px;line-height:1.6;color:var(--muted)}.execution-grid{display:grid;grid-template-columns:minmax(220px,1fr) minmax(220px,1fr);gap:24px}.execution-grid form{display:grid;gap:12px}.execution-hint{padding:10px 12px;background:#f1ead7;border-radius:4px}.execution-status{padding:16px;border-left:3px solid #ba8a38;background:#fff8e8;font-size:12px;line-height:1.5}.execution-status b{font-size:15px}.execution-status p{margin:8px 0}.execution-status ul{padding-left:18px;max-height:180px;overflow:auto}#execution-source{padding:4px 0;font-size:11px;overflow-wrap:anywhere}#execution-source h3{font-size:13px;font-weight:500}#execution-source dl{display:grid;grid-template-columns:80px 1fr;gap:7px}#execution-source dd{margin:0}#execution-source dt{color:var(--muted)}.execution-coverage{margin-top:22px;padding-top:16px;border-top:1px solid var(--line)}.execution-coverage summary{font-weight:500;margin-bottom:12px}.execution-coverage p{margin:10px 0}.coverage-scroll{max-height:230px;overflow:auto;border:1px solid var(--line);margin:12px 0}.coverage-scroll th{white-space:nowrap}.coverage-scroll td{font-size:11px}.coverage-scroll td:last-child{color:#8a642c}@media(max-width:1000px){.execution-grid{grid-template-columns:1fr}.execution-body{padding:0 14px 16px}.execution-panel>summary span{display:none}}
+</style></head>
+<body>
+<header class="topbar"><div class="identity"><span class="brand-mark">I</span><div><b>ISSANA</b><span>BYGGEPLAN / PRØVEUDGAVE</span></div></div><div class="file-actions"><button id="open" class="quiet">Åbn</button><button id="undo" class="quiet" disabled>Fortryd</button><button id="save" class="primary">Gem HTML</button><details class="menu"><summary>Flere</summary><div><button id="json">Gem plan som JSON</button><button id="csv">Eksportér tidsplan (CSV)</button><button id="baseline">Fasthold referenceplan</button><button id="print">Udskriv tidsplan</button></div></details></div></header>
+<input id="file" type="file" accept=".json" hidden>
+<main>
+<section class="project-head"><div><div class="eyebrow">TID · OMRÅDER · BYGNING</div><h1 id="project-title">Din byggeplan</h1><p id="provenance"></p></div><div class="project-numbers"><div><span>Planlagt afslutning</span><strong id="finish">–</strong></div><div><span>Samlet budget · DKK</span><strong id="budget">–</strong></div></div></section>
+<div class="assumption" id="source-note">Virkelig modelgeometri. Tider, bemanding, rækkefølge og priser er eksempelværdier, som skal tilpasses.</div>
+<section class="workspace">
+<div class="workspace-main">
+<div class="viewbar"><nav aria-label="Visning"><button data-view="gantt" class="active" aria-pressed="true">Tidsplan</button><button data-view="takt" aria-pressed="false">Taktplan</button><button data-view="model" aria-pressed="false">3D</button></nav><button id="add">+ Aktivitet</button><details id="settings"><summary>Planens rammer</summary><form id="settings-form"><label>Startdato<input name="startDate" type="date" required></label><label>Produktive timer pr. person/dag<input name="hoursPerDay" type="number" min="0.5" max="24" step="0.5" required></label><label>Takt i arbejdsdage<input name="taktDays" type="number" min="1" max="60" required></label><label>Fridage · én dato pr. linje<textarea name="holidays" placeholder="2026-12-24"></textarea></label><button class="primary" type="submit">Anvend rammer</button><p>Mandag–fredag. Startdatoer lægges på taktgrænser. Ventetider angives i arbejdsdage.</p></form></details></div>
+<div class="view-description"><span id="view-caption">Klik på en aktivitet for at rette den.</span><label class="check"><input type="checkbox" id="show-baseline"> Vis referenceplan</label></div>
+<div id="gantt" class="plan-scroll"></div><div id="takt" class="plan-scroll" hidden></div>
+<div id="model-view" hidden><div class="model-controls"><button id="fit">Tilpas</button><button id="plan-camera">Ovenfra</button><label class="check"><input type="checkbox" id="ghost" checked> Vis kommende</label><label>Etage <select id="level"><option value="">Alle</option></select></label></div><div id="canvas-host"></div><div id="model-pick">Klik på en bygningsdel for at se dens aktivitet. Træk for at dreje; scroll for at zoome.</div></div>
+<footer class="playbar"><button id="play" class="primary">Afspil</button><div class="scrubber"><label for="time" id="time-label">Tidspunkt</label><input type="range" id="time" min="0" max="20" value="6" step="0.5"></div><div class="time-budget"><span>Planlagt værdi til tidspunktet</span><b id="time-budget">–</b></div></footer>
+<div id="legend"></div><details id="issues"><summary id="issue-count">Kontrol af planen</summary><ul id="issue-list"></ul></details>
+</div>
+<aside id="editor"><div class="editor-top"><span class="eyebrow">VALGT AKTIVITET</span><span id="task-id"></span></div><form id="task-form"><label>Aktivitet<input name="name" maxlength="200" required></label><div class="two"><label>Område<select name="zoneId"></select></label><label>Entreprise<input name="enterprise" maxlength="100"></label></div><div class="two"><label>Hold<input name="crewId" maxlength="100" required></label><label>Antal personer<input name="crewSize" type="number" min="1" max="500" required></label></div><label>Varighed bestemmes af<select name="mode"><option value="hours">Persontimer og bemanding</option><option value="fixed">Fast antal arbejdsdage</option></select></label><div class="two"><label id="hours-field">Persontimer · tomt = ukendt<input name="hours" type="number" min="0.01" step="0.01"></label><label id="days-field">Fast varighed · arbejdsdage<input name="fixedDays" type="number" min="1" max="1000" required></label><label>Budget · kr. · tomt = ukendt<input name="budget" type="number" min="0" step="0.01"></label></div><div class="two"><label>Tidligst fra<input name="notBefore" type="date"></label><label>Ventetid · arbejdsdage<input name="lagDays" type="number" min="0" max="365" required></label></div><details class="dependencies"><summary id="dependency-title">Afhængigheder</summary><div id="dependencies"></div></details><label>Kilde / forudsætning<input name="source" maxlength="300"></label><label>Bemærkning<textarea name="notes" rows="2" maxlength="1000"></textarea></label><div id="calculated"></div><div class="editor-actions"><button type="submit" class="primary">Anvend ændring</button><button type="button" id="delete" class="quiet">Fjern</button></div></form><section class="mapping"><div class="eyebrow">TILKNYTNING TIL 3D</div><p id="mapping-count"></p><p id="picked-description"></p><div class="editor-actions"><button id="attach" disabled>Tilknyt valgt del</button><button id="detach" disabled>Frigør valgt del</button></div></section></aside>
+</section>
+<div class="statusline"><span id="save-status">Ingen ændringer</span><span>Lokalt · ingen upload · originale Revit-filer ændres ikke</span></div>
+</main>
+<div id="toast" role="status" aria-live="polite" hidden></div>
+<dialog id="error-dialog"><h2>Det skal lige rettes</h2><p id="error-text"></p><button id="close-error" class="primary">Tilbage</button></dialog>
+<script id="bootstrap-data" type="application/json">null</script>
+<script src="../../lib/three/three.global.js"></script><script src="../../lib/three/addons/controls/OrbitControls.global.js"></script><script>/* ISSANA Byggeplan: deterministic whole-workday planning, no browser dependencies. */
+(function (root, factory) {
+  if (typeof module === 'object' && module.exports) module.exports = factory();
+  else root.BuildPlan = factory();
+})(typeof globalThis !== 'undefined' ? globalThis : this, function () {
+  'use strict';
+  const DAY = 86400000;
+  function fail(message) { throw new Error(message); }
+  function validDate(value) {
+    return typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value) &&
+      Number.isFinite(Date.parse(value + 'T12:00:00Z')) && new Date(value + 'T12:00:00Z').toISOString().slice(0, 10) === value;
+  }
+  function dateAdd(value, n) { return new Date(Date.parse(value + 'T12:00:00Z') + n * DAY).toISOString().slice(0, 10); }
+  function validate(plan) {
+    if (!plan || !['issana-byggeplan/1','issana-byggeplan/2'].includes(plan.schema)) fail('Filen er ikke en understøttet ISSANA-byggeplan.');
+    if (!validDate(plan.startDate)) fail('Projektets startdato er ugyldig.');
+    if (!Number.isInteger(plan.taktDays) || plan.taktDays < 1 || plan.taktDays > 60) fail('Takten skal være 1–60 arbejdsdage.');
+    if (!Number.isFinite(plan.hoursPerDay) || plan.hoursPerDay <= 0 || plan.hoursPerDay > 24) fail('Timer pr. dag skal være større end 0 og højst 24.');
+    if (!Array.isArray(plan.holidays) || plan.holidays.some(d => !validDate(d))) fail('Fridage skal være gyldige datoer.');
+    if (!Array.isArray(plan.zones) || !plan.zones.length || plan.zones.length > 500) fail('Planen skal have 1–500 områder.');
+    const zones = new Set();
+    for (const z of plan.zones) { if (typeof z.id!=='string'||!z.id||zones.has(z.id)) fail('Områder skal have unikke ID’er.'); zones.add(z.id); }
+    if (!Array.isArray(plan.tasks) || plan.tasks.length > 1000) fail('Prøveudgaven understøtter højst 1.000 aktiviteter.');
+    for(const x of [...plan.zones,...plan.tasks])if(x.taktDays!=null&&(!Number.isInteger(x.taktDays)||x.taktDays<0||x.taktDays>60))fail('Lokal takt skal være 0–60 arbejdsdage; 0 betyder fri planlægning.');
+    const ids = new Set();
+    for (const t of plan.tasks) {
+      if (typeof t.id !== 'string' || !/^[\w.-]{1,80}$/.test(t.id) || ids.has(t.id)) fail('Aktiviteter skal have unikke ID’er uden mellemrum.');
+      ids.add(t.id);
+      if (!zones.has(t.zoneId)) fail(t.id + ': området findes ikke.');
+      if (typeof t.name !== 'string' || !t.name.trim() || t.name.length > 200) fail(t.id + ': skriv et navn på højst 200 tegn.');
+      if (!['hours', 'fixed'].includes(t.mode)) fail(t.id + ': ukendt varighedsmetode.');
+      if (t.mode === 'hours' && t.hours !== null && (!Number.isFinite(t.hours) || t.hours <= 0 || t.hours > 1000000)) fail(t.id + ': arbejdstimer skal være positive eller ukendte.');
+      if (!Number.isInteger(t.crewSize) || t.crewSize < 1 || t.crewSize > 500) fail(t.id + ': bemanding skal være 1–500 personer.');
+      if (typeof t.crewId !== 'string' || !t.crewId.trim() || t.crewId.length > 100) fail(t.id + ': hold skal have et navn.');
+      if (!Number.isInteger(t.fixedDays) || t.fixedDays < 1 || t.fixedDays > 1000) fail(t.id + ': varighed skal være 1–1.000 arbejdsdage.');
+      if (t.notBefore && !validDate(t.notBefore)) fail(t.id + ': ugyldig tidligste startdato.');
+      if (!Number.isInteger(t.lagDays) || t.lagDays < 0 || t.lagDays > 365) fail(t.id + ': ventetid skal være 0–365 arbejdsdage.');
+      if (t.budget !== null && (!Number.isFinite(t.budget) || t.budget < 0 || t.budget > 1e12)) fail(t.id + ': budget skal være et positivt tal eller ukendt.');
+      if (!Array.isArray(t.predecessors) || !Array.isArray(t.elementIds) || t.elementIds.length > 100000) fail(t.id + ': ugyldige referencer.');
+      if (t.elementIds.some(id => typeof id !== 'string')) fail(t.id + ': element-ID skal være tekst.');
+    }
+    for (const t of plan.tasks) for (const id of t.predecessors) if (!ids.has(id) || id === t.id) fail(t.id + ': forgængeren ' + id + ' findes ikke eller er aktiviteten selv.');
+    return plan;
+  }
+  function rhythm(plan,task){
+    if(task.taktDays!=null)return task.taktDays;let z=plan.zones.find(z=>z.id===task.zoneId),seen=new Set();
+    while(z&&!seen.has(z.id)){seen.add(z.id);if(z.taktDays!=null)return z.taktDays;z=plan.zones.find(x=>x.id===z.parentId);}return plan.taktDays;
+  }
+  function calendar(plan) {
+    const holidays = new Set(plan.holidays), cache = [];
+    function working(date) { const d = new Date(date + 'T12:00:00Z').getUTCDay(); return d !== 0 && d !== 6 && !holidays.has(date); }
+    let start = plan.startDate;
+    let count = 0;
+    while (!working(start)) { start = dateAdd(start, 1); if (++count > 10000) fail('Kalenderen har ingen arbejdsdage.'); }
+    cache.push(start);
+    function dateAt(index) {
+      index = Math.max(0, Math.floor(index));
+      if (index > 10000) fail('Planen overstiger 10.000 arbejdsdage.');
+      while (cache.length <= index) { let d = dateAdd(cache[cache.length - 1], 1); while (!working(d)) d = dateAdd(d, 1); cache.push(d); }
+      return cache[index];
+    }
+    function indexAt(date) {
+      if (!date || date <= start) return 0;
+      for (let i = 0; i <= 10000; i++) if (dateAt(i) >= date) return i;
+      fail('Datoen ligger mere end 10.000 arbejdsdage fra start.');
+    }
+    return { dateAt, indexAt, working };
+  }
+  function schedule(plan) {
+    validate(plan);
+    const cal = calendar(plan), byId = new Map(plan.tasks.map(t => [t.id, t]));
+    const rows = new Map(), bookings = new Map(), visiting = new Set(), ordered = [], visited = new Set(), warnings = [];
+    function visit(id) {
+      if (visited.has(id)) return;
+      if (visiting.has(id)) fail('Afhængigheder danner en cirkel ved ' + id + '. Ret forgængerne.');
+      visiting.add(id);
+      byId.get(id).predecessors.forEach(visit);
+      visiting.delete(id); visited.add(id); ordered.push(byId.get(id));
+    }
+    plan.tasks.forEach(t => visit(t.id));
+    for (const t of ordered) {
+      const duration = t.mode === 'fixed' ? t.fixedDays : t.hours === null ? null : Math.ceil(t.hours / (t.crewSize * plan.hoursPerDay));
+      const blocked = duration === null || t.predecessors.some(id => rows.get(id).blocked);
+      if (blocked) {
+        const reason = duration === null ? 'Mangler arbejdstimer' : 'Afventer en forgænger uden varighed';
+        rows.set(t.id, { ...t, blocked: true, reason, start: null, end: null, duration: null });
+        warnings.push({ taskId: t.id, severity: 'error', message: t.name + ': ' + reason.toLowerCase() + '.' });
+        continue;
+      }
+      let earliest = Math.max(cal.indexAt(t.notBefore), ...t.predecessors.map(id => rows.get(id).end + t.lagDays));
+      if (!t.predecessors.length) earliest = Math.max(earliest, t.lagDays);
+      const takt=rhythm(plan,t),align=n=>takt?Math.ceil(n/takt)*takt:n;
+      let start = align(earliest);
+      const intervals = bookings.get(t.crewId) || [];
+      let conflict;
+      while ((conflict = intervals.find(b => start < b.end && start + duration > b.start))) start = align(conflict.end);
+      const end = start + duration;
+      if (end > 10000) fail('Planen overstiger 10.000 arbejdsdage.');
+      intervals.push({ start, end, taskId: t.id }); intervals.sort((a, b) => a.start - b.start); bookings.set(t.crewId, intervals);
+      rows.set(t.id, { ...t, blocked: false, start, end, duration, effectiveTakt:takt, startDate: cal.dateAt(start), finishDate: cal.dateAt(end - 1), resourceDelay: start - align(earliest) });
+      if (takt&&duration > takt) warnings.push({ taskId: t.id, severity: 'warning', message: t.name + ' kræver ' + duration + ' dage og overskrider takten på ' + takt + '.' });
+      if (t.budget === null) warnings.push({ taskId: t.id, severity: 'warning', message: t.name + ': budget er ukendt.' });
+    }
+    const tasks = plan.tasks.map(t => rows.get(t.id));
+    const horizon = Math.max(1, ...tasks.filter(t => !t.blocked).map(t => t.end));
+    for (let i = 0; i < tasks.length; i++) for (let j = i + 1; j < tasks.length; j++) {
+      const a = tasks[i], b = tasks[j];
+      if (!a.blocked && !b.blocked && a.zoneId === b.zoneId && a.crewId !== b.crewId && a.start < b.end && b.start < a.end)
+        warnings.push({ taskId: a.id, severity: 'warning', message: a.name + ' og ' + b.name + ' overlapper i samme område; kontrollér plads og adgang.' });
+    }
+    return { tasks, horizon, warnings, calendar: cal, budget: tasks.reduce((s, t) => s + (t.budget ?? 0), 0), budgetIncomplete: tasks.some(t => t.budget === null) };
+  }
+  function snapshot(result, time) {
+    return result.tasks.map(t => {
+      const progress = t.blocked ? 0 : Math.max(0, Math.min(1, (time - t.start) / t.duration));
+      return { ...t, progress, state: t.blocked ? 'blocked' : time >= t.end ? 'done' : time >= t.start ? 'active' : 'future', allocatedBudget: t.budget === null ? null : t.budget * progress };
+    });
+  }
+  function csv(result) {
+    const quote = v => '"' + String(v ?? '').replace(/^[=+@\-]/, "'$&").replace(/"/g, '""') + '"';
+    const rows = [['Synchronization ID', 'Task Name', 'Planned Start', 'Planned End', 'Task Type', 'Budget DKK', 'Zone', 'Crew', 'Element IDs']];
+    for (const t of result.tasks) rows.push([t.id, t.name, t.startDate || '', t.finishDate || '', 'Construct', t.budget, t.zoneId, t.crewId, t.elementIds.join('|')]);
+    return '\uFEFF' + rows.map(r => r.map(quote).join(',')).join('\r\n');
+  }
+  function escapeJson(value) { return JSON.stringify(value).replace(/</g, '\\u003c').replace(/\u2028/g, '\\u2028').replace(/\u2029/g, '\\u2029'); }
+  return { validate, calendar, schedule, snapshot, csv, validDate, dateAdd, escapeJson, rhythm };
+});
+</script><script>(function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory();else root.BuildModel=factory();})(typeof globalThis!=='undefined'?globalThis:this,function(){
+  'use strict';
+  const copy=v=>JSON.parse(JSON.stringify(v));
+  const metadata=(value,omit)=>copy(Object.fromEntries(Object.entries(value).filter(([k])=>!omit.includes(k))));
+  const installationCategories=['Rør','Kanaler','Kabler','Rørformstykker','Kanalformstykker','Kabelbakker og fittings','Mekanisk udstyr','Elektrisk udstyr','Luftarmaturer','Sanitet','Øvrige installationer'];
+  function provenance(value){
+    const p=value&&typeof value==='object'&&!Array.isArray(value)?copy(value):{},declared=typeof value==='string'?value:p.value;
+    const evidence=p.sourceEvidence,documented=typeof evidence==='string'?!!evidence.trim():Array.isArray(evidence)?evidence.length>0:!!evidence&&typeof evidence==='object'&&Object.keys(evidence).length>0;
+    p.value=['designed','syntheticTest','unknown'].includes(declared)?declared:'unknown';
+    if(p.value==='designed'&&!documented){p.declaredValue='designed';p.value='unknown';p.reason='Projektoprindelse mangler kildebevis.';}
+    return p;
+  }
+  function installationCategory(e){
+    const c=String(e.builtInCategory||'')+'|'+String(e.category||'');
+    if(/OST_PlumbingFixtures|\|Sanitet$/i.test(c))return 'Sanitet';
+    if(/OST_DuctTerminal|\|Luftarmaturer$/i.test(c))return 'Luftarmaturer';
+    if(/OST_PipeFitting|OST_PipeAccessory|\|Rørformstykker$|\|Rørtilbehør$/i.test(c))return 'Rørformstykker';
+    if(/OST_DuctFitting|OST_DuctAccessory|\|Kanalformstykker$|\|Kanaltilbehør$/i.test(c))return 'Kanalformstykker';
+    if(/OST_CableTray|OST_Conduit|\|Kabelbakker|\|Kabelrør/i.test(c))return 'Kabelbakker og fittings';
+    if(/OST_Wire|\|Kabler$/i.test(c))return 'Kabler';
+    if(/OST_PipeCurves|OST_FlexPipeCurves|\|Rør$/i.test(c))return 'Rør';
+    if(/OST_DuctCurves|OST_FlexDuctCurves|\|Kanaler$/i.test(c))return 'Kanaler';
+    if(/OST_MechanicalEquipment|\|Mekanisk udstyr$/i.test(c))return 'Mekanisk udstyr';
+    if(/OST_Electrical|OST_Lighting|\|Elektrisk udstyr$|\|Belysning$/i.test(c))return 'Elektrisk udstyr';
+    return e.installation===true?'Øvrige installationer':null;
+  }
+  function executionDefaults(operation='unknown',control=false){return {deliveryMode:control?'none':'unknown',operation,reviewState:'needsInput',progress:{basis:'illustrative',visualMethod:control?'none':'activityStatus'}};}
+  function normalize(raw){
+    if(!raw||!Array.isArray(raw.elements)||!String(raw.schema||'').startsWith('issana-3d/'))throw new Error('Vælg et ISSANA 3D-udtræk (.issana3d.json).');
+    if(raw.elements.length>10000)throw new Error('Prøveudgaven har et loft på 10.000 elementer. Brug et mindre modeludtræk.');
+    const seen=new Set(),elements=[];let triangles=0,skipped=Number.isInteger(raw.skipped)&&raw.skipped>=0?raw.skipped:0;
+    const min=[Infinity,Infinity,Infinity],max=[-Infinity,-Infinity,-Infinity];
+    for(const e of raw.elements){
+      const key=String(e.uniqueId||e.id||'');if(!key||seen.has(key))throw new Error('Modellen indeholder manglende eller gentagne element-ID’er.');seen.add(key);
+      const meshes=[];
+      for(const m of e.meshes||[]){
+        if(!Array.isArray(m.pos)||m.pos.length<9||m.pos.length%3||m.pos.some(n=>!Number.isFinite(n)||Math.abs(n)>1e8)){skipped++;continue;}
+        if(m.idx&&(!Array.isArray(m.idx)||m.idx.length%3||m.idx.some(n=>!Number.isInteger(n)||n<0||n>=m.pos.length/3))){skipped++;continue;}
+        const count=m.idx?m.idx.length/3:m.pos.length/9;if(!Number.isInteger(count)){skipped++;continue;}
+        triangles+=count;if(triangles>500000)throw new Error('Prøveudgaven har et loft på 500.000 trekanter. Eksportér med færre detaljer.');
+        for(let i=0;i<m.pos.length;i++){const a=i%3;min[a]=Math.min(min[a],m.pos[i]);max[a]=Math.max(max[a],m.pos[i]);}
+        meshes.push({...metadata(m,['pos','idx']),pos:m.pos,idx:m.idx||null});
+      }
+      elements.push({...metadata(e,['meshes']),id:String(e.id??key),uniqueId:key,name:String(e.name||e.type||e.category||'Bygningsdel').slice(0,300),category:String(e.category||'Andet').slice(0,80),level:String(e.level||'Uden etage').slice(0,100),provenance:provenance(e.provenance??raw.provenance),provenanceInherited:e.provenanceInherited??!Object.prototype.hasOwnProperty.call(e,'provenance'),meshes});
+    }
+    if(!triangles)throw new Error('Modellen indeholder ingen gyldig 3D-geometri.');
+    return {...metadata(raw,['elements','bbox']),schema:'issana-3d/1.3',sourceSchema:raw.sourceSchema||raw.schema,model:String(raw.model||'Model').slice(0,200),modelKey:String(raw.modelKey||raw.model||'model'),exported:String(raw.exported||''),provenance:provenance(raw.provenance),geometryUnits:raw.geometryUnits??'m',sourceUnits:copy(raw.sourceUnits??{geometry:'m',area:'m2',length:'m',layerThickness:'mm'}),truncated:!!raw.truncated,skipped,triangles,bbox:{min,max},elements};
+  }
+  function planFor(model){
+    const levels=[...new Set(model.elements.map(e=>e.level))].sort((a,b)=>a.localeCompare(b,'da',{numeric:true}));
+    const zones=levels.map((name,i)=>({id:'z'+(i+1),name}));
+    const phases=[{name:'Dæk og fundamenter',enterprise:'Råhus',crewId:'Hold dæk',color:'#1b6d72',budget:25000},{name:'Vægge og øvrige bygningsdele',enterprise:'Bygningsarbejder',crewId:'Hold bygning',color:'#bd7334',budget:45000},{name:'Glas og døre',enterprise:'Facade og aptering',crewId:'Hold glas',color:'#5c77a4',budget:30000},{name:'Kontrol og overdragelse',enterprise:'Kontrol',crewId:'Hold kontrol',color:'#816c92',budget:5000}];
+    const tasks=[];
+    zones.forEach((z,i)=>phases.forEach((phase,j)=>{
+      const group=e=>/Gulve|Fundamenter|Tag/i.test(e.category)?0:/Glas|Vinduer|Døre/i.test(e.category)?2:1;
+      const ids=model.elements.filter(e=>e.level===z.name&&!installationCategory(e)&&group(e)===j).map(e=>e.uniqueId);
+      const predecessors=[];if(j>0)predecessors.push('a'+(i*4+j));if(i>0)predecessors.push('a'+((i-1)*4+j+1));if(i>0&&j===0)predecessors.push('a'+((i-1)*4+2));
+      tasks.push({id:'a'+(i*4+j+1),name:phase.name,zoneId:z.id,enterprise:phase.enterprise,crewId:phase.crewId,color:phase.color,crewSize:j===3?1:2,mode:'hours',hours:j===3?8:32,fixedDays:2,lagDays:0,notBefore:'',predecessors:[...new Set(predecessors)],elementIds:ids,budget:phase.budget,source:'Eksempelværdi – ikke hentet fra Sigma',execution:executionDefaults(j===3?'other':'unknown',j===3),notes:ids.length?'Elementerne er grupperet efter etage og kategori. Arbejdsmetode, omfang og rækkefølge er uafklaret; hel geometri er ikke et leveret produkt.':'Aktivitet uden geometri: kontrollér omfanget eller fjern den, hvis den ikke er relevant.'});
+    }));
+    zones.forEach((z,i)=>installationCategories.forEach((category,j)=>{
+      const ids=model.elements.filter(e=>e.level===z.name&&installationCategory(e)===category).map(e=>e.uniqueId);if(!ids.length)return;
+      const id='mep-'+(i+1)+'-'+(j+1);
+      tasks.push({id,name:category+' · installation',zoneId:z.id,enterprise:'Installationer · '+category,crewId:'Afklar hold · '+category,color:'#317aab',crewSize:2,mode:'hours',hours:32,fixedDays:2,lagDays:0,notBefore:'',predecessors:['a'+(i*4+2)],elementIds:ids,budget:null,source:'Eksempelværdi – ikke hentet fra Sigma',execution:executionDefaults('installMEP'),notes:'Eksempel på særskilt installationsaktivitet. 32 persontimer og rækkefølge er antagelser; pris, metode, systemforbindelser og prøvekrav er uafklaret.'});
+      tasks.find(t=>t.id==='a'+(i*4+4)).predecessors.push(id);
+    }));
+    return {schema:'issana-byggeplan/1',name:model.model+' · første byggeplan',startDate:'2026-11-16',hoursPerDay:8,taktDays:2,holidays:[],modelKey:model.modelKey,modelExported:model.exported,dataStatus:'example-assumptions',zones,tasks,baseline:null};
+  }
+  return {normalize,planFor,provenance,installationCategory,installationCategories,executionDefaults};
+});
+</script><script>/* ISSANA project data: model federation, source packages and reviewable AI proposals. */
+(function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory(require('./core.js'),require('./model.js'));else root.BuildProject=factory(root.BuildPlan,root.BuildModel);})(typeof globalThis!=='undefined'?globalThis:this,function(C,M){
+  'use strict';
+  const copy=v=>JSON.parse(JSON.stringify(v)), own=(o,k)=>Object.prototype.hasOwnProperty.call(o,k);
+  const fail=m=>{throw new Error(m);}, idOk=id=>typeof id==='string'&&/^[\w.-]{1,80}$/.test(id);
+  const key=(modelId,elementId)=>modelId+'::'+encodeURIComponent(elementId);
+  function descriptor(id,m,discipline='ARK',options={}){return {id,name:m.model,discipline,sourceKey:m.modelKey,revision:m.exported,sourceInstanceId:options.sourceInstanceId||m.sourceInstanceId||'host',sourceFileHash:m.sourceFileHash??null,sourceUnits:copy(m.sourceUnits),provenance:M.provenance(m.provenance),alignmentCheck:copy(m.alignmentCheck??{status:'needsInput'}),...(m.worldFromSource?{worldFromSource:copy(m.worldFromSource)}:{}),visible:true,coordinatesReviewed:false,translation:[0,0,0],rotationZ:0};}
+  function matrixFor(d){const a=d.rotationZ*Math.PI/180,c=Math.cos(a),s=Math.sin(a),t=d.translation;return {matrix:[c,-s,0,t[0],s,c,0,t[1],0,0,1,t[2],0,0,0,1],order:'row-major',axes:'XYZ',units:'m'};}
+  // A deterministic change marker, not a signature or proof of surveyed alignment.
+  function alignmentFingerprint(d){const value=JSON.stringify([d.id,d.sourceKey,d.revision,d.sourceInstanceId??'host',d.sourceFileHash??null,matrixFor(d)]);let hash=2166136261;for(let i=0;i<value.length;i++)hash=Math.imul(hash^value.charCodeAt(i),16777619);return 'placement-v1-'+(hash>>>0).toString(16);}
+  function alignmentStatus(d,check=d.alignmentCheck){
+    if(check?.status==='stale')return 'stale';
+    if(check?.status!=='reviewed'||!check.inputHash)return 'needsInput';
+    if(check.inputHash!==alignmentFingerprint(d))return 'stale';
+    const evidence=check.sourceEvidence??check.evidence,hasEvidence=typeof evidence==='string'?!!evidence.trim():Array.isArray(evidence)?evidence.length>0:!!evidence&&typeof evidence==='object'&&Object.keys(evidence).length>0;
+    return d.coordinatesReviewed===true&&hasEvidence?'reviewed':'needsInput';
+  }
+  function upgrade(data){
+    if(data.schema==='issana-byggeplan-package/2'){const p=copy(data.plan),entries=data.models.map(e=>({...copy(Object.fromEntries(Object.entries(e).filter(([k])=>k!=='model'))),model:M.normalize(e.model)}));validate(p);return {plan:p,entries,model:federate(p,entries)};}
+    const m=M.normalize(data.model&&typeof data.model==='object'?data.model:data),p=copy(data.plan||M.planFor(m));
+    if(p.schema==='issana-byggeplan/2'){const entries=[{id:p.models?.[0]?.id,model:m}];validate(p);return {plan:p,entries,model:federate(p,entries)};}
+    const projectId=p.projectId||'project-'+Math.random().toString(36).slice(2,12),modelId=p.models?.[0]?.id||'model-1';
+    p.schema='issana-byggeplan/2';p.projectId=projectId;p.revision=p.revision??0;p.models=p.models??[descriptor(modelId,m)];p.options=p.options??{cost:true,co2:false};p.climateRecords=p.climateRecords??[];p.sourcePackages=p.sourcePackages??[];p.cameraShots=p.cameraShots??[];
+    p.zones=p.zones.map(z=>({parentId:null,kind:'area',taktDays:null,...z}));
+    p.tasks.forEach(t=>{t.elementIds=t.elementIds.map(id=>key(modelId,id));t.taktDays=t.taktDays??null;if(t.source==='Eksempelværdi – ikke hentet fra Sigma')t.illustrative=true;});
+    p.modelKey=projectId;p.modelExported=m.exported;
+    const entries=[{id:modelId,model:m}];validate(p);return {plan:p,entries,model:federate(p,entries)};
+  }
+  function validate(p){
+    C.validate(p);if(p.schema!=='issana-byggeplan/2')fail('Projektet skal være version 2.');
+    if(!idOk(p.projectId)||!Number.isInteger(p.revision)||p.revision<0)fail('Projekt-ID og revision skal være gyldige.');
+    if(!Array.isArray(p.models)||!p.models.length||p.models.length>12)fail('Projektet skal have 1–12 fagmodeller.');
+    const ids=new Set(),sources=new Map();for(const m of p.models){
+      if(!idOk(m.id)||ids.has(m.id))fail('Fagmodeller skal have unikke ID’er.');ids.add(m.id);
+      if(!['ARK','KON','MEP','VVS','VENT','EL','ANDET'].includes(m.discipline))fail('Ukendt fag for '+m.id);
+      if(typeof m.sourceKey!=='string'||!m.sourceKey||typeof m.revision!=='string')fail('Fagmodellen mangler kildeidentitet.');
+      const instance=m.sourceInstanceId??'host';if(!idOk(instance))fail('Kildeinstansen skal have et gyldigt ID.');
+      const source=sources.get(m.sourceKey);if(source&&(source.instances.has(instance)||source.revision!==m.revision))fail('Samme modelkilde forekommer flere gange uden særskilt instans eller med forskellig revision.');
+      if(source)source.instances.add(instance);else sources.set(m.sourceKey,{revision:m.revision,instances:new Set([instance])});
+      if(!Array.isArray(m.translation)||m.translation.length!==3||m.translation.some(x=>!Number.isFinite(x)||Math.abs(x)>1e8)||!Number.isFinite(m.rotationZ)||Math.abs(m.rotationZ)>360)fail('Modelplacering skal være meter og grader.');
+      if(m.worldFromSource){const t=m.worldFromSource,expected=matrixFor(m);if(t.order!=='row-major'||t.axes!=='XYZ'||t.units!=='m'||!Array.isArray(t.matrix)||t.matrix.length!==16||t.matrix.some((v,i)=>!Number.isFinite(v)||Math.abs(v-expected.matrix[i])>1e-9))fail('Denne transformation understøttes ikke. Kun rotationZ og translation i meter; ingen spejling eller skalering.');}
+    }
+    const zoneIds=new Set(p.zones.map(z=>z.id));for(const z of p.zones){if(z.parentId&&!zoneIds.has(z.parentId))fail('Områdets overområde findes ikke: '+z.id);let q=z,seen=new Set();while(q){if(seen.has(q.id))fail('Områderne danner en cirkel.');seen.add(q.id);q=p.zones.find(x=>x.id===q.parentId);}}
+    if(!p.options||typeof p.options.cost!=='boolean'||typeof p.options.co2!=='boolean')fail('Vælg pris og CO₂ som tilvalg.');
+    if(!Array.isArray(p.climateRecords)||p.climateRecords.length>5000)fail('CO₂-poster skal være en liste på højst 5.000 poster.');
+    const carbonIds=new Set();for(const r of p.climateRecords){if(!idOk(r.id)||carbonIds.has(r.id))fail('CO₂-poster skal have unikke kilde-ID’er.');carbonIds.add(r.id);if(!p.tasks.some(t=>t.id===r.taskId))fail('CO₂-postens aktivitet findes ikke.');if(r.kgCo2e!==null&&(!Number.isFinite(r.kgCo2e)||r.kgCo2e<0||r.kgCo2e>1e12))fail('CO₂ skal være kg CO₂e eller null (ukendt).');if(typeof r.modules!=='string'||!r.modules.trim()||typeof r.source!=='string'||!r.source.trim())fail('CO₂-poster kræver afgrænsning og kilde.');}
+    if(!Array.isArray(p.sourcePackages)||p.sourcePackages.length>100)fail('Ugyldige kalkulationspakker.');
+    if(!Array.isArray(p.cameraShots)||p.cameraShots.length>20)fail('Højst 20 kameranøgler.');
+    let prev=-1;for(const shot of p.cameraShots){if(!Number.isFinite(shot.at)||shot.at<0||shot.at>1||shot.at<=prev)fail('Kameranøgler skal være stigende fra 0 til 1.');prev=shot.at;for(const field of ['position','target'])if(!Array.isArray(shot[field])||shot[field].length!==3||shot[field].some(v=>!Number.isFinite(v)||Math.abs(v)>1e8))fail('Ugyldig kameraposition.');}
+    return p;
+  }
+  function federate(p,entries){
+    validate(p);
+    const elements=[],modelSources=[],min=[Infinity,Infinity,Infinity],max=[-Infinity,-Infinity,-Infinity];let triangles=0,skipped=0;
+    if(!Array.isArray(entries)||entries.length!==p.models.length)fail('Planen og modelpakken har forskellige fagmodeller.');
+    for(const d of p.models){const entry=entries.find(e=>e.id===d.id),m=entry?.model;if(!m||m.modelKey!==d.sourceKey||m.exported!==d.revision)fail('Forkert modelrevision for '+d.name+'. Åbn den tilhørende modelpakke.');
+      if(m.geometryUnits&&m.geometryUnits!=='m')fail('Modelgeometri skal være normaliseret til meter; enhedskonvertering skal dokumenteres før import.');
+      triangles+=m.triangles||0;skipped+=m.skipped||0;if(triangles>1500000||elements.length+m.elements.length>30000)fail('Prøveudgaven understøtter i alt 30.000 elementer og 1,5 mio. trekanter.');
+      const a=d.rotationZ*Math.PI/180,c=Math.cos(a),s=Math.sin(a),tr=d.translation;
+      const identity={modelId:d.id,modelRevision:d.revision,sourceInstanceId:d.sourceInstanceId??'host'},inheritedProvenance=M.provenance(m.provenance),sourceProvenance=inheritedProvenance.value==='syntheticTest'?inheritedProvenance:M.provenance(d.provenance??m.provenance),byLocalId=new Map(m.elements.map(e=>[String(e.id),e.uniqueId]));
+      modelSources.push({...copy(Object.fromEntries(Object.entries(m).filter(([k])=>k!=='elements'))),...identity,sourceKey:d.sourceKey,discipline:d.discipline,provenance:sourceProvenance,worldFromSource:matrixFor(d),coordinatesReviewed:d.coordinatesReviewed===true,alignmentStatus:alignmentStatus(d),alignmentCheck:copy(d.alignmentCheck??m.alignmentCheck??{status:'needsInput'})});
+      for(const e of m.elements){const meshes=e.meshes.map(mesh=>{const pos=new Array(mesh.pos.length);for(let i=0;i<pos.length;i+=3){const x=mesh.pos[i],y=mesh.pos[i+1];pos[i]=x*c-y*s+tr[0];pos[i+1]=x*s+y*c+tr[1];pos[i+2]=mesh.pos[i+2]+tr[2];for(let j=0;j<3;j++){min[j]=Math.min(min[j],pos[i+j]);max[j]=Math.max(max[j],pos[i+j]);}}return {...mesh,pos};});
+        const sourceRef={...copy(e.sourceRef??{}),...identity,elementUniqueId:e.uniqueId},element={...e,uniqueId:key(d.id,e.uniqueId),sourceElementId:e.uniqueId,sourceRef,modelId:d.id,discipline:d.discipline,provenance:M.provenance(e.provenanceInherited||!e.provenance?sourceProvenance:e.provenance),meshes};
+        if(e.typeId!=null)element.typeRef={...copy(e.typeRef??{}),...identity,typeId:String(e.typeId)};
+        if(e.hostId!=null){const host=byLocalId.get(String(e.hostId));element.hostRef=host?{...identity,elementUniqueId:host}:{...identity,sourceElementId:String(e.hostId),status:'unresolved'};}
+        elements.push(element);
+      }
+    }
+    const known=new Set(elements.map(e=>e.uniqueId));for(const t of p.tasks)if(t.elementIds.some(id=>!known.has(id)))fail('Aktiviteten '+t.id+' henviser til modeldele, der ikke findes i denne modelrevision.');
+    return {schema:'issana-3d/1.3',model:p.models.length+' fagmodeller',modelKey:p.projectId,exported:p.models.map(m=>m.revision).join('|'),geometryUnits:'m',modelSources,elements,bbox:{min,max},triangles,skipped,truncated:entries.some(e=>e.model.truncated)};
+  }
+  function addModel(p,entries,raw,discipline,options={}){
+    const m=M.normalize(raw);if(p.models.some(x=>x.sourceKey===m.modelKey)&&!options.sourceInstanceId)fail('Denne model er allerede i projektet. Gentagen placering kræver en eksplicit kildeinstans; revisioner skal afklares.');
+    const next=copy(p);let n=1;while(next.models.some(x=>x.id==='model-'+n))n++;const id='model-'+n;next.models.push(descriptor(id,m,discipline,options));
+    validate(next);const nextEntries=[...entries,{id,model:m}];federate(next,nextEntries);return {plan:next,entries:nextEntries};
+  }
+  function coverage(p,model){
+    if(!model||model.modelKey!==p.projectId||!Array.isArray(model.elements))fail('Modellen til dækningsrapporten matcher ikke projektet.');
+    const assigned=new Set(p.tasks.flatMap(t=>t.elementIds)),categories=new Map(),mepCoverage=[],models=[];
+    const counts=()=>({exportedCount:0,scheduledCount:0,unscheduledCount:0,geometryMissingCount:0,provenanceCounts:{designed:0,syntheticTest:0,unknown:0}});
+    const add=(row,e,origin)=>{row.exportedCount++;row[assigned.has(e.uniqueId)?'scheduledCount':'unscheduledCount']++;if(!e.meshes?.length)row.geometryMissingCount++;row.provenanceCounts[origin]++;};
+    const totals=counts();
+    for(const d of p.models){
+      const source=model.modelSources?.find(m=>m.modelId===d.id),origin=M.provenance(source?.provenance??d.provenance),check=d.alignmentCheck??source?.alignmentCheck;
+      const identity={modelId:d.id,modelRevision:d.revision,sourceInstanceId:d.sourceInstanceId??'host',provenance:origin,alignmentStatus:alignmentStatus(d,check),coordinatesReviewed:d.coordinatesReviewed===true};
+      const row={...identity,...counts()},mep=new Map(M.installationCategories.map(category=>[category,{...identity,category,...counts()}]));
+      for(const e of model.elements.filter(e=>e.modelId===d.id)){
+        const value=M.provenance(e.provenance??origin).value;add(totals,e,value);add(row,e,value);
+        const category=String(e.category||'Andet');if(!categories.has(category))categories.set(category,{category,...counts()});add(categories.get(category),e,value);
+        const installation=M.installationCategory(e);if(installation)add(mep.get(installation),e,value);
+      }
+      models.push(row);mepCoverage.push(...mep.values());
+    }
+    if(totals.exportedCount!==model.elements.length)fail('Dækningsrapporten indeholder modeldele uden en kendt fagmodel.');
+    return {schema:'issana-model-coverage/1',elementCount:totals.exportedCount,...totals,categories:[...categories.values()].sort((a,b)=>a.category.localeCompare(b.category,'da')),models,mepCoverage,notes:['Planlagt betyder knyttet til mindst én aktivitet, ikke dimensioneret eller kontrolleret udførelse.','syntheticTest og unknown tæller ikke som dokumenteret projekt-MEP. Sanitet er ikke bevis for rør eller kanaler.']};
+  }
+  function zonePath(p,id){const names=[],seen=new Set();let z=p.zones.find(z=>z.id===id);while(z&&!seen.has(z.id)){seen.add(z.id);names.unshift(z.name||z.id);z=p.zones.find(x=>x.id===z.parentId);}return names.join(' / ');}
+  function carbon(p,time,result=C.schedule(p)){
+    const rows=C.snapshot(result,time),byTask=new Map(rows.map(t=>[t.id,t])),groups=Object.create(null);let known=0,unknown=0,allocated=0;
+    for(const r of p.climateRecords){if(r.kgCo2e===null){unknown++;continue;}known+=r.kgCo2e;groups[r.modules]=(groups[r.modules]||0)+r.kgCo2e;const t=byTask.get(r.taskId);if(t&&!t.blocked)allocated+=r.kgCo2e*Math.max(0,Math.min(1,(time-t.start)/t.duration));}
+    return {known,unknown,allocated,groups,count:p.climateRecords.length,coveredTasks:new Set(p.climateRecords.map(r=>r.taskId)).size};
+  }
+  function select(p,model,rule){
+    if(!rule||!Array.isArray(rule.modelIds)||rule.modelIds.some(id=>!p.models.some(m=>m.id===id)))fail('Vælg gyldige fagmodeller i udvælgelsen.');
+    const excluded=new Set(rule.exclude||[]),included=new Set(rule.include||[]);
+    const ids=model.elements.filter(e=>(!rule.modelIds.length||rule.modelIds.includes(e.modelId))&&(!rule.level||e.level===rule.level)&&(!rule.category||e.category===rule.category)&&(!rule.nameContains||e.name.toLocaleLowerCase('da').includes(String(rule.nameContains).toLocaleLowerCase('da')))).map(e=>e.uniqueId);
+    for(const id of included){if(!model.elements.some(e=>e.uniqueId===id))fail('Manuelt element findes ikke: '+id);ids.push(id);}return [...new Set(ids)].filter(id=>!excluded.has(id));
+  }
+  const taskFields=['name','zoneId','enterprise','crewId','crewSize','mode','hours','fixedDays','lagDays','notBefore','predecessors','budget','source','notes','taktDays','color','elementIds','selectionRule'];
+  const zoneFields=['name','parentId','kind','taktDays'];
+  function fields(target,changes,allowed){if(!changes||typeof changes!=='object'||Array.isArray(changes))fail('Ændringen skal være et objekt.');for(const k of Object.keys(changes)){if(!allowed.includes(k))fail('Feltet må ikke ændres af forslaget: '+k);target[k]=copy(changes[k]);}}
+  function proposal(p,request,model){
+    if(!request||request.schema!=='issana-plan-proposal/1'||request.projectId!==p.projectId||request.baseRevision!==p.revision)fail('Forslaget er til en anden plan eller en ældre revision. Hent frisk kontekst.');
+    if(!Array.isArray(request.operations)||!request.operations.length||request.operations.length>100)fail('Forslaget skal have 1–100 ændringer.');const next=copy(p);
+    for(const op of request.operations){
+      if(op.op==='updateTask'){const t=next.tasks.find(t=>t.id===op.id);if(!t)fail('Aktiviteten findes ikke: '+op.id);fields(t,op.changes,taskFields);}
+      else if(op.op==='addTask'){const t={id:op.id,name:'Ny aktivitet',zoneId:next.zones[0].id,enterprise:'',crewId:'Uafklaret hold',crewSize:1,mode:'hours',hours:null,fixedDays:1,lagDays:0,notBefore:'',predecessors:[],elementIds:[],budget:null,source:'AI-forslag – skal kontrolleres',notes:'',taktDays:null};fields(t,op.changes,taskFields);next.tasks.push(t);}
+      else if(op.op==='updateZone'||op.op==='addZone'){let z=next.zones.find(z=>z.id===op.id);if(op.op==='addZone'){if(z)fail('Området findes allerede.');z={id:op.id,name:op.id,parentId:null,kind:'area',taktDays:null};next.zones.push(z);}if(!z)fail('Området findes ikke.');fields(z,op.changes,zoneFields);}
+      else if(op.op==='selectElements'){const t=next.tasks.find(t=>t.id===op.id);if(!t||!model)fail('Aktiviteten eller modellen mangler.');t.selectionRule=copy(op.rule);t.elementIds=select(next,model,op.rule);}
+      else fail('Ukendt ændringstype: '+op.op);
+    }
+    validate(next);const before=C.schedule(p),after=C.schedule(next),known=new Set(model?.elements.map(e=>e.uniqueId)||[]);
+    if(model&&next.tasks.some(t=>t.elementIds.some(id=>!known.has(id))))fail('Forslaget henviser til modeldele, der ikke findes.');
+    return {plan:next,summary:{operations:request.operations.length,beforeDays:before.horizon,afterDays:after.horizon,beforeBudget:before.budget,afterBudget:after.budget,budgetIncomplete:after.budgetIncomplete,warnings:after.warnings}};
+  }
+  function modelOverview(p,model){
+    if(!model)return {available:false,groups:[],groupCount:0,truncated:false,elementCount:0,unassignedCount:0};
+    if(model.modelKey!==p.projectId||!Array.isArray(model.elements))fail('Modellen til AI-konteksten matcher ikke projektet.');
+    const assigned=new Set(p.tasks.flatMap(t=>t.elementIds)),descriptors=new Map(p.models.map(m=>[m.id,m])),groups=new Map();let unassignedCount=0;
+    for(const e of model.elements){
+      const d=descriptors.get(e.modelId);if(!d)fail('Modeldelen til AI-konteksten mangler en kendt fagmodel.');
+      const groupKey=JSON.stringify([e.modelId,e.level,e.category]);let group=groups.get(groupKey);
+      if(!group){group={modelId:e.modelId,level:e.level,category:e.category,installationCategory:M.installationCategory(e),elementCount:0,unassignedCount:0,sampleNames:[],sourceCoordinatesReviewed:alignmentStatus(d)==='reviewed',sourceProvenance:M.provenance(model.modelSources?.find(m=>m.modelId===d.id)?.provenance??d.provenance).value};groups.set(groupKey,group);}
+      group.elementCount++;if(!assigned.has(e.uniqueId)){group.unassignedCount++;unassignedCount++;}
+      if(typeof e.name==='string'&&e.name.trim()&&group.sampleNames.length<5&&!group.sampleNames.includes(e.name))group.sampleNames.push(e.name);
+    }
+    const all=[...groups.values()].sort((a,b)=>a.modelId.localeCompare(b.modelId)||String(a.level).localeCompare(String(b.level),'da',{numeric:true})||String(a.category).localeCompare(String(b.category),'da'));
+    return {available:true,groups:all.slice(0,500),groupCount:all.length,truncated:all.length>500,elementCount:model.elements.length,unassignedCount};
+  }
+  function context(p,request,model,options){
+    const result={schema:'issana-plan-context/1',request,projectId:p.projectId,baseRevision:p.revision,plan:copy(p),modelOverview:modelOverview(p,model),responseContract:{schema:'issana-plan-proposal/1',projectId:p.projectId,baseRevision:p.revision,operations:[{op:'updateTask',id:p.tasks[0]?.id||'task-id',changes:{crewSize:2}}]},rules:['Returnér kun et JSON-forslag. Brug eksisterende ID’er.','Ukendte timer og priser forbliver null. Modelplacering og kilder må ikke opfindes.','Regn ikke samme bygningsdel fra ARK og KON som to mængder; markér afklaringen i notes.','modelOverview viser faktiske grupper af fagmodeldele uden geometri. unassignedCount er dele uden aktivitet; elementCount er ikke arbejdstimer eller en prissat mængde.','Brug modelId, level og category fra modelOverview til selectElements-regler. sourceCoordinatesReviewed=false kræver koordinatafklaring; ved truncated=true mangler grupper i oversigten.','Et område kan have parentId. Takt null arver, 0 er fri planlægning, positivt tal er arbejdsdage.','Tilladte ændringer: updateTask, addTask, updateZone, addZone, selectElements.'],taskFields,zoneFields};
+    if(options?.compact===true){
+      result.contextDetail='compact';
+      result.plan.tasks.forEach(t=>{t.elementCount=new Set(t.elementIds).size;delete t.elementIds;});
+      result.plan.sourcePackages=p.sourcePackages.map(pkg=>({id:pkg.id,schema:pkg.schema,modelId:pkg.modelId,modelSourceKey:pkg.modelSourceKey,source:copy(pkg.source),itemCount:Array.isArray(pkg.items)?pkg.items.length:0,includedItemCount:p.tasks.filter(t=>t.sourceItem?.packageId===pkg.id).length}));
+      for(const field of ['cameraShots','siteObjects','baseline'])delete result.plan[field];
+      result.omittedDetails=['task.elementIds','sourcePackages.items','cameraShots','siteObjects','baseline'];
+      result.rules.push('Dette er kompakt kontekst, ikke en fuld planfil. Manglende elementIds betyder ikke tomme tilknytninger; bevar dem ved updateTask og brug selectElements med eksisterende modelId, level og category ved ændring.',
+        'Hent den fulde AI-kontekstfil eller kildefilerne for udeladte detaljer og for grupper uden for modelOverview. Opfind aldrig element-ID’er, mængder, timer eller priser ud fra antal elementer.');
+    }
+    return result;
+  }
+  function mergePackage(p,pkg){
+    if(!pkg||pkg.schema!=='issana-work-package/1'||!idOk(pkg.id)||!Array.isArray(pkg.items)||!pkg.items.length||pkg.items.length>1000)fail('Ugyldig arbejdspakke.');
+    const m=p.models.find(m=>m.id===pkg.modelId);if(!m||pkg.modelSourceKey!==m.sourceKey)fail('Arbejdspakken skal pege på den korrekte fagmodel.');
+    if(p.sourcePackages.some(x=>x.id===pkg.id))fail('Kalkulationspakken er allerede indlæst. Ingen poster er lagt ind to gange.');
+    if(!pkg.source||!pkg.source.projectKey||!pkg.source.revision)fail('Kalkulationen mangler kildeprojekt og revision.');
+    if(p.sourcePackages.some(x=>x.modelId===pkg.modelId&&x.source.projectKey===pkg.source.projectKey))fail('Der findes allerede en revision af denne kalkulation. Afklar erstatning før import.');
+    const next=copy(p),seen=new Set(),illustrativeElements=new Set(p.tasks.filter(t=>t.illustrative===true).flatMap(t=>t.elementIds));for(const item of pkg.items){if(!idOk(item.id)||seen.has(item.id))fail('Posterne skal have unikke kilde-ID’er.');seen.add(item.id);if(!next.zones.some(z=>z.id===item.zoneId))fail('Afklar området for posten '+item.id);if(!Array.isArray(item.elementIds)||item.elementIds.some(id=>typeof id!=='string'||!id))fail('Posten mangler gyldige elementreferencer.');
+      if(item.quantity!=null&&(!Number.isFinite(item.quantity)||item.quantity<0))fail('Postens mængde skal være et endeligt tal på mindst 0 eller ukendt: '+item.id);
+      const elementIds=item.elementIds.map(id=>key(m.id,id));if(elementIds.some(id=>illustrativeElements.has(id)))fail('Kalkulationen overlapper eksempelaktiviteter for samme modeldele. Fjern eksempelaktiviteterne før import, så eksempelbudget og timer ikke tælles med.');
+      const id=(pkg.id+'.'+item.id);next.tasks.push({id,name:item.name,zoneId:item.zoneId,enterprise:item.enterprise||m.discipline,crewId:item.crewId||'Afklar hold '+m.discipline,crewSize:item.crewSize??1,mode:'hours',hours:item.personHours??null,fixedDays:1,lagDays:0,notBefore:'',predecessors:[],elementIds,budget:item.cost??null,taktDays:null,source:pkg.source.system+' · '+pkg.source.projectKey+' · '+item.id,notes:'Rækkefølge og tværfaglige dubletter skal afklares.',sourceItem:{packageId:pkg.id,itemId:item.id,quantity:item.quantity??null,unit:item.unit||'',modelId:m.id}});
+    }
+    next.sourcePackages.push(copy(pkg));validate(next);C.schedule(next);return next;
+  }
+  function cameraAt(shots,at){if(!shots.length)return null;let a=shots[0],b=shots[shots.length-1];if(at<=a.at)return copy(a);if(at>=b.at)return copy(b);for(let i=1;i<shots.length;i++)if(at<=shots[i].at){a=shots[i-1];b=shots[i];break;}const t=(at-a.at)/(b.at-a.at),u=t*t*(3-2*t);return {at,position:a.position.map((x,i)=>x+(b.position[i]-x)*u),target:a.target.map((x,i)=>x+(b.target[i]-x)*u)};}
+  return {upgrade,validate,federate,addModel,coverage,alignmentFingerprint,alignmentStatus,key,zonePath,carbon,select,proposal,context,mergePackage,cameraAt};
+});
+</script><script>(function (root, factory) {
+  if (typeof module === 'object' && module.exports) module.exports = factory();
+  else root.BuildSigmaImport = factory();
+})(typeof globalThis !== 'undefined' ? globalThis : this, function () {
+  'use strict';
+
+  class SigmaImportError extends Error {
+    constructor(code, message, details) { super(message); this.name = 'SigmaImportError'; this.code = code; this.details = details || {}; }
+  }
+  function fail(code, message, details) { throw new SigmaImportError(code, message, details); }
+  function text(value) { return typeof value === 'string' ? value.trim() : ''; }
+  // Compact deterministic identifiers, not security hashes. Full source identity is retained below.
+  function key(value) {
+    let a = 2166136261, b = 2246822519;
+    for (let i = 0; i < value.length; i++) {
+      const n = value.charCodeAt(i);
+      a = Math.imul(a ^ n, 16777619); b = Math.imul(b ^ n, 3266489917);
+    }
+    return (a >>> 0).toString(16).padStart(8, '0') + (b >>> 0).toString(16).padStart(8, '0');
+  }
+  function elementNumber(value) {
+    if (typeof value === 'string' && !/^\d+$/.test(value)) return null;
+    if (typeof value !== 'number' && typeof value !== 'string') return null;
+    const n = Number(value);
+    return Number.isSafeInteger(n) && n >= 0 ? String(n) : null;
+  }
+
+  /** Convert a submitted-plan price extract without opening Sigma, changing data, or inferring labor. */
+  function convert(extract, plan, entries, zoneId) {
+    if (!extract || extract.schema !== 'issana-sigma-prices/1')
+      fail('unsupported_schema', 'Vælg et ISSANA Sigma-prisudtræk (issana-sigma-prices/1).');
+    if (!text(extract.modelKey) || !text(extract.planId) || !text(extract.submittedAt))
+      fail('missing_source', 'Prisudtrækket mangler modelKey, planId eller submittedAt. Kilden kan ikke identificeres.');
+    if (!Array.isArray(extract.types) || !extract.types.length || extract.types.length > 1000)
+      fail('invalid_items', 'Prisudtrækket skal indeholde 1–1.000 typeposter.');
+    const zone = plan && Array.isArray(plan.zones) && plan.zones.find(z => z.id === zoneId);
+    if (!zone) fail('unknown_zone', 'Vælg et eksisterende opsamlingsområde til Sigma-posterne.');
+    const matches = Array.isArray(plan.models) ? plan.models.filter(m => m.sourceKey === extract.modelKey) : [];
+    if (matches.length !== 1)
+      fail(matches.length ? 'ambiguous_model' : 'unknown_model', matches.length
+        ? 'Flere indlæste modeller har samme kilde. Afklar modelinstansen før import.'
+        : 'Prisudtrækkets modelKey svarer ikke præcist til en indlæst fagmodel. Indlæs den tilhørende model først.');
+    const matched = matches[0], entry = Array.isArray(entries) && entries.find(e => e.id === matched.id);
+    if (!entry || !entry.model || !Array.isArray(entry.model.elements))
+      fail('missing_geometry', 'Den tilhørende fagmodel har ingen indlæste elementdata.');
+    if (entry.model.modelKey && entry.model.modelKey !== extract.modelKey)
+      fail('model_identity_mismatch', 'Fagmodellens geometri og modelregister har forskellige modelKey. Importen er afbrudt.');
+
+    const warnings = [
+      'Beløb er forventede priser fra den afsendte plan, ikke verificeret aflæsning af den aktuelle Sigma-kalkulation.',
+      'Prisudtrækket indeholder ingen persontimer. Arbejdstimer forbliver ukendte, indtil et dokumenteret grundlag tilføjes.',
+      'Alle poster placeres i det valgte opsamlingsområde “' + (text(zone.name) || zoneId) + '”. Det er et bruger-valg, ikke automatisk lokationsbestemmelse.'
+    ];
+    const byNumber = new Map();
+    for (const e of entry.model.elements) {
+      const n = elementNumber(e.id);
+      if (n === null) continue;
+      const ids = byNumber.get(n) || new Set(); ids.add(text(e.uniqueId)); byNumber.set(n, ids);
+    }
+    const typesSeen = new Set(), itemIds = new Set(), unresolved = [], referencedBy = new Map();
+    const items = extract.types.map((row, index) => {
+      const ordinal = index + 1;
+      if (!row || typeof row !== 'object' || Array.isArray(row)) fail('invalid_item', 'Typepost ' + ordinal + ' er ugyldig.');
+      if (row.source === 'link')
+        fail('unsupported_link', 'Typepost ' + ordinal + ' kommer fra en linkmodel. Udtrækket mangler stabil identitet for linkmodellen og dens instans; afklar kilden før import.', { row: ordinal });
+      if (row.source !== 'host')
+        fail('unknown_source_scope', 'Typepost ' + ordinal + ' angiver ikke entydigt host som kilde. Afklar modelsammenhængen.', { row: ordinal });
+      const typeId = text(row.typeUniqueId);
+      if (typeId && typesSeen.has(typeId)) fail('duplicate_type', 'Samme type-ID forekommer flere gange i prisudtrækket. Afklar dubletten før import.', { typeUniqueId: typeId, row: ordinal });
+      if (typeId) typesSeen.add(typeId);
+      if (typeof row.quantity !== 'number' || !Number.isFinite(row.quantity) || row.quantity < 0)
+        fail('invalid_quantity', 'Typepost ' + ordinal + ' har en ugyldig mængde. Mængden skal være et endeligt tal på mindst 0.', { row: ordinal });
+      if (!Array.isArray(row.elementIds)) fail('invalid_references', 'Typepost ' + ordinal + ' mangler en liste med element-ID’er.');
+      const elementIds = [], seen = new Set();
+      for (const rawId of row.elementIds) {
+        const n = elementNumber(rawId), candidates = n === null ? undefined : byNumber.get(n);
+        if (!candidates || candidates.size !== 1 || candidates.has('')) {
+          unresolved.push({ row: ordinal, elementId: rawId, reason: !candidates ? 'not_found' : 'ambiguous_identity' }); continue;
+        }
+        const original = candidates.values().next().value;
+        if (!seen.has(original)) { seen.add(original); elementIds.push(original); }
+        const owners = referencedBy.get(original) || new Set(); owners.add(ordinal); referencedBy.set(original, owners);
+      }
+      if (seen.size < row.elementIds.length && !unresolved.some(x => x.row === ordinal))
+        warnings.push('Typepost ' + ordinal + ' gentager et element-ID; tilknytningen er samlet én gang. Beløb og mængde er bevaret.');
+      if (!elementIds.length && !row.elementIds.length)
+        warnings.push('Typepost ' + ordinal + ' har ingen elementtilknytning. Posten er bevaret og skal afklares.');
+      const id = typeId ? 'type-' + key(typeId) : 'unresolved-' + String(ordinal).padStart(4, '0');
+      if (itemIds.has(id)) fail('item_id_collision', 'To typeposter får samme interne identitet. Afklar kildens type-ID’er.');
+      itemIds.add(id);
+      if (!typeId) warnings.push('Typepost ' + ordinal + ' mangler typeUniqueId; identiteten gælder kun denne kildepost og revision.');
+      // `status` is the work/action status in this contract, not a price-validity flag.
+      // Never recompute amount from quantity/unitPrice: the submitted amount is the source value.
+      const validAmount = typeof row.amount === 'number' && Number.isFinite(row.amount) && row.amount >= 0;
+      const cost = validAmount ? row.amount : null;
+      if (!validAmount) warnings.push('Typepost ' + ordinal + ': beløb er ukendt eller ugyldigt og er derfor ikke medregnet som 0.');
+      return {
+        id, name: (text(row.text) || text(row.typeName) || 'Uafklaret Sigma-post ' + ordinal).slice(0, 200),
+        zoneId, enterprise: 'Sigma · ' + (text(matched.discipline) || 'fagmodel'),
+        personHours: null, cost, quantity: row.quantity, unit: text(row.units) || null,
+        elementIds,
+        sourceRow: ordinal, typeUniqueId: typeId || null, molioNumber: text(row.molioNumber) || null,
+        actionStatus: text(row.status) || null, sourceReason: text(row.reason) || null
+      };
+    });
+    if (unresolved.length)
+      fail('unmapped_elements', unresolved.length + ' elementreference(r) kunne ikke matches entydigt i den præcise fagmodel. Ingen poster er importeret. Første berørte post: ' + unresolved[0].row + '.', { references: unresolved });
+    const shared = [...referencedBy.values()].filter(owners => owners.size > 1).length;
+    if (shared) warnings.push(shared + ' element(er) indgår i flere typeposter. Kontrollér om det er flere arbejdsoperationer eller dobbeltregning.');
+    return {
+      package: {
+        schema: 'issana-work-package/1', id: 'sigma-' + key(JSON.stringify([extract.modelKey, extract.planId])),
+        modelId: matched.id, modelSourceKey: extract.modelKey,
+        source: {
+          system: 'Sigma – forventet fra afsendt plan', projectKey: extract.planId,
+          revision: extract.submittedAt, verification: 'expected-not-readback'
+        }, items
+      }, warnings
+    };
+  }
+  return { convert, SigmaImportError };
+});
+</script><script>(function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory(require('./core.js'));else root.BuildProjectXml=factory(root.BuildPlan);})(typeof globalThis!=='undefined'?globalThis:this,function(C){
+  const xml=v=>String(v??'').replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/g,'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));
+  const tag=(k,v)=>'<'+k+'>'+xml(v)+'</'+k+'>';
+  function uid(id){let h=2166136261;for(const c of id){h^=c.charCodeAt(0);h=Math.imul(h,16777619);}return (h>>>0)%2000000000+1;}
+  function exportXml(plan){
+    const r=C.schedule(plan);if(r.tasks.some(t=>t.blocked))throw new Error('Udfyld manglende varigheder før eksport til MS Project.');
+    if(!r.tasks.length)throw new Error('Opret mindst én aktivitet før eksport.');
+    if(plan.hoursPerDay>16)throw new Error('XML-eksporten understøtter højst 16 produktive timer pr. dag.');
+    const uids=new Map(r.tasks.map(t=>[t.id,uid(t.id)]));if(new Set(uids.values()).size!==uids.size)throw new Error('To aktivitet-ID’er kolliderer ved XML-eksport. Omdøb det ene ID.');
+    const minutes=Math.round(plan.hoursPerDay*60),endMinutes=480+minutes;
+    const end=endMinutes===1440?'24:00:00':String(Math.floor(endMinutes/60)).padStart(2,'0')+':'+String(endMinutes%60).padStart(2,'0')+':00';
+    const duration=h=>'PT'+Math.floor(h)+'H'+Math.round((h%1)*60)+'M0S';
+    const startDate=r.calendar.dateAt(0),finishDate=r.calendar.dateAt(r.horizon-1);
+    let out='<?xml version="1.0" encoding="UTF-8"?>\n<Project xmlns="http://schemas.microsoft.com/project">';
+    out+=tag('SaveVersion',14)+tag('Name',plan.name||'ISSANA Byggeplan')+tag('ScheduleFromStart',1)+tag('StartDate',startDate+'T08:00:00')+tag('FinishDate',finishDate+'T'+end)+tag('CurrencyDigits',2)+tag('CurrencySymbol','kr.')+tag('CurrencyCode','DKK')+tag('CalendarUID',1)+tag('DefaultStartTime','08:00:00')+tag('DefaultFinishTime',end)+tag('MinutesPerDay',minutes)+tag('MinutesPerWeek',minutes*5)+tag('DaysPerMonth',20)+tag('DefaultTaskType',1);
+    out+='<Calendars><Calendar>'+tag('UID',1)+tag('Name','ISSANA mandag-fredag')+tag('IsBaseCalendar',1)+tag('BaseCalendarUID',-1)+'<WeekDays>';
+    for(let day=1;day<=7;day++){const work=day>1&&day<7;out+='<WeekDay>'+tag('DayType',day)+tag('DayWorking',work?1:0);if(work)out+='<WorkingTimes><WorkingTime>'+tag('FromTime','08:00:00')+tag('ToTime',end)+'</WorkingTime></WorkingTimes>';out+='</WeekDay>';}
+    out+='</WeekDays>';
+    if(plan.holidays.length){out+='<Exceptions>';for(const d of plan.holidays)out+='<Exception>'+tag('EnteredByOccurrences',0)+'<TimePeriod>'+tag('FromDate',d+'T00:00:00')+tag('ToDate',d+'T23:59:00')+'</TimePeriod>'+tag('Occurrences',1)+tag('Name','Fridag')+tag('Type',1)+tag('DayWorking',0)+'</Exception>';out+='</Exceptions>';}
+    out+='</Calendar></Calendars><Tasks>';
+    r.tasks.forEach((t,i)=>{
+      const chain=[],seen=new Set();let z=plan.zones.find(z=>z.id===t.zoneId);while(z&&!seen.has(z.id)){seen.add(z.id);chain.unshift(z.name||z.id);z=plan.zones.find(x=>x.id===z.parentId);}const zone=chain.join(' / ')||t.zoneId;
+      const origin=t.sourceItem,climate=(plan.climateRecords||[]).filter(c=>c.taskId===t.id);
+      const notes=['ISSANA-ID: '+t.id,'Projekt: '+(plan.projectId||plan.modelKey||'')+' · revision '+(plan.revision??0),'Område: '+zone,'Entreprise: '+(t.enterprise||''),'Hold: '+t.crewId+' ('+t.crewSize+' personer)','Kilde: '+(t.source||'ukendt'),origin?'Kildepost: '+origin.packageId+' / '+origin.itemId+' · '+origin.modelId+' · mængde '+(origin.quantity??'ukendt')+' '+origin.unit:'',t.illustrative?'EKSEMPEL: tider og budget er ikke verificeret.':'',t.budget===null?'Budget ukendt':'Budget overført som fast omkostning; ikke som faktiske udgifter.',...climate.map(c=>'CO2-kildepost '+c.id+': '+(c.kgCo2e??'ukendt')+' kg CO2e · '+c.modules+' · '+c.source),t.notes||'','Eksport af beregnet plan: tidligste start fastholder takt og ressourceudjævning. Ny planlægning i MS Project skal gennemgås; 3D og pladsobjekter følger kun JSON/HTML.'].filter(Boolean).join('\n');
+      out+='<Task>'+tag('UID',uids.get(t.id))+tag('ID',i+1)+tag('Name',(zone+' · '+t.name).slice(0,255))+tag('Type',1)+tag('IsNull',0)+tag('WBS',t.id)+tag('OutlineNumber',i+1)+tag('OutlineLevel',1)+tag('Start',t.startDate+'T08:00:00')+tag('Finish',t.finishDate+'T'+end)+tag('Duration',duration(t.duration*plan.hoursPerDay))+tag('DurationFormat',7);
+      if(t.mode==='hours'&&t.hours!==null)out+=tag('Work',duration(t.hours));
+      out+=tag('EffortDriven',0)+tag('Estimated',1)+tag('Milestone',0)+tag('Summary',0);
+      if(t.budget!==null)out+=tag('FixedCost',t.budget)+tag('FixedCostAccrual',3);
+      out+=tag('ConstraintType',4)+tag('CalendarUID',1)+tag('ConstraintDate',t.startDate+'T08:00:00')+tag('Notes',notes);
+      for(const id of t.predecessors)out+='<PredecessorLink>'+tag('PredecessorUID',uids.get(id))+tag('Type',1)+tag('CrossProject',0)+tag('LinkLag',t.lagDays*minutes*10)+tag('LagFormat',7)+'</PredecessorLink>';
+      out+='</Task>';
+    });
+    return out+'</Tasks></Project>';
+  }
+  return {exportXml,uid};
+});
+</script><script>(function(root,factory){const api=factory(typeof module==='object'&&module.exports?require('./core.js'):root.BuildPlan);if(typeof module==='object'&&module.exports)module.exports=api;else root.BuildVideo=api;})(typeof window==='object'?window:globalThis,function(C){
+  'use strict';
+  const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
+  const palette={ink:'#123b40',muted:'#506969',paper:'#f1f4ef',white:'#ffffff',teal:'#16756e',mint:'#c5dfd0',amber:'#ad6b22',line:'#d6e0d9'};
+  const taskColor=t=>/^#[0-9a-f]{6}$/i.test(t?.color||'')?t.color:'#1b6d72';
+  function layout(width=1920){const s=width/1920;return {width,height:width*9/16,scale:s,scene:{x:48*s,y:192*s,width:1320*s,height:700*s},panel:{x:1400*s,y:192*s,width:472*s,height:700*s}};}
+  function timeAt(index,count,horizon){if(!Number.isInteger(index)||!Number.isInteger(count)||count<2||index<0||index>=count)throw new Error('Ugyldigt videobillede.');const p=index/(count-1),at=clamp((p-.15)/.70,0,1);return {at,day:at*horizon,stage:p<.15?'intro':p>.85?'outro':'plan'};}
+  function modelSphere(bbox){if(!bbox||!['min','max'].every(k=>Array.isArray(bbox[k])&&bbox[k].length===3&&bbox[k].every(Number.isFinite))||bbox.min.some((v,i)=>v>bbox.max[i]))throw new Error('Modellen mangler gyldige grænser til kameraet.');return {center:bbox.min.map((v,i)=>(v+bbox.max[i])/2),radius:Math.max(.5,Math.hypot(...bbox.max.map((v,i)=>(v-bbox.min[i])/2)))};}
+  function fitCamera(shot,bbox,aspect,fov=42){modelSphere(bbox);const target=shot.target,off=shot.position.map((v,i)=>v-target[i]),length=Math.hypot(...off),d=length>1e-8?off.map(v=>v/length):[.6,-.6,.529150262],h=Math.hypot(d[0],d[1]),right=h>1e-8?[-d[1]/h,d[0]/h,0]:[1,0,0],up=[-right[1]*d[2],right[0]*d[2],right[1]*d[0]-right[0]*d[1]],dot=(a,b)=>a.reduce((s,v,i)=>s+v*b[i],0),tanV=Math.tan(fov*Math.PI/360),tanH=tanV*aspect;let distance=Math.max(length,.5);for(let mask=0;mask<8;mask++){const q=target.map((v,i)=>bbox[mask&(1<<i)?'max':'min'][i]-v);distance=Math.max(distance,dot(q,d)+Math.max(Math.abs(dot(q,right))/tanH,Math.abs(dot(q,up))/tanV)*1.18);}return {position:target.map((v,i)=>v+d[i]*distance),target:[...target]};}
+  function automaticCamera(bbox,at,aspect){const b=modelSphere(bbox),u=clamp(at,0,1),a=(-58+40*u)*Math.PI/180,e=(32+7*u)*Math.PI/180;return fitCamera({target:b.center,position:b.center.map((v,i)=>v+[Math.cos(a)*Math.cos(e),Math.sin(a)*Math.cos(e),Math.sin(e)][i])},bbox,aspect);}
+  function zonePath(plan,id){const names=[],seen=new Set();let z=plan.zones.find(v=>v.id===id);while(z&&!seen.has(z.id)){seen.add(z.id);names.unshift(z.name||z.id);z=plan.zones.find(v=>v.id===z.parentId);}return names.join(' / ')||id;}
+  function summary(plan,result,day){const rows=C.snapshot(result,day),active=rows.filter(t=>t.state==='active'),done=rows.filter(t=>t.state==='done'),blocked=rows.filter(t=>t.state==='blocked');return {date:result.calendar.dateAt(Math.max(0,Math.min(result.horizon-1,Math.floor(day)))),startDate:result.calendar.dateAt(0),finishDate:result.calendar.dateAt(Math.max(0,result.horizon-1)),active,done:done.length,total:rows.length,blocked:blocked.length,models:plan.models.length,example:plan.dataStatus==='example-assumptions'||plan.tasks.some(t=>t.illustrative||t.source==='Eksempelværdi – ikke hentet fra Sigma'),truncated:!!plan.modelTruncated,coordinateReview:plan.models.every(m=>m.coordinatesReviewed)};}
+  function dateLabel(iso){const [y,m,d]=iso.split('-');return d+'.'+m+'.'+y;}
+  function scenePresentation(plan,time,horizon){
+    const configured=plan.visualization||{},federated=configured.presentation==='federated-review';
+    if(!federated)return {day:time.day,focus:configured.focus||'all',label:'',reference:false};
+    if(time.stage==='intro')return {day:horizon,focus:'all',label:'MODELOVERBLIK · færdig geometri som reference',reference:true};
+    if(time.stage==='outro')return {day:time.day,focus:'context',label:'SAMLET KONTROL · installationer med gennemsigtig bygning',reference:false};
+    return {day:time.day,focus:time.at<.48?'all':time.at<.76?'context':'mep',label:time.at<.48?'BYGNINGSARBEJDE · arbejdszoner, ikke leverede kæmpeelementer':time.at<.76?'BYGNINGSUDSNIT · gennemsigtig bygning · udvendige stræk kan være uden for billedet':'BYGNINGSUDSNIT · kun installationer · udvendige stræk kan være uden for billedet',reference:false};
+  }
+  function draw(ctx,source,plan,result,time,width=1920,model=null){
+    const l=layout(width),s=l.scale,info=summary(plan,result,time.day);ctx.save();ctx.scale(s,s);ctx.fillStyle=palette.paper;ctx.fillRect(0,0,1920,1080);
+    const text=(value,x,y,size=26,color=palette.ink,weight=400)=>{ctx.fillStyle=color;ctx.font=weight+' '+size+'px "Segoe UI",Arial,sans-serif';ctx.fillText(String(value),x,y);};
+    const fitText=(value,x,y,max,size=26,color=palette.ink,weight=400)=>{ctx.font=weight+' '+size+'px "Segoe UI",Arial,sans-serif';let v=String(value);while(v.length>1&&ctx.measureText(v).width>max)v=v.slice(0,-2)+'…';text(v,x,y,size,color,weight);};
+    const wrap=(value,x,y,max,size=26,lines=2,color=palette.ink,weight=400)=>{ctx.font=weight+' '+size+'px "Segoe UI",Arial,sans-serif';const words=String(value).split(/\s+/);let line='',row=0;for(let i=0;i<words.length;i++){const next=line?(line+' '+words[i]):words[i];if(ctx.measureText(next).width>max&&line){fitText(line,x,y+row*(size+8),max,size,color,weight);row++;line=words[i];if(row===lines-1){fitText(words.slice(i).join(' '),x,y+row*(size+8),max,size,color,weight);return y+(row+1)*(size+8);}}else line=next;}fitText(line,x,y+row*(size+8),max,size,color,weight);return y+(row+1)*(size+8);};
+    text('ISSANA',48,57,27,palette.teal,700);text('BYGGEPROCES · 4D',208,57,24,palette.muted,600);
+    fitText(String(plan.name||'Byggeplan').replace(/_+/g,' ').replace(/\s+/g,' ').trim(),48,119,1280,43,palette.ink,700);fitText(plan.visualization?.subtitle||'Model → aktiviteter → rækkefølge → byggeforløb',48,159,1290,26,palette.muted);
+    text((info.example?'EKSEMPEL · ':'')+(time.stage==='intro'?'STARTDATO':time.stage==='outro'?'SLUTDATO':'PLANDATO'),1400,59,22,palette.muted,600);text(dateLabel(info.date),1400,113,46,palette.ink,700);text(info.models+' fagmodel'+(info.models===1?'':'ler')+' · '+result.horizon+' arbejdsdage',1400,156,25,palette.muted);
+    ctx.fillStyle=palette.white;ctx.fillRect(48,192,1320,700);ctx.drawImage(source,48,192,1320,700);
+    const presentation=scenePresentation(plan,time,result.horizon);
+    if(presentation.label){ctx.fillStyle='#ffffffed';ctx.fillRect(48,192,1320,46);fitText(presentation.label,68,222,1280,21,palette.teal,600);}
+    if(plan.visualization?.assumption){ctx.fillStyle='#f4e7ceef';ctx.fillRect(48,822,1320,70);wrap(plan.visualization.assumption,68,850,1280,21,2,palette.amber,600);}
+    ctx.fillStyle=palette.white;ctx.fillRect(1400,192,472,700);
+    let y=235;const px=1428,pw=416;
+    if(time.stage==='intro'){
+      text('Hvad skal du se efter?',px,y,29,palette.ink,700);y+=55;
+      for(const [title,body] of [['01 · Bygningsdele',plan.visualization?.sourceNote||'Geometrien kommer fra modellen.'],['02 · Aktiviteter','Farver viser, hvornår arbejdet er planlagt.'],['03 · Rækkefølge',presentation.reference?'Overblikket viser hele modellen. Derefter starter eksempelplanen.':'Dato og aktive entrepriser følger den samme JSON-plan.']]){text(title,px,y,27,palette.teal,700);y=wrap(body,px,y+39,pw,25,3,palette.muted)+35;}
+    }else if(time.stage==='outro'){
+      text('Før planen bruges',px,y,29,palette.ink,700);y+=53;
+      for(const v of ['Kontrollér timer og bemanding.','Afklar afhængigheder mellem fag.',plan.visualization?.alignmentNote||'Kontrollér modelplacering og områder.','Gem ændringer i projektets JSON.']){text('•',px,y,27,palette.teal,700);y=wrap(v,px+25,y,pw-25,25,3,palette.muted)+28;}
+    }else{
+      text('Arbejdes på i planen',px,y,29,palette.ink,700);y+=48;
+      if(!info.active.length)y=wrap('Ingen aktiviteter er planlagt på dette tidspunkt.',px,y,pw,27,3,palette.muted)+20;
+      for(const t of info.active.slice(0,2)){ctx.fillStyle=taskColor(t);ctx.fillRect(px,y-18,18,18);fitText(t.enterprise||'Entreprise ikke angivet',px+28,y,pw-28,23,taskColor(t),700);y=wrap(t.name,px,y+38,pw,28,2,palette.ink,600);y=wrap(zonePath(plan,t.zoneId),px,y+4,pw,23,2,palette.muted);fitText((info.example?'Forudsat: ':'')+t.crewSize+' personer · '+t.duration+' arb.dage',px,y+5,pw,22,palette.muted);y+=49;}
+      if(info.active.length>2)text('+ '+(info.active.length-2)+' øvrige aktiviteter',px,y,24,palette.muted);
+    }
+    if(model){const linked=new Set(plan.tasks.flatMap(t=>t.elementIds)),unmapped=model.elements.filter(e=>!linked.has(e.uniqueId)).length;text(model.elements.length+' modeldele · '+unmapped+' uden aktivitet',1428,785,21,palette.muted);}
+    ctx.fillStyle=palette.line;ctx.fillRect(1428,806,416,2);text('Planlagt færdige aktiviteter',1428,846,23,palette.muted);text(info.done+' / '+info.total,1428,881,31,palette.ink,700);
+    const legends=[['#bfc8bf','Færdig i planen'],['#16756e','I gang · se panelets farver'],['#cad4ca','Kommende'],['#c09a60','Ikke tilknyttet']];let lx=48;for(const [color,label]of legends){ctx.fillStyle=color;ctx.fillRect(lx,918,20,20);text(label,lx+30,936,23,palette.muted);lx+=[245,370,220,260][legends.findIndex(v=>v[1]===label)];}
+    const from=48,to=1872,barY=976;ctx.fillStyle=palette.line;ctx.fillRect(from,barY,to-from,10);ctx.fillStyle=palette.teal;ctx.fillRect(from,barY,(to-from)*time.at,10);ctx.beginPath();ctx.arc(from+(to-from)*time.at,barY+5,9,0,Math.PI*2);ctx.fill();text(dateLabel(info.startDate),from,965,22,palette.muted);text(dateLabel(info.finishDate),to-150,965,22,palette.muted);
+    ctx.fillStyle=info.example?'#f4e7ce':'#e3ece5';ctx.fillRect(0,1010,1920,70);text(info.example?'EKSEMPELPLAN · Tider, bemanding og priser er ikke verificerede projektdata.':'PLANFORUDSÆTNINGER · Forløbet viser planlagt udførelse, ikke målt fremdrift.',48,1053,25,info.example?palette.amber:palette.ink,600);ctx.restore();return info;
+  }
+  return {layout,timeAt,modelSphere,fitCamera,automaticCamera,summary,dateLabel,taskColor,scenePresentation,draw};
+});
+</script><script>(function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.BuildExecution=api;})(typeof globalThis!=='undefined'?globalThis:this,function(){
+  'use strict';
+  const SCHEMA='issana-execution/1', EPS=1e-9, LIMIT=1000;
+  const MODES=['unknown','installDelivered','produceOnSite','none'];
+  const OPERATIONS=['unknown','placeComponent','layMasonry','castConcrete','installMEP','testSystem','closeUp','other'];
+  const copy=v=>v==null?v:JSON.parse(JSON.stringify(v));
+  const stable=v=>v===undefined?'null':v===null||typeof v!=='object'?JSON.stringify(v):Array.isArray(v)?'['+v.map(stable).join(',')+']':'{'+Object.keys(v).sort().map(k=>JSON.stringify(k)+':'+stable(v[k])).join(',')+'}';
+  // A deterministic change fingerprint, not a security signature.
+  function hash(v){let h=2166136261;const s=stable(v);for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619);}return 'fnv1a-'+(h>>>0).toString(16).padStart(8,'0');}
+  function sourceKey(ref){return stable([ref?.modelId??null,ref?.modelRevision??null,ref?.sourceInstanceId??null,ref?.elementUniqueId??null,ref?.layerRef??null]);}
+  function physicalKey(ref){const r={...ref};delete r.modelRevision;return stable([r.modelId??null,r.sourceInstanceId??null,r.elementUniqueId??null,r.layerRef??null]);}
+  function reference(element){return copy(element.sourceRef||{modelId:element.modelId??null,modelRevision:null,sourceInstanceId:null,elementUniqueId:element.sourceElementId||element.uniqueId||null});}
+  function sourceMetadata(model,e){const r=reference(e);return (model.modelSources||[]).find(s=>s.modelId===r.modelId&&s.sourceInstanceId===r.sourceInstanceId)||null;}
+  function sourceType(model,e){if(e.type&&typeof e.type==='object')return e.type;const types=sourceMetadata(model,e)?.types||model.types||[];return Array.isArray(types)?types.find(t=>String(t.id??t.typeId)===String(e.typeId))||null:types[e.typeId]||null;}
+  function layersFor(model,e){const t=sourceType(model,e);return e.layers||e.materialLayers||t?.layers||t?.materialLayers||[];}
+  function fingerprint(model,e){const meta=sourceMetadata(model,e);return hash({ref:reference(e),meshes:e.meshes,quantities:e.quantities,area:e.area,length:e.length,materialQuantities:e.materialQuantities,layers:layersFor(model,e),type:sourceType(model,e),typeRef:e.typeRef,hostRef:e.hostRef,phase:e.phase,placement:meta?.worldFromSource,modelRevision:meta?.modelRevision,sourceFileHash:meta?.sourceFileHash,sourceUnits:meta?.sourceUnits,provenance:e.provenance,alignment:meta?.alignmentCheck,alignmentStatus:meta?.alignmentStatus,coordinatesReviewed:meta?.coordinatesReviewed});}
+  function issue(code,message,elementId){return {code,message,...(elementId?{elementId}:{})};}
+  function check(kind,outcome,inputHash,evidence,ruleProfileRef=null){return {kind,outcome,inputHash,evidence,ruleProfileRef,checkedBy:'BuildExecution',checkedAt:null};}
+  function frameFor(opts){
+    if(!['x','y','z'].includes(opts.cutAxis)||typeof opts.rotationDegrees!=='number'||!Number.isFinite(opts.rotationDegrees))return null;
+    const angle=opts.rotationDegrees*Math.PI/180,c=Math.cos(angle),s=Math.sin(angle);
+    return {origin:[0,0,0],x:[c,s,0],y:[-s,c,0],z:[0,0,1],cutAxis:opts.cutAxis,rotationDegrees:opts.rotationDegrees,units:'m',convention:'right-handed XYZ; explicit rotation about world Z'};
+  }
+  function dot(p,axis){return p[0]*axis[0]+p[1]*axis[1]+p[2]*axis[2];}
+  function boundsOf(meshes,frame){
+    const min=[Infinity,Infinity,Infinity],max=[-Infinity,-Infinity,-Infinity];
+    for(const m of meshes||[])for(let i=0;i<m.pos.length;i+=3){const p=m.pos.slice(i,i+3),q=frame?[dot(p,frame.x),dot(p,frame.y),dot(p,frame.z)]:p;for(let k=0;k<3;k++){min[k]=Math.min(min[k],q[k]);max[k]=Math.max(max[k],q[k]);}}
+    return Number.isFinite(min[0])?{min,max}:null;
+  }
+  function validateMeshes(meshes){
+    if(!Array.isArray(meshes)||!meshes.length)return 'Kilden har ingen trekantsgeometri.';
+    for(const m of meshes){if(!Array.isArray(m.pos)||m.pos.length<9||m.pos.length%3||m.pos.some(v=>typeof v!=='number'||!Number.isFinite(v)))return 'Positioner skal være endelige XYZ-tal i meter.';
+      if(m.idx!=null){if(!Array.isArray(m.idx)||m.idx.length%3||m.idx.some(i=>!Number.isInteger(i)||i<0||i>=m.pos.length/3))return 'Trekantsindekser er ugyldige.';}
+      else if(m.pos.length%9)return 'Geometri uden indeks skal være hele trekanter.';
+    }return null;
+  }
+  function clipPolygon(poly,axis,limit,keepAbove){
+    const out=[];for(let i=0;i<poly.length;i++){const a=poly[i],b=poly[(i+1)%poly.length],da=dot(a,axis)-limit,db=dot(b,axis)-limit,ina=keepAbove?da>=-EPS:da<=EPS,inb=keepAbove?db>=-EPS:db<=EPS;
+      if(ina)out.push(a);if(ina!==inb){const t=Math.max(0,Math.min(1,da/(da-db)));out.push(a.map((v,k)=>v+(b[k]-v)*t));}}
+    return out;
+  }
+  function triangleArea2(a,b,c){const u=b.map((v,k)=>v-a[k]),v=c.map((n,k)=>n-a[k]);return Math.hypot(u[1]*v[2]-u[2]*v[1],u[2]*v[0]-u[0]*v[2],u[0]*v[1]-u[1]*v[0]);}
+  // Clip the actual surfaces. No boxes, hole filling, artificial caps or inferred net volume.
+  function clipMeshes(meshes,frame,lo,hi,excludeUpper=false){
+    if(hi-lo<=EPS)return [];
+    const result=[],axis=frame[frame.cutAxis];
+    for(const mesh of meshes){const out=[],idx=mesh.idx||Array.from({length:mesh.pos.length/3},(_,i)=>i);
+      for(let i=0;i<idx.length;i+=3){let poly=idx.slice(i,i+3).map(n=>mesh.pos.slice(n*3,n*3+3));if(excludeUpper&&poly.every(p=>Math.abs(dot(p,axis)-hi)<=EPS))continue;poly=clipPolygon(poly,axis,lo,true);if(poly.length<3)continue;poly=clipPolygon(poly,axis,hi,false);
+        for(let j=1;j<poly.length-1;j++)if(triangleArea2(poly[0],poly[j],poly[j+1])>EPS*EPS)out.push(...poly[0],...poly[j],...poly[j+1]);}
+      if(out.length)result.push({pos:out,idx:null});
+    }return result;
+  }
+  function ownersFor(e,ref,layerMissing){
+    const quantities=Array.isArray(e.materialQuantities)?e.materialQuantities:[];
+    return quantities.map(q=>{const scope=physicalKey(ref),id='material-'+hash([sourceKey(ref),q.materialRef,q.measurementMethod,q.unit]);return {id,physicalScopeRef:scope,sourceRef:ref,materialRef:q.materialRef??null,quantity:q.quantity??null,unit:q.unit??null,measurementMethod:q.measurementMethod??null,sourceEvidence:q.sourceEvidence??null,revision:ref.modelRevision,aggregationRole:!layerMissing&&q.aggregationRole==='primary'&&Number.isFinite(q.quantity)&&q.quantity>=0&&q.unit&&q.materialRef&&q.measurementMethod&&q.sourceEvidence?'primary':'reference'};});
+  }
+  function classification(model,e,operation='unknown'){const layers=layersFor(model,e),layerCount=Array.isArray(layers)?layers.length:0,layerInfoMissing=operation==='layMasonry'&&layerCount===0&&!e.sourceRef?.layerRef;return {deliveryMode:'unknown',operation:'unknown',sourceRef:reference(e),provenance:copy(e.provenance||{value:'unknown'}),layerCount,layerInfoMissing,requiresLayerGeometry:!e.sourceRef?.layerRef&&(layerCount>1||layerInfoMissing),geometryError:validateMeshes(e.meshes)};}
+  function propose(model,task,opts={}){
+    const requested=opts.elementIds||task.elementIds||[],ids=[...new Set(requested.map(String))],mode=MODES.includes(opts.deliveryMode)?opts.deliveryMode:'unknown',operation=OPERATIONS.includes(opts.operation)?opts.operation:'unknown';
+    const frame=frameFor(opts),max=opts.maxLengthM,spacing=opts.moduleSpacingM??max,actual=opts.actualLengthM??max;
+    const finite=v=>typeof v==='number'&&Number.isFinite(v)?v:null;
+    const definition={cutAxis:opts.cutAxis??null,rotationDegrees:finite(opts.rotationDegrees),maxLengthM:finite(max),moduleSpacingM:finite(spacing),actualLengthM:finite(actual),units:'m',cutSurfacePolicy:'open original surfaces; no caps or volume inference'};
+    const execution={schema:SCHEMA,deliveryMode:mode,operation,reviewState:'proposed',elementIds:ids,sourceElementIds:ids.slice(),units:[],workzones:[],sources:[],materialQuantityOwners:[],materialQuantityOwnerIds:[],profile:copy(opts.profile||null),divisionDefinition:definition,localFrame:frame,progress:{basis:'illustrative',visualMethod:mode==='installDelivered'?'installEvent':mode==='produceOnSite'?'localWorkfront':mode==='none'?'none':'activityStatus'},issues:[],checks:[],limitations:['Geometrisk planforslag; ikke produktions-, transport- eller montagegodkendelse.','Originale overflader klippes uden nye snitflader. Der beregnes ikke nettovolumen eller masse.','Fremdrift er illustrativ og ændrer ikke kontrolstatus.']};
+    const add=(code,message,id)=>execution.issues.push(issue(code,message,id));
+    if(!ids.length)add('selectionMissing','Vælg mindst ét kildeelement.');
+    if(mode==='unknown')add('deliveryModeMissing','Leverancemåde er uafklaret; kun aktivitetsstatus kan vises.');
+    if(operation==='unknown')add('operationMissing','Arbejdsoperationen skal vælges.');
+    if(operation==='testSystem'&&mode!=='none')add('processOnly','Systemkontrol må ikke oprette nye fysiske dele. Vælg leverancemåde none.');
+    const physical=['installDelivered','produceOnSite'].includes(mode)&&operation!=='testSystem';
+    const validDivision=frame&&[max,spacing,actual].every(n=>typeof n==='number'&&Number.isFinite(n)&&n>EPS)&&actual<=max+EPS&&spacing+EPS>=actual;
+    if(physical&&!validDivision)add('divisionMissing','Vælg lokal akse, eksplicit rotation og positive mål; fysisk længde må ikke overstige maksimum eller modulafstand.');
+    if(physical&&spacing>actual+EPS)add('jointGaps','Modulafstand er større end fysisk længde. Fugestrimer udelades af delgeometrien; kildemængder er ikke reduceret.');
+    for(const id of ids){const matches=(model.elements||[]).filter(e=>String(e.uniqueId)===id);if(matches.length!==1){add(matches.length?'ambiguousElement':'sourceMissing',matches.length?'Elementnøglen er ikke entydig i den samlede model.':'Kildeelementet findes ikke i modellen.',id);continue;}
+      const e=matches[0],cls=classification(model,e,operation),ref=cls.sourceRef,key=sourceKey(ref),fprint=fingerprint(model,e),layers=layersFor(model,e),meta=sourceMetadata(model,e);
+      execution.sources.push({elementId:id,sourceRef:ref,sourceKey:key,inputHash:fprint,provenance:cls.provenance,layerCount:cls.layerCount,requiresLayerGeometry:cls.requiresLayerGeometry,sourceQuantities:copy(e.quantities||{area:e.area??null,length:e.length??null}),layers:copy(layers)});
+      if(['modelId','modelRevision','sourceInstanceId','elementUniqueId'].some(k=>ref[k]==null||ref[k]===''))add('sourceIdentityMissing','Model, revision, instans og oprindeligt element-ID skal være dokumenteret.',id);
+      if(cls.layerInfoMissing)add('layerInfoMissing','Lagopbygningen er ukendt. Opmuringsforslaget viser ufordelt kildegeometri, ikke et dokumenteret murværkslag.',id);
+      else if(cls.requiresLayerGeometry)add('requiresLayerGeometry','Kilden indeholder flere lag. Forslaget klipper kun den ufordelte kildegeometri; faktisk laggeometri mangler.',id);
+      if(physical&&cls.provenance.value!=='designed')add('sourceProvenanceUnverified',cls.provenance.value==='syntheticTest'?'Kilden er syntetiske testdata; delene er ikke projekterede installationer eller bygningsdele.':'Kildens projektoprindelse er ikke dokumenteret.',id);
+      if(physical&&meta?.alignmentStatus!=='reviewed')add('alignmentReviewMissing','Kildens placering er ikke aktuelt dokumenteret kontrolleret. Se også projektets koordinatkontrol.',id);
+      if(cls.geometryError){add('geometryMissing',cls.geometryError,id);continue;}
+      const owners=ownersFor(e,ref,cls.requiresLayerGeometry);execution.materialQuantityOwnerIds.push(...owners.map(o=>o.id));if(physical)execution.materialQuantityOwners.push(...owners);
+      if(!physical||!validDivision)continue;
+      const bounds=boundsOf(e.meshes,frame),axis='xyz'.indexOf(frame.cutAxis),lo=bounds.min[axis],hi=bounds.max[axis],span=hi-lo;
+      if(span<=EPS){add('zeroExtent','Geometrien har ingen udstrækning langs den valgte akse.',id);continue;}
+      const axisMismatch=axis<2&&bounds.max[1-axis]-bounds.min[1-axis]>max+EPS;
+      if(axisMismatch)add('axisMismatch','Kilden er bredere på tværs af snitaksen end delingsmålet. Skrå eller tværgående dele kan være længere end målet. Kontrollér faktisk elementretning og alle delmål.',id);
+      const count=Math.ceil((span-EPS)/spacing);if(count>LIMIT||execution.units.length+execution.workzones.length+count>LIMIT){add('divisionLimit','Delingen overstiger 1.000 forslag; vælg et mindre område eller en større deling.',id);continue;}
+      for(let n=0;n<count;n++){const start=lo+n*spacing,end=Math.min(hi,start+actual),upperOwnedByNext=end<hi-EPS&&Math.abs(spacing-actual)<=EPS,clipped=clipMeshes(e.meshes,frame,start,end,upperOwnedByNext);if(!clipped.length)continue;
+        const local=boundsOf(clipped,frame),dimensions=local.max.map((v,k)=>(v-local.min[k])*1000),module=dimensions.slice();module[axis]=spacing*1000;
+        const partId=(mode==='installDelivered'?'unit-':'zone-')+hash([key,definition,n]),part={id:partId,elementId:id,sourceKey:key,sourceRefs:[ref],localFrame:copy(frame),divisionDefinition:copy(definition),range:{min:start,max:end,upperOwnedByNext},sourceRange:{min:lo,max:hi},actualDimensionsMm:{x:dimensions[0],y:dimensions[1],z:dimensions[2]},moduleDimensionsMm:{x:module[0],y:module[1],z:module[2]},materialQuantityOwnerIds:owners.map(o=>o.id),provenance:cls.provenance,reviewState:'needsInput',checks:[],geometryRole:cls.requiresLayerGeometry||axisMismatch?'unassignedSourceGeometryProposal':mode==='installDelivered'?'proposedExecutionUnit':'workfrontMask',openingsInLocalCoordinates:{representation:'preserved by triangle clipping; no inferred opening rectangles'},productProfileRef:opts.profile?.id||null};
+        if(mode==='installDelivered'){part.geometryRef={sourceKey:key,inputHash:fprint,method:'triangle-plane-clipping'};execution.units.push(part);}else{part.locationId=task.zoneId??null;part.maskGeometryRef={sourceKey:key,inputHash:fprint,method:'triangle-plane-clipping'};execution.workzones.push(part);}
+      }
+    }
+    execution.materialQuantityOwnerIds=[...new Set(execution.materialQuantityOwnerIds)];
+    if(physical){const profile=opts.profile||{},missing=['projectId','productFamily','supplier','documentVersion','documentDate'].filter(k=>!profile[k]);
+      if(mode==='installDelivered'&&missing.length)add('productProfileMissing','Projektvalgt produktprofil mangler: '+missing.join(', ')+'.');
+      if(mode==='installDelivered')for(const kind of ['mass','transport','lifting'])if(!profile[kind]?.sourceEvidence)add(kind+'Missing','Dokumenteret '+({mass:'massegrundlag',transport:'transportgrundlag',lifting:'løftegrundlag'}[kind])+' mangler.');
+      if(mode==='produceOnSite')add('methodReviewRequired','Arbejdsfronter er illustrative; lag, arbejdsmetode, ressourcer og produktivitet skal vurderes.');
+      if(mode==='installDelivered'&&!missing.length)add('productReviewRequired','En registreret produktprofil er ikke en kontrol af alle dele. Produkt-, masse-, transport- og løftegrænser skal vurderes fagligt.');
+    }
+    execution.reviewState=execution.issues.length?'needsInput':'proposed';
+    execution.inputHash=hash({sources:execution.sources.map(s=>({key:s.sourceKey,hash:s.inputHash})),definition,profile:execution.profile,deliveryMode:mode,operation,elementIds:ids});
+    execution.proposalHash=hash({inputHash:execution.inputHash,units:execution.units,workzones:execution.workzones,localFrame:frame,materialQuantityOwners:execution.materialQuantityOwners});
+    execution.checks.push(check('sourceAndMethod',execution.issues.length?'needsInput':'passed',execution.inputHash,execution.issues.length?'Se mangler på forslaget.':'Eksplicit kilde og operation registreret; ingen fysisk godkendelse.','issana-execution-inputs/1'));
+    if(physical)execution.checks.push(check('productAndExecution','needsInput',execution.inputHash,'Afventer dokumenteret faglig kontrol. Ingen automatisk produktgodkendelse.',opts.profile?.id||null));
+    else execution.checks.push(check('productAndExecution','notApplicable',execution.inputHash,'Aktiviteten opretter ingen leverede dele eller arbejdsfronter.'));
+    return execution;
+  }
+  function inspect(model,execution,task){
+    if(!execution||execution.schema!==SCHEMA)return {reviewState:'needsInput',issues:[issue('unsupportedExecution','Udførelsesforslaget bruger ikke denne kontrakt.')]};
+    const issues=[];
+    if(task&&execution.elementIds.some(id=>!(task.elementIds||[]).includes(id)))issues.push(issue('taskSelectionChanged','Aktivitetens elementudvalg dækker ikke længere udførelsesforslagets kilder.'));
+    for(const src of execution.sources||[]){const candidates=(model.elements||[]).filter(e=>String(e.uniqueId)===src.elementId);if(candidates.length!==1||sourceKey(reference(candidates[0]))!==src.sourceKey||fingerprint(model,candidates[0])!==src.inputHash)issues.push(issue('sourceChanged','Kildens revision, instans, placering, lag, mængder eller geometri er ændret. Sammenlign og opret et nyt forslag.',src.elementId));}
+    const inputHash=hash({sources:(execution.sources||[]).map(s=>({key:s.sourceKey,hash:s.inputHash})),definition:execution.divisionDefinition,profile:execution.profile,deliveryMode:execution.deliveryMode,operation:execution.operation,elementIds:execution.elementIds});
+    const proposalHash=hash({inputHash,units:execution.units,workzones:execution.workzones,localFrame:execution.localFrame,materialQuantityOwners:execution.materialQuantityOwners});
+    if(inputHash!==execution.inputHash||proposalHash!==execution.proposalHash)issues.push(issue('proposalChanged','Deling, produktgrundlag eller kildereferencer er rettet uden et nyt geometriforslag.'));
+    return {reviewState:issues.length?'stale':execution.reviewState||'needsInput',issues:issues.length?issues:copy(execution.issues||[])};
+  }
+  function geometryFor(model,execution,progress=1){
+    const status=inspect(model,execution),result={pieces:[],elementIds:execution?.elementIds||[],sourceElementIds:execution?.elementIds||[],reviewState:status.reviewState,issues:status.issues};
+    if(status.reviewState==='stale'||execution?.schema!==SCHEMA)return result;
+    if(typeof progress!=='number'||!Number.isFinite(progress)){result.issues.push(issue('progressInvalid','Fremdrift skal være et endeligt tal fra 0 til 1.'));return result;}
+    const p=Math.max(0,Math.min(1,progress)),units=execution.units||[],zones=execution.workzones||[],delivered=Math.floor(p*units.length+EPS);
+    const parts=execution.deliveryMode==='installDelivered'?units.slice(0,delivered):execution.deliveryMode==='produceOnSite'?zones:[];
+    for(const part of parts){const element=(model.elements||[]).find(e=>String(e.uniqueId)===part.elementId);if(!element)continue;
+      const hi=execution.deliveryMode==='produceOnSite'?Math.min(part.range.max,part.sourceRange.min+(part.sourceRange.max-part.sourceRange.min)*p):part.range.max;
+      const meshes=clipMeshes(element.meshes,part.localFrame,part.range.min,hi,part.range.upperOwnedByNext&&Math.abs(hi-part.range.max)<=EPS);if(!meshes.length)continue;
+      result.pieces.push({id:part.id,elementId:part.elementId,sourceKey:part.sourceKey,...(execution.deliveryMode==='installDelivered'?{unitId:part.id}:{workZoneId:part.id}),meshes,bounds:boundsOf(meshes),localBounds:boundsOf(meshes,part.localFrame),reviewState:part.reviewState,geometryRole:part.geometryRole,progressBasis:execution.progress.basis});
+    }return result;
+  }
+  function materialSummary(executions,model,tasks){
+    const owners=new Map(),issues=[],conflicts=new Set();
+    if(!model)return {owners:[],totals:[],issues:[issue('freshModelRequired','En aktuel model kræves for at kontrollere kildernes revision før summering.')],reviewState:'needsInput'};
+    if(!Array.isArray(tasks))return {owners:[],totals:[],issues:[issue('taskContextRequired','Aktuelle aktiviteter kræves for at kontrollere mængdernes tilknytning før summering.')],reviewState:'needsInput'};
+    for(const e of executions||[]){if(e.deliveryMode==='none')continue;const linked=tasks.filter(t=>t.execution===e||(e.proposalHash&&t.execution?.proposalHash===e.proposalHash)),statuses=linked.map(t=>inspect(model,e,t));if(!statuses.length||statuses.some(s=>s.reviewState==='stale')||e.schema!==SCHEMA)issues.push(issue('staleQuantities','Forældede eller ukendte mængdereferencer er udeladt af summeringen.'));if(e.schema!==SCHEMA||!statuses.some(s=>s.reviewState!=='stale'))continue;
+      for(const owner of e.materialQuantityOwners||[]){if(owner.aggregationRole!=='primary')continue;const key=stable([owner.physicalScopeRef,owner.materialRef,owner.measurementMethod,owner.unit]);const prior=owners.get(key);if(prior&&stable(prior)!==stable(owner)){conflicts.add(key);issues.push(issue('quantityConflict','Samme fysiske mængde har forskellige revisioner eller værdier. Afklar ejerskab før summering.'));}else owners.set(key,owner);}
+    }
+    const unique=[...owners].filter(([key])=>!conflicts.has(key)).map(([,owner])=>copy(owner)),totals={};for(const o of unique){const key=stable([o.materialRef,o.unit,o.measurementMethod]);totals[key]??={materialRef:o.materialRef,unit:o.unit,measurementMethod:o.measurementMethod,quantity:0};totals[key].quantity+=o.quantity;}
+    if(!unique.length&&(executions||[]).some(e=>['installDelivered','produceOnSite'].includes(e.deliveryMode)))issues.push(issue('noPrimaryQuantities','Ingen primære materialemængder er dokumenteret; tomme totaler betyder ukendt, ikke nul.'));
+    return {owners:unique,totals:Object.values(totals),issues,reviewState:issues.length?'needsInput':'proposed',note:'Kun eksplicitte primære kildemængder; ingen nye mængder udledt af klippet geometri. Aktiviteters ressourcer er separate.'};
+  }
+  return {schema:SCHEMA,propose,inspect,geometryFor,sourceKey,materialSummary,classify:classification};
+});
+</script><script>(function(root,factory){const cjs=typeof module==='object'&&module.exports,api=factory(cjs?require('./execution.js'):root.BuildExecution,cjs?require('./model.js'):root.BuildModel);if(cjs)module.exports=api;else root.BuildSceneModel=api;})(typeof globalThis!=='undefined'?globalThis:this,function(E,M){
+  'use strict';
+  // Shared by the interactive viewer and the film. Geometry is always the source
+  // triangle mesh (or a clipped subset), never a bounding-box replacement.
+  function physicalStates(rows){
+    const states=new Map(),rank={blocked:0,future:1,done:2,active:3};
+    for(const t of rows){if(t.execution?.deliveryMode==='none'||t.execution?.operation==='testSystem')continue;
+      for(const id of t.elementIds||[])if(!states.has(id)||rank[t.state]>rank[states.get(id).state])states.set(id,t);
+    }return states;
+  }
+  function executionStatus(model,task){
+    const check=E.inspect(model,task.execution),missing=(task.execution?.elementIds||[]).filter(id=>!task.elementIds?.includes(id));
+    return missing.length?{reviewState:'stale',issues:[...check.issues,{code:'mappingChanged',message:'Aktivitetens tilknytning til kilden er ændret. Opret udførelsesforslaget igen.'}]}:check;
+  }
+  function create(THREE,group,model,center){
+    const originals=[],derived=[],byId=new Map(model.elements.map(e=>[e.uniqueId,e]));let signature='';
+    function meshFor(e,m,piece){
+      const g=new THREE.BufferGeometry(),p=new Float32Array(m.pos.length);for(let i=0;i<p.length;i++)p[i]=m.pos[i]-center[i%3];
+      g.setAttribute('position',new THREE.BufferAttribute(p,3));if(m.idx)g.setIndex(new THREE.BufferAttribute(new Uint32Array(m.idx),1));g.computeVertexNormals();
+      const mesh=new THREE.Mesh(g,new THREE.MeshLambertMaterial({color:'#bfc8bf',side:THREE.DoubleSide}));mesh.userData={key:e.uniqueId,level:e.level,modelId:e.modelId,installation:!!M.installationCategory(e),piece};group.add(mesh);
+      if(piece){const edges=new THREE.LineSegments(new THREE.EdgesGeometry(g,35),new THREE.LineBasicMaterial({color:'#154f53',transparent:true,opacity:.65}));mesh.add(edges);}return mesh;
+    }
+    for(const e of model.elements)for(const m of e.meshes)originals.push(meshFor(e,m));
+    function clear(list){for(const m of list){m.traverse(o=>{o.geometry?.dispose();o.material?.dispose();});group.remove(m);}list.length=0;}
+    function update(plan,rows,opts={}){
+      const states=physicalStates(rows),completed=physicalStates(rows.filter(t=>t.state==='done')),active=rows.filter(t=>t.execution?.schema==='issana-execution/1'&&(t.execution.units?.length||t.execution.workzones?.length)),covered=new Set(),selected=new Set(opts.selectedIds||[]);
+      const sig=JSON.stringify([active.map(t=>[t.id,t.execution]),rows.map(t=>[t.id,t.elementIds,t.state,t.progress,t.execution?.deliveryMode,t.execution?.operation])]);
+      if(sig!==signature){clear(derived);for(const t of active){
+        if(executionStatus(model,t).reviewState==='stale')continue;const output=E.geometryFor(model,t.execution,t.progress);if(output.reviewState==='stale')continue;
+        for(const piece of output.pieces){const e=byId.get(piece.elementId);if(!e||states.get(e.uniqueId)?.id!==t.id)continue;for(const m of piece.meshes)derived.push(meshFor(e,m,{...piece,taskId:t.id}));}
+      }signature=sig;}
+      for(const t of active){const check=executionStatus(model,t);if(check.reviewState!=='stale')for(const part of [...t.execution.units,...t.execution.workzones])if(states.get(part.elementId)?.id===t.id)covered.add(part.elementId);}
+      function paint(m,isPiece){const e=byId.get(m.userData.key),row=isPiece?rows.find(t=>t.id===m.userData.piece.taskId):states.get(e.uniqueId),hasCompletedOperation=completed.has(e.uniqueId)&&completed.get(e.uniqueId).id!==row?.id,state=!isPiece&&hasCompletedOperation?'done':row?.state||'unmapped',isMep=m.userData.installation;
+        m.visible=plan.models.find(d=>d.id===e.modelId)?.visible!==false&&(!opts.level||e.level===opts.level)&&(opts.focus!=='mep'||isMep)&&(state!=='future'||opts.ghost!==false);
+        let opacity=state==='future'?.055:state==='blocked'?.15:1;if(!isPiece&&covered.has(e.uniqueId)&&!hasCompletedOperation)opacity=.035;if(opts.focus==='context'&&!isMep)opacity=Math.min(opacity,.065);
+        const mat=m.material;mat.color.set(state==='active'&&/^#[0-9a-f]{6}$/i.test(row?.color||'')?row.color:state==='unmapped'?'#bd965b':'#bfc8bf');mat.opacity=opacity;mat.transparent=opacity<1;mat.depthWrite=!mat.transparent;mat.polygonOffset=isPiece&&hasCompletedOperation;mat.polygonOffsetFactor=-1;mat.polygonOffsetUnits=-1;mat.emissive.set(e.uniqueId===opts.picked?'#2b7777':selected.has(e.uniqueId)?'#102a28':'#000000');
+      }
+      originals.forEach(m=>paint(m,false));derived.forEach(m=>paint(m,true));return [...originals,...derived];
+    }
+    return {update,dispose(){clear(originals);clear(derived);},get meshes(){return [...originals,...derived];}};
+  }
+  return {create,physicalStates,executionStatus};
+});
+</script><script>(function(){
+  'use strict';
+  function start(A){
+    const $=id=>document.getElementById(id),E=BuildExecution,P=BuildProject,M=BuildModel,esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    document.querySelectorAll('[data-execution-ui]').forEach(e=>e.remove());
+    const panel=document.createElement('details');panel.dataset.executionUi='true';panel.id='execution-panel';panel.className='execution-panel';
+    panel.innerHTML='<summary>Udførelse · dele, arbejdsfront og installationer <span>Åbn kontrol</span></summary><div class="execution-body"><div class="execution-intro"><h2>Fra modeldel til udførelse</h2><p>Vælg en del i 3D. Angiv arbejdsmetoden, og afprøv opdelingen. Forslaget gemmes i planen og kan fortrydes.</p></div><div class="execution-grid"><form id="execution-form"><label>Modeldel i den valgte aktivitet<select id="execution-element" required></select></label><label>Hvordan udføres arbejdet?<select id="execution-method"><option value="unknown">Uafklaret · vis aktivitetsstatus</option><option value="placeComponent">Montér leverede dele</option><option value="layMasonry">Murværk · opmuring på pladsen</option><option value="castConcrete">Beton · støbning på pladsen</option><option value="installMEP">Installation · montér dele</option><option value="testSystem">Systemkontrol · ingen nye materialer</option></select></label><div class="two"><label>Arbejdsbredde / deling · mm<input id="execution-length" type="number" min="50" max="100000" step="1" placeholder="fx 3000" required></label><label>Lokal retning<select id="execution-axis"><option value="x">X · langs delen</option><option value="y">Y · på tværs</option><option value="z">Z · nedefra</option></select></label></div><label>Lokal drejning om lodret akse · grader<input id="execution-rotation" type="number" min="-360" max="360" step="0.1" value="0" required></label><p class="execution-hint">Målet er din planlægningsantagelse. Produktmål, samlinger, vægt, transport og kran er endnu ikke dokumenteret.</p><button class="primary" type="submit">Anvend som forslag</button><button id="execution-remove" type="button" class="quiet">Fjern udførelsesforslag</button></form><div><div id="execution-status" class="execution-status" role="status"></div><div id="execution-source"></div></div></div><details class="execution-coverage"><summary>Kontrollér installationsgrundlaget</summary><div id="execution-coverage"></div><button id="coverage-download" type="button">Gem dækningskontrol som JSON</button></details></div>';
+    $('model-pick').after(panel);
+    const focus=document.createElement('label');focus.dataset.executionUi='true';focus.innerHTML='Fag <select id="execution-focus"><option value="all">Alle</option><option value="context">Installationer + bygning</option><option value="mep">Kun installationer</option></select>';$('model-view').querySelector('.model-controls').append(focus);
+    $('execution-focus').onchange=()=>A.refreshScene();
+    const labels={proposed:'Forslag',needsInput:'Mangler grundlag',stale:'Skal genberegnes',reviewed:'Gennemgået'};
+    function render(){
+      const {plan,model,selected,picked}=A.current(),t=plan.tasks.find(x=>x.id===selected),items=model.elements.filter(e=>t?.elementIds.includes(e.uniqueId)),previous=$('execution-element').value;
+      $('execution-element').innerHTML='<option value="">Vælg en modeldel …</option>'+items.map(e=>'<option value="'+esc(e.uniqueId)+'">'+esc(e.category+' · '+e.id+' · '+e.level)+'</option>').join('');
+      const id=items.some(e=>e.uniqueId===picked)?picked:items.some(e=>e.uniqueId===previous)?previous:t?.execution?.elementIds?.[0];if(id)$('execution-element').value=id;
+      const ex=t?.execution,inspection=ex?.schema==='issana-execution/1'?BuildSceneModel.executionStatus(model,t):null;
+      $('execution-remove').disabled=!inspection;$('execution-form').querySelector('.primary').disabled=!t;
+      $('execution-method').value=ex?.operation||'unknown';if(!$('execution-method').value)$('execution-method').value='unknown';
+      $('execution-length').value=ex?.divisionDefinition?.maxLengthM?ex.divisionDefinition.maxLengthM*1000:'';$('execution-axis').value=ex?.divisionDefinition?.cutAxis||'x';$('execution-rotation').value=ex?.divisionDefinition?.rotationDegrees??0;
+      const issues=(inspection?.issues||[]).map(i=>typeof i==='string'?i:i.message||i.code||JSON.stringify(i));
+      $('execution-status').innerHTML=inspection?'<b>'+esc(labels[inspection.reviewState]||inspection.reviewState)+'</b><p>'+esc((ex.units?.length||0)+' foreslåede dele · '+(ex.workZones?.length||ex.workzones?.length||0)+' arbejdszoner')+'</p><p>Visningen viser planlagt udførelse. Kildemængder bevares; delingen er ikke en produktionsgodkendelse.</p><ul>'+issues.slice(0,7).map(i=>'<li>'+esc(i)+'</li>').join('')+'</ul>':'<b>Arbejdsmetode mangler</b><p>Hele BIM-elementet er kun en geometrisk reference. Vælg metode og deling for at afprøve udførelsen.</p>';
+      source();coverage();
+    }
+    function source(){const {model}=A.current(),e=model.elements.find(x=>x.uniqueId===$('execution-element').value);$('execution-source').innerHTML=e?'<h3>Grundlag for valgt del</h3><dl><dt>Kategori</dt><dd>'+esc(e.category)+'</dd><dt>Etage</dt><dd>'+esc(e.level)+'</dd><dt>Oprindelse</dt><dd>'+esc(M.provenance(e.provenance).value)+'</dd><dt>Identitet</dt><dd>'+esc(e.sourceRef?Object.values(e.sourceRef).join(' / '):e.uniqueId)+'</dd></dl><p>Åbninger følger originalens trekanter. Lagdeling kræver dokumenteret geometri pr. lag.</p>':'<p>Vælg en del i listen eller klik i 3D.</p>';}
+    function coverage(){const {plan,model}=A.current(),c=P.coverage(plan,model),mep=model.elements.filter(e=>M.installationCategory(e)),pipes=mep.filter(e=>/rør|kanal/i.test(M.installationCategory(e)||''));
+      $('execution-coverage').innerHTML='<p><b>'+mep.length+' installationsdele i udtrækket.</b> '+pipes.length+' med rør-/kanalkategori. Antal genstande beviser ikke et sammenhængende system.</p><p>'+esc(c.unscheduledCount)+' modeldele uden aktivitet · '+esc(c.geometryMissingCount)+' uden geometri.</p><div class="coverage-scroll"><table><thead><tr><th>Model / kategori</th><th>Eksporteret</th><th>Planlagt</th><th>Grundlag</th></tr></thead><tbody>'+(c.mepCoverage||[]).map(r=>'<tr><td>'+esc(r.modelId+' / '+r.category)+'</td><td>'+esc(r.exportedCount)+'</td><td>'+esc(r.scheduledCount)+'</td><td>'+esc('Dokumenteret '+r.provenanceCounts.designed+' · test '+r.provenanceCounts.syntheticTest+' · ukendt '+r.provenanceCounts.unknown+' / '+(r.alignmentStatus==='reviewed'?'placering gennemgået':'placering skal kontrolleres'))+'</td></tr>').join('')+'</tbody></table></div><p>Testdata og ukendt oprindelse tæller ikke som dokumenterede projekterede installationer.</p>';
+    }
+    $('execution-element').onchange=source;
+    A.localSubmit($('execution-form'),event=>{event.preventDefault();try{const operation=$('execution-method').value,id=$('execution-element').value,cutAxis=$('execution-axis').value,rotationDegrees=Number($('execution-rotation').value),maxLengthM=Number($('execution-length').value)/1000;if(!id)throw new Error('Vælg først en modeldel.');if(!A.applyForm())return;const {plan,model,selected}=A.current(),next=JSON.parse(JSON.stringify(plan)),t=next.tasks.find(x=>x.id===selected);
+      t.execution=E.propose(model,t,{elementIds:[id],deliveryMode:operation==='unknown'?'unknown':operation==='testSystem'?'none':['layMasonry','castConcrete'].includes(operation)?'produceOnSite':'installDelivered',operation,cutAxis,rotationDegrees,maxLengthM,source:'Manuelt planlægningsforslag i ISSANA; produkt- og logistikgrundlag mangler'});
+      A.commit(next,'Udførelsesforslaget er gemt for den valgte del. Det kan fortrydes.');A.refreshScene();
+    }catch(e){A.error(e);}});
+    $('execution-remove').onclick=()=>{const {plan,selected}=A.current(),next=JSON.parse(JSON.stringify(plan)),t=next.tasks.find(x=>x.id===selected);if(t){delete t.execution;A.commit(next,'Forslaget er fjernet. Kildegeometrien er bevaret.');A.refreshScene();}};
+    $('coverage-download').onclick=()=>{const {plan,model}=A.current();A.download('ISSANA-installationsdaekning.json',JSON.stringify(P.coverage(plan,model),null,2),'application/json');};
+    document.addEventListener('build-plan-render',render);document.addEventListener('build-plan-pick',render);render();
+  }
+  window.BuildExecutionUI={start};
+})();
+</script><script>(function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.BuildFrameArchive=api;})(typeof globalThis!=='undefined'?globalThis:this,function(){
+  'use strict';
+  function tarFile(name,bytes){if(!/^[a-zA-Z0-9_./-]{1,99}$/.test(name)||name.includes('..'))throw new Error('Ugyldigt filnavn.');const h=new Uint8Array(512),enc=new TextEncoder(),put=(at,s)=>h.set(enc.encode(s),at);put(0,name);put(100,'0000644\0');put(108,'0000000\0');put(116,'0000000\0');put(124,bytes.length.toString(8).padStart(11,'0')+'\0');put(136,'07033241600\0');put(148,'        ');put(156,'0');put(257,'ustar\0');put(263,'00');put(148,h.reduce((a,b)=>a+b,0).toString(8).padStart(6,'0')+'\0 ');return [h,bytes,new Uint8Array((512-bytes.length%512)%512)];}
+  function create(maxBytes=32*1024*1024){if(!Number.isInteger(maxBytes)||maxBytes<2048)throw new Error('Ugyldig pakkestørrelse.');let parts=[],bytes=0,count=0;return {get size(){return bytes;},get count(){return count;},add(name,data){const row=tarFile(name,data),size=row.reduce((n,p)=>n+p.length,0);if(size>maxBytes)throw new Error('Et enkelt billede er for stort til billedpakken. Gem videoprojektet som JSON.');if(bytes+size>maxBytes)return false;parts.push(...row);bytes+=size;count++;return true;},drain(files={}){const output=parts.slice();for(const [name,data]of Object.entries(files))output.push(...tarFile(name,new TextEncoder().encode(JSON.stringify(data,null,2))));output.push(new Uint8Array(1024));const blob=new Blob(output,{type:'application/x-tar'});parts=[];bytes=0;count=0;return blob;}};}
+  return {create,tarFile};
+});
+</script><script>(function(root){
+  'use strict';
+  function start(A){
+    const P=BuildProject,C=BuildPlan,$=id=>document.getElementById(id),copy=v=>JSON.parse(JSON.stringify(v)),esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    document.querySelectorAll('[data-plan-extension]').forEach(e=>e.remove());
+    const el=(tag,html)=>{const e=document.createElement(tag);e.dataset.planExtension='true';e.innerHTML=html;return e;};
+    const launch=el('button','Projekt og AI');launch.id='project-tools';launch.className='primary';document.querySelector('.file-actions').prepend(launch);
+    const scale=el('label','Visning <select id="time-scale"><option value="days">Arbejdsdage</option><option value="months">Måneder · hele planen</option></select>');scale.className='scale-choice';document.querySelector('.view-description').prepend(scale);$('time-scale').onchange=A.render;
+    const beat=el('label','Egen takt · tomt = områdets takt, 0 = fri<input name="taktDays" type="number" min="0" max="60" placeholder="Arv områdets takt">');$('task-form').querySelector('.editor-actions').before(beat);
+    const impact=el('div','<span>Valgte CO₂-poster</span><strong id="carbon-total">Intet grundlag</strong>');impact.id='carbon-card';document.querySelector('.project-numbers').append(impact);
+    const dlg=el('dialog','<div class="project-dialog-head"><div><span class="eyebrow">ÉN PLAN · FLERE FAG</span><h2>Projektets arbejdsrum</h2></div><button id="tools-close">Luk</button></div><nav class="project-tabs" aria-label="Projektværktøjer"></nav><div id="project-body"></div>');dlg.id='project-dialog';document.body.append(dlg);
+    const sections=[['models','Modeller og Sigma'],['zones','Områder og takt'],['ai','AI-planlægger'],['impact','Pris og CO₂'],['video','Video']];let section='models',preview=null;
+    for(const [id,label]of sections){const b=document.createElement('button');b.textContent=label;b.onclick=()=>{section=id;show();};b.dataset.section=id;dlg.querySelector('nav').append(b);}
+    let exporting=false;dlg.addEventListener('cancel',e=>{if(exporting)e.preventDefault();});
+    $('tools-close').onclick=()=>{if(!exporting)dlg.close();};launch.onclick=()=>{if(!A.applyForm())return;show();dlg.showModal();};
+    const options=(items,val,label)=>items.map(x=>'<option value="'+esc(val(x))+'">'+esc(label(x))+'</option>').join('');
+    const inputFile=(id,handler)=>{$(id).onchange=async e=>{try{const f=e.target.files[0];if(!f)return;if(f.size>150000000)throw new Error('Filen er over 150 MB.');await handler(JSON.parse(await f.text()));}catch(err){A.error(err);}finally{if($(id))$(id).value='';}};};
+    function show(){preview=null;const {plan:p,model,entries,selected}=A.current(),body=$('project-body');dlg.querySelectorAll('[data-section]').forEach(b=>b.classList.toggle('active',b.dataset.section===section));
+      if(section==='models'){
+        body.innerHTML='<p>ARK, konstruktion og installationer beholder hver deres model-ID. Placeringen bruger modellens koordinater; ingen automatisk flytning efter bygningens midte.</p><div class="model-register">'+p.models.map(m=>'<form class="model-row" data-model="'+esc(m.id)+'"><div><b>'+esc(m.name)+'</b><small>'+esc(m.id+' · '+m.discipline+' · '+m.revision)+'</small></div><label class="check"><input name="visible" type="checkbox" '+(m.visible!==false?'checked':'')+'> Vis</label><label>X · m<input name="x" type="number" step="0.001" value="'+m.translation[0]+'"></label><label>Y · m<input name="y" type="number" step="0.001" value="'+m.translation[1]+'"></label><label>Z · m<input name="z" type="number" step="0.001" value="'+m.translation[2]+'"></label><label>Drej · °<input name="rotation" type="number" step="0.01" value="'+m.rotationZ+'"></label><label class="check"><input name="reviewed" type="checkbox" '+(m.coordinatesReviewed?'checked':'')+'> Fælles koordinater kontrolleret</label><button type="submit">Anvend placering</button></form>').join('')+'</div><div class="tool-box"><h3>Tilføj fagmodel</h3><div class="two"><label>Fag<select id="import-discipline">'+['ARK','KON','MEP','VVS','VENT','EL','ANDET'].map(d=>'<option>'+d+'</option>').join('')+'</select></label><label>ISSANA 3D-fil<input id="add-model-file" type="file" accept=".json"></label></div><p>De nye dele får ingen automatisk pris eller rækkefølge. Brug udvælgelsen eller AI-planlæggeren til at knytte dem til arbejde.</p></div><div class="tool-box"><h3>Saml kalkulationer</h3><p>Importér ISSANAs Sigma-prisudtræk eller en normaliseret arbejdspakke. Prisudtrækket indeholder forventede priser, ikke verificerede Sigma-resultater eller arbejdstimer.</p><label>Foreløbigt opsamlingsområde<select id="package-zone">'+options(p.zones,z=>z.id,z=>P.zonePath(p,z.id))+'</select></label><label>Prisudtræk / arbejdspakke som JSON<input id="package-file" type="file" accept=".json"></label><p>'+p.sourcePackages.length+' kalkulationspakker indlæst. Samme kilde kan ikke importeres to gange.</p></div><div class="tool-box"><h3>Udvælg dele til den valgte aktivitet</h3><p>'+esc(selected||'Vælg først en aktivitet')+'</p><div class="two"><label>Fagmodel<select id="rule-model"><option value="">Alle</option>'+options(p.models,m=>m.id,m=>m.discipline+' · '+m.name)+'</select></label><label>Etage i kildemodellen<select id="rule-level"><option value="">Alle</option>'+[...new Set(model.elements.map(e=>e.level))].sort().map(x=>'<option>'+esc(x)+'</option>').join('')+'</select></label><label>Kategori<select id="rule-category"><option value="">Alle</option>'+[...new Set(model.elements.map(e=>e.category))].sort().map(x=>'<option>'+esc(x)+'</option>').join('')+'</select></label><label>Navnet indeholder<input id="rule-name"></label></div><button id="rule-preview">Vis antal</button><button id="rule-apply" disabled>Anvend på aktiviteten</button><p id="rule-result"></p></div>';
+        body.querySelectorAll('form[data-model]').forEach(f=>f.onsubmit=e=>{e.preventDefault();const n=copy(A.current().plan),m=n.models.find(m=>m.id===f.dataset.model);m.translation=['x','y','z'].map(k=>Number(f.elements[k].value));m.rotationZ=Number(f.elements.rotation.value);m.visible=f.elements.visible.checked;m.coordinatesReviewed=f.elements.reviewed.checked;if(A.commit(n,'Modelplaceringen er gemt.'))show();});
+        inputFile('add-model-file',data=>{const s=A.current(),n=P.addModel(s.plan,s.entries,data,$('import-discipline').value);if(A.commit(n.plan,'Fagmodel tilføjet. Kontrollér koordinater og opdeling.',n.entries))show();});
+        const examples=p.tasks.filter(t=>t.illustrative);if(examples.length){const clean=document.createElement('button');clean.textContent='Fjern eksempelaktiviteter før rigtig kalkulation';$('package-file').parentElement.after(clean);clean.onclick=()=>{if(clean.dataset.armed!=='yes'){clean.dataset.armed='yes';clean.textContent='Bekræft: fjern '+examples.length+' eksempelaktiviteter, deres CO₂-poster og referenceplan';return;}const n=copy(A.current().plan),ids=new Set(n.tasks.filter(t=>t.illustrative).map(t=>t.id));n.tasks=n.tasks.filter(t=>!ids.has(t.id));for(const t of n.tasks)t.predecessors=t.predecessors.filter(id=>!ids.has(id));for(const o of n.siteObjects||[])o.taskIds=o.taskIds.filter(id=>!ids.has(id));n.siteObjects=(n.siteObjects||[]).filter(o=>o.taskIds.length);n.climateRecords=n.climateRecords.filter(r=>!ids.has(r.taskId));n.baseline=null;n.dataStatus='source-data';if(A.commit(n,'Eksempelaktiviteter fjernet. Importér nu kalkulationen.'))show();};}
+        inputFile('package-file',data=>{const s=A.current();let pkg=data,warnings=[];if(data.schema==='issana-sigma-prices/1'){const out=BuildSigmaImport.convert(data,s.plan,s.entries,$('package-zone').value);pkg=out.package;warnings=out.warnings;}const n=P.mergePackage(s.plan,pkg);const known=new Set(s.model.elements.map(e=>e.uniqueId));if(n.tasks.some(t=>t.elementIds.some(id=>!known.has(id))))throw new Error('En post peger på modeldele, der ikke findes i denne revision.');if(A.commit(n,'Kalkulation tilføjet. Timer og rækkefølge skal afklares.')){show();if(warnings.length)alert(warnings.map(w=>typeof w==='string'?w:JSON.stringify(w)).join('\n'));}});
+        let selection=null;const getRule=()=>({modelIds:$('rule-model').value?[$('rule-model').value]:[],level:$('rule-level').value,category:$('rule-category').value,nameContains:$('rule-name').value.trim(),exclude:[],include:[]});
+        for(const id of ['rule-model','rule-level','rule-category','rule-name'])$(id).addEventListener('input',()=>{selection=null;$('rule-apply').disabled=true;$('rule-result').textContent='Filtrene er ændret. Vis antal igen.';});
+        $('rule-preview').onclick=()=>{try{selection=P.select(A.current().plan,A.current().model,getRule());$('rule-result').textContent=selection.length+' modeldele. Erstatter den valgte aktivitets tilknytning.';$('rule-apply').disabled=!selected;}catch(e){A.error(e);}};
+        $('rule-apply').onclick=()=>{const n=copy(A.current().plan),t=n.tasks.find(t=>t.id===selected);if(!t)return;const rule=getRule();t.elementIds=P.select(n,A.current().model,rule);t.selectionRule=rule;if(A.commit(n,'Udvælgelsesreglen er gemt.'))show();};
+      }else if(section==='zones'){
+        body.innerHTML='<p>Et område kan samle arbejde fra alle fagmodeller. Lav eksempelvis Bygning A → 1. sal → Opgang A; gård, tag og udvendigt arbejde er selvstændige områder.</p><div class="tool-box"><label>Redigér område<select id="zone-select"><option value="">Nyt område</option>'+options(p.zones,z=>z.id,z=>P.zonePath(p,z.id))+'</select></label><form id="zone-form"><div class="two"><label>Navn<input name="name" required maxlength="150"></label><label>Type<select name="kind">'+[['building','Bygning'],['floor','Etage'],['stair','Opgang'],['outdoor','Udvendigt / gård'],['roof','Tag'],['area','Arbejdsområde']].map(([v,t])=>'<option value="'+v+'">'+t+'</option>').join('')+'</select></label><label>Overområde<select name="parentId"><option value="">Intet · øverste niveau</option>'+options(p.zones,z=>z.id,z=>P.zonePath(p,z.id))+'</select></label><label>Takt · arbejdsdage<input name="taktDays" type="number" min="0" max="60" placeholder="Tomt arver; 0 er fri"></label></div><button class="primary">Gem område</button></form></div><div class="tool-box"><h3>Opret en bygningsstruktur</h3><div class="two"><label>Bygningens navn<input id="building-name" value="Bygning A" maxlength="100"></label><label>Øverste etage<input id="building-floors" type="number" min="0" max="30" value="6"></label></div><button id="building-create">Opret kælder, stue, etager, tag, opgang og udvendigt</button><p>Opretter områder. Fordeling af mængder og aktiviteter skal stadig kontrolleres.</p></div>';
+        $('zone-select').onchange=()=>{const z=p.zones.find(z=>z.id===$('zone-select').value),f=$('zone-form');for(const k of ['name','kind','parentId','taktDays'])f.elements[k].value=z?.[k]??(k==='kind'?'area':'');};
+        $('zone-form').onsubmit=e=>{e.preventDefault();const f=e.currentTarget,n=copy(A.current().plan);let z=n.zones.find(z=>z.id===$('zone-select').value);if(!z){let i=1;while(n.zones.some(z=>z.id==='area-'+i))i++;z={id:'area-'+i};n.zones.push(z);}z.name=f.elements.name.value.trim();z.kind=f.elements.kind.value;z.parentId=f.elements.parentId.value||null;z.taktDays=f.elements.taktDays.value===''?null:Number(f.elements.taktDays.value);if(A.commit(n,'Området er gemt med egen taktrytme.'))show();};
+        $('building-create').onclick=()=>{const n=copy(A.current().plan),floors=Number($('building-floors').value),name=$('building-name').value.trim();if(!name||!Number.isInteger(floors)||floors<0||floors>30)return A.error(new Error('Angiv navn og øverste etage mellem 0 og 30.'));let i=1;while(n.zones.some(z=>z.id==='building-'+i))i++;const id='building-'+i;n.zones.push({id,name,kind:'building',parentId:null,taktDays:null});const zones=[['Kælder','floor'],['Stue','floor'],...Array.from({length:floors},(_,i)=>[(i+1)+'. sal','floor']),['Tag','roof'],['Opgang','stair'],['Udvendigt / gård','outdoor']];zones.forEach(([name,kind],j)=>n.zones.push({id:id+'-'+j,name,kind,parentId:id,taktDays:kind==='outdoor'?0:null}));if(A.commit(n,'Bygningsstrukturen er oprettet.'))show();};
+      }else if(section==='ai'){
+        body.innerHTML='<p>Agenten foreslår lokationer, faglige arbejdspakker og afhængigheder. Planmotoren kontrollerer forslaget før anvendelse. Pris, timer og mængder må ikke opfindes.</p><label>Hvad vil du have ændret?<textarea id="ai-request" rows="3" placeholder="Fordel installationsarbejdet på etager. Vis hvilke poster der mangler timer, og foreslå afhængigheder til råhuset."></textarea></label><div class="editor-actions"><button id="ai-copy">Kopiér opgave og JSON til Claude/Codex</button><button id="ai-context">Gem AI-kontekst</button><button id="ai-send" hidden>Send til ISSANA AI</button></div><p>AI-forslaget skal have projekt-ID og aktuel revision. ISSANA AI kan give små forslag på 1–3 ændringer; kopier JSON fra svaret. Brug kontekstfilen hos Claude/Codex til større planer.</p><label>Forslag som JSON<textarea id="ai-json" rows="10" spellcheck="false" placeholder="Indsæt AI-forslaget her"></textarea></label><label>Åbn forslagsfil<input id="ai-file" type="file" accept=".json"></label><button id="ai-preview" class="primary">Kontrollér og vis konsekvens</button><div id="ai-preview-result" class="preview-card" hidden></div><button id="ai-apply" class="primary" disabled>Anvend det viste forslag</button>';
+        const context=()=>P.context(A.current().plan,$('ai-request').value.trim(),A.current().model);$('ai-copy').onclick=async()=>{try{await navigator.clipboard.writeText(JSON.stringify(context(),null,2));A.toast('Opgave og plan er kopieret. Indsæt dem hos din AI.');}catch(e){A.download('ISSANA-AI-kontekst.json',JSON.stringify(context(),null,2),'application/json');}};$('ai-context').onclick=()=>A.download('ISSANA-AI-kontekst.json',JSON.stringify(context(),null,2),'application/json');
+        if(window.parent!==window&&location.origin!=='null'){$('ai-send').hidden=false;$('ai-send').onclick=()=>{const s=A.current(),q=P.context(s.plan,$('ai-request').value.trim(),s.model,{compact:true}),text=JSON.stringify(q);if(text.length>50000){A.download('ISSANA-AI-kontekst.json',JSON.stringify(context(),null,2),'application/json');return A.toast('Konteksten er for stor til AI-feltet. Brug den gemte JSON-fil hos Claude/Codex.');}window.parent.postMessage({type:'issana-byggeplan-ai',text},location.origin);A.toast('Afventer svar fra ISSANA AI-forbindelsen…');};}
+        const invalidateProposal=()=>{preview=null;$('ai-apply').disabled=true;$('ai-preview-result').hidden=true;};
+        inputFile('ai-file',data=>{$('ai-json').value=JSON.stringify(data,null,2);invalidateProposal();});
+        $('ai-file').addEventListener('change',()=>{$('ai-json').value='';invalidateProposal();});
+        $('ai-preview').onclick=()=>{try{let q=JSON.parse($('ai-json').value);if(!q.schema&&typeof q.svar==='string')q=JSON.parse(q.svar);const s=A.current();preview={request:q,result:P.proposal(s.plan,q,s.model)};const r=preview.result.summary;$('ai-preview-result').hidden=false;$('ai-preview-result').textContent=r.operations+' ændringer · '+r.beforeDays+' → '+r.afterDays+' arbejdsdage · budget '+r.beforeBudget.toLocaleString('da-DK')+' → '+r.afterBudget.toLocaleString('da-DK')+' kr.'+(r.budgetIncomplete?' + ukendt':'')+' · '+r.warnings.length+' opmærksomhedspunkter';$('ai-apply').disabled=false;}catch(e){preview=null;$('ai-apply').disabled=true;A.error(e);}};
+        $('ai-json').oninput=invalidateProposal;$('ai-apply').onclick=()=>{try{if(!preview)return;const s=A.current(),r=P.proposal(s.plan,preview.request,s.model);if(A.commit(r.plan,'AI-forslaget er anvendt. Fortryd kan gendanne planen.')){show();}}catch(e){A.error(e);}};
+      }else if(section==='impact'){
+        body.innerHTML='<p>Vælg hvilke oplysninger der vises. CO₂ er en sum af de dokumenterede poster herunder og er ikke i sig selv en komplet bygnings-LCA.</p><div class="editor-actions"><label class="check"><input id="show-cost" type="checkbox" '+(p.options.cost?'checked':'')+'> Pris / budget</label><label class="check"><input id="show-co2" type="checkbox" '+(p.options.co2?'checked':'')+'> CO₂</label><button id="save-options">Gem visning</button></div><div class="tool-box"><h3>CO₂-grundlag</h3><p>Hver kildepost tilknyttes én aktivitet. Angiv kg CO₂e, livscyklusmoduler og kilden. Ukendt værdi er null. Et ændret udførelsestidspunkt ændrer ikke materialets CO₂-tal.</p><label>Poster som JSON<textarea id="carbon-json" rows="12" spellcheck="false"></textarea></label><button id="carbon-example">Indsæt tom post</button><button id="carbon-apply" class="primary">Kontrollér og gem grundlag</button><p id="carbon-description"></p></div>';
+        $('carbon-json').value=JSON.stringify(p.climateRecords,null,2);const c=P.carbon(p,0);$('carbon-description').textContent=c.count+' poster, '+c.coveredTasks+' aktiviteter med grundlag, '+c.unknown+' ukendte værdier.';
+        $('save-options').onclick=()=>{const n=copy(A.current().plan);n.options={cost:$('show-cost').checked,co2:$('show-co2').checked};A.commit(n,'Visning af pris og CO₂ er gemt.');};
+        $('carbon-example').onclick=()=>{let rows;try{rows=JSON.parse($('carbon-json').value);}catch{rows=[];}rows.push({id:'kildepost-'+(rows.length+1),taskId:selected||p.tasks[0]?.id,kgCo2e:null,modules:'A1-A3',source:'Angiv LCA-post og version'});$('carbon-json').value=JSON.stringify(rows,null,2);};$('carbon-apply').onclick=()=>{try{const n=copy(A.current().plan);n.climateRecords=JSON.parse($('carbon-json').value);if(A.commit(n,'CO₂-grundlaget er gemt.'))show();}catch(e){A.error(e);}};
+      }else{
+        body.innerHTML='<p>Lav en forklarende film med model, dato, aktive entrepriser, områder, tidslinje og farveforklaring. Det automatiske kamera holder hele bygningen i billedet. Start og slut får læsetid.</p><div class="two"><label>Kamera<select id="video-camera"><option value="auto">Rolig bevægelse · hele modellen</option><option value="custom">Mine kamerastillinger · tilpasset modellen</option></select></label><label>Varighed<select id="video-seconds"><option value="30">30 sekunder</option><option value="20">20 sekunder</option><option value="10">10 sekunder · kort prøve</option></select></label><label>Opløsning<select id="video-size"><option value="1920">1920 × 1080 · Full HD</option><option value="1280">1280 × 720 · mindre fil</option></select></label></div><details><summary>Egne kamerastillinger</summary><div class="editor-actions"><button id="camera-start">Gem nuværende kamera som start</button><button id="camera-end">Gem nuværende kamera som slut</button><button id="camera-go">Luk og indstil kameraet i 3D</button></div><p id="camera-status">'+p.cameraShots.length+' kameranøgler gemt i JSON.</p></details><p>30 billeder/sekund, direkte render i den valgte opløsning. Eksempeltider og manglende grundlag fremgår i filmen.</p><button id="video-render" class="primary">Generér forklarende videobilleder</button><button id="video-project">Gem videoprojekt som JSON</button><button id="video-save-part" hidden></button><button id="video-cancel" hidden>Afbryd eksport</button><p id="video-status" role="status"></p><p>Billeder gemmes i dele på ca. 32 MB. Gem hver del og fortsæt; 1080p bevares. Pak alle dele ud i samme nye mappe. Sidste del indeholder manifestet. JSON-filen er alternativet til lokal MP4-rendering.</p><details><summary>Samling til MP4</summary>Efter udpakning: <code>node encode-video.cjs &lt;mappe&gt; &lt;video.mp4&gt;</code>. Kræver Node og FFmpeg. Figurerne er illustrative.</details>';
+        const saveShot=at=>{const n=copy(A.current().plan);n.cameraShots=n.cameraShots.filter(s=>s.at!==at);n.cameraShots.push({at,...A.camera()});n.cameraShots.sort((a,b)=>a.at-b.at);if(A.commit(n,'Kamerastillingen er gemt i planen.'))show();};$('camera-start').onclick=()=>saveShot(0);$('camera-end').onclick=()=>saveShot(1);$('camera-go').onclick=()=>{dlg.close();A.showModel();};$('video-render').onclick=renderVideo;$('video-project').onclick=()=>{const s=A.current(),plan=copy(s.plan);plan.visualization={...plan.visualization,durationSeconds:Number($('video-seconds').value),cameraMode:$('video-camera').value};A.download('ISSANA-videoprojekt.json',JSON.stringify({schema:'issana-byggeplan-package/2',plan,models:s.entries}),'application/json');};
+      }
+    }
+    function sync(){const {plan:p,selected}=A.current();$('task-form').elements.taktDays.value=p.tasks.find(t=>t.id===selected)?.taktDays??'';$('budget').parentElement.hidden=!p.options.cost;document.querySelector('.time-budget').hidden=!p.options.cost;$('carbon-card').hidden=!p.options.co2;const c=P.carbon(p,0);$('carbon-total').textContent=c.count?c.known.toLocaleString('da-DK',{maximumFractionDigits:1})+' kg CO₂e'+(c.unknown?' + ukendt':''):'Intet grundlag';}
+    document.addEventListener('build-plan-render',sync);sync();
+    window.addEventListener('message',e=>{if(e.source!==window.parent||window.parent===window||e.origin!==location.origin||e.data?.type!=='issana-byggeplan-ai-status')return;if(e.data.ok)A.toast('Opgaven er overdraget til ISSANA AI. Se status og svar dér.');else A.error(new Error(e.data.message||'AI-forbindelsen kunne ikke modtage opgaven.'));});
+    async function renderVideo(){
+      const s=A.current(),savedCamera=A.camera(),savedTime=s.time,shots=copy(s.plan.cameraShots),seconds=Number($('video-seconds').value),w=Number($('video-size').value),h=w*9/16,fps=30,count=seconds*fps,frames=[],V=BuildVideo,l=V.layout(w),cameraMode=$('video-camera').value;
+      if(!s.result.tasks.length||s.result.tasks.some(t=>t.blocked))return A.error(new Error('Udfyld planens aktiviteter og manglende varigheder før videoeksport.'));
+      if(cameraMode==='custom'&&shots.length<2)return A.error(new Error('Gem både start- og slutkamera, eller vælg det automatiske kamera.'));
+      const archive=BuildFrameArchive.create(),exportId=new Date().toISOString().replace(/[^0-9]/g,''),save=$('video-save-part');let cancelled=false,sourceCanvas,part=0,pending=null,resume=null;
+      const checkpoint=()=>({schema:'issana-video-checkpoint/1',exportId,complete:false,projectId:s.plan.projectId,revision:s.plan.revision,completedFrames:frames.length,expectedFrames:count,fps,width:w,height:h});
+      async function savePart(complete=false){
+        const n=String(++part).padStart(3,'0'),files={['checkpoint-'+n+'.json']:checkpoint()};
+        if(complete)files['manifest.json']={schema:'issana-plan-video/1',presentation:'issana-explainer/2',exportId,fps,width:w,height:h,frameCount:count,durationSeconds:seconds,projectId:s.plan.projectId,revision:s.plan.revision,fromDay:0,toDay:s.result.horizon,cameraMode,cameraShots:shots,sceneRectangle:l.scene,frames};
+        pending={name:'ISSANA-video-'+exportId+'-del-'+n+'.tar',blob:archive.drain(files)};
+        save.hidden=false;save.disabled=false;save.textContent='Gem del '+part+(complete?' · sidste del':' og fortsæt');
+        $('video-status').textContent=frames.length+' / '+count+' billeder. Klar til at gemme del '+part+'. Bekræft downloaden før du fortsætter.';
+        await new Promise(resolve=>{resume=resolve;save.onclick=()=>{try{A.download(pending.name,pending.blob,'application/x-tar');pending=null;save.hidden=true;resume=null;resolve();}catch(e){A.error(e);}};});
+        if(cancelled)throw new Error('Eksporten er afbrudt. Allerede gemte dele er bevaret.');
+      }
+      exporting=true;const buttons=[...dlg.querySelectorAll('button,input,select,textarea')];buttons.forEach(b=>b.disabled=true);$('video-cancel').hidden=false;$('video-cancel').disabled=false;$('video-cancel').onclick=()=>{cancelled=true;if(resume){const done=resume;resume=null;done();}};
+      const out=document.createElement('canvas');out.width=w;out.height=h;const ctx=out.getContext('2d');
+      try{
+        sourceCanvas=A.beginCapture(l.scene.width,l.scene.height);await document.fonts.ready;
+        for(let i=0;i<count;i++){
+          if(cancelled)throw new Error('Videoeksporten blev afbrudt. Planen og gemte dele er bevaret.');
+          const time=V.timeAt(i,count,s.result.horizon),shot=cameraMode==='custom'?V.fitCamera(P.cameraAt(shots,time.at),s.model.bbox,l.scene.width/l.scene.height):V.automaticCamera(s.model.bbox,time.at,l.scene.width/l.scene.height);
+          A.seek(time.day);A.setCamera(shot);const info=V.draw(ctx,sourceCanvas,s.plan,s.result,time,w,s.model),blob=await new Promise(resolve=>out.toBlob(resolve,'image/jpeg',.96));
+          if(!blob)throw new Error('Kunne ikke danne videobilledet.');
+          const file='frames/frame-'+String(i).padStart(6,'0')+'.jpg',data=new Uint8Array(await blob.arrayBuffer());
+          if(!archive.add(file,data)){await savePart();archive.add(file,data);}
+          frames.push({file,index:i,planDay:time.day,stage:time.stage,date:info.date,activeTaskIds:info.active.map(t=>t.id),camera:shot});
+          $('video-status').textContent='Billede '+(i+1)+' / '+count+' · '+part+' dele sendt til downloads';await new Promise(requestAnimationFrame);
+        }
+        await savePart(true);$('video-status').textContent=count+' billeder i '+part+' dele sendt til downloads. Pak alle dele ud i samme nye mappe og saml til MP4.';
+      }catch(e){
+        if(!pending&&archive.count){const n=String(++part).padStart(3,'0');pending={name:'ISSANA-video-'+exportId+'-ufuldstaendig-'+n+'.tar',blob:archive.drain({['checkpoint-'+n+'.json']:checkpoint()})};}
+        if(pending){save.hidden=false;save.textContent='Gem de bevarede billeder';save.onclick=()=>{try{A.download(pending.name,pending.blob,'application/x-tar');pending=null;save.hidden=true;}catch(err){A.error(err);}};}
+        $('video-status').textContent='Eksport stoppet efter '+frames.length+' / '+count+' billeder. Planen er bevaret.';A.error(e);
+      }finally{A.endCapture();A.seek(savedTime);A.setCamera(savedCamera);exporting=false;buttons.forEach(b=>b.disabled=false);$('video-cancel').hidden=true;}
+    }
+  }
+  root.BuildExtensions={start};
+})(typeof globalThis!=='undefined'?globalThis:this);
+</script><script>(function(){
+  'use strict';
+  let booted=false;
+  function boot(data){
+  if(booted)return;booted=true;
+  const $=id=>document.getElementById(id),C=BuildPlan,M=BuildModel,P=BuildProject;
+  const seed=P.upgrade(data);
+  $('gantt').before(document.querySelector('.playbar'));
+  let model=seed.model,entries=seed.entries,plan=seed.plan,result,selected=plan.tasks[0]?.id,view='gantt',time=6,history=[],dirty=false,formDirty=false,picked=null,timer=null,scene,renderer,camera,controls,group,siteGroup,modelScene,meshes=[],siteMeshes=[],toastTimer,capturing=false;
+  const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const clone=v=>JSON.parse(JSON.stringify(v)),money=n=>new Intl.NumberFormat('da-DK',{maximumFractionDigits:0}).format(n),date=d=>d?new Intl.DateTimeFormat('da-DK',{day:'numeric',month:'short'}).format(new Date(d+'T12:00:00Z')):'Ukendt';
+  const zone=id=>P.zonePath(plan,id)||id;
+  const color=t=>/^#[0-9a-f]{6}$/i.test(t?.color||'')?t.color:'#1b6d72';
+  function error(e){$('error-text').textContent=e.message||String(e);$('error-dialog').showModal();}
+  function toast(msg){$('toast').textContent=msg;$('toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').hidden=true,4500);}
+  function stop(){clearInterval(timer);timer=null;$('play').textContent='Afspil';}
+  // These forms edit local JSON. They must not depend on native form submission
+  // (disabled in the embedded Revit sandbox) or navigate to an action URL.
+  function localSubmit(form,handler){const apply=e=>{e.preventDefault();if(form.reportValidity())handler(e);};form.addEventListener('submit',apply);for(const b of form.querySelectorAll('button[type=submit]'))b.addEventListener('click',apply);form.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.isComposing&&e.target.tagName==='INPUT')apply(e);});}
+  function commit(next,message,nextEntries=entries){
+    try{if(capturing)throw new Error('Vent til videoeksporten er færdig.');P.validate(next);const nextResult=C.schedule(next);validateSite(next);const geometryChanged=nextEntries!==entries||JSON.stringify(next.models)!==JSON.stringify(plan.models),nextModel=geometryChanged?P.federate(next,nextEntries):model;const known=new Set(nextModel.elements.map(e=>e.uniqueId));if(next.tasks.some(t=>t.elementIds.some(id=>!known.has(id))))throw new Error('En aktivitet henviser til en ukendt modeldel.');history.push({plan:clone(plan),entries});if(history.length>25)history.shift();next.revision=plan.revision+1;plan=next;entries=nextEntries;model=nextModel;plan.modelExported=model.exported;result=nextResult;dirty=true;formDirty=false;stop();time=Math.min(time,result.horizon);if(geometryChanged&&renderer)loadGeometry();render();if(message)toast(message);return true;}catch(e){error(e);return false;}
+  }
+  function selectTask(id){if(formDirty&&!confirm('Forkast de ændringer i formularen, som ikke er anvendt?'))return;selected=id;formDirty=false;render();}
+  function render(){
+    result=C.schedule(plan);if(!plan.tasks.some(t=>t.id===selected))selected=plan.tasks[0]?.id;
+    $('project-title').textContent=plan.name||'Byggeplan';$('provenance').textContent=plan.models.length+' fagmodeller · '+model.elements.length+' elementer · revision '+plan.revision;
+    $('finish').textContent=plan.tasks.length?date(result.calendar.dateAt(result.horizon-1))+' · '+result.horizon+' arb.dage':'Afventer aktiviteter';$('budget').textContent=plan.tasks.length?money(result.budget)+(result.budgetIncomplete?' + ukendt':''):'Intet grundlag';
+    $('save-status').textContent=dirty?'Ændringer i denne åbne plan – gem HTML eller JSON':'Plan indlæst · klar til at redigere';$('undo').disabled=!history.length;
+    const note=(model.elements.some(e=>M.provenance(e.provenance).value==='syntheticTest')?'Indeholder testgeometri. ':'Modelgeometri fra udtrækket. ')+(plan.dataStatus==='example-assumptions'?'Tider, bemanding, rækkefølge og priser er eksempelværdier, som skal tilpasses.':'Brugertilpasset plan. Kontrollér kilder, omfang og udførelsesrækkefølge før anvendelse.')+(model.truncated?' Modeludtrækket er beskåret.':'');
+    $('source-note').textContent=note;
+    document.querySelectorAll('[data-view]').forEach(b=>{b.classList.toggle('active',b.dataset.view===view);b.setAttribute('aria-pressed',String(b.dataset.view===view));});
+    $('gantt').hidden=view!=='gantt';$('takt').hidden=view!=='takt';$('model-view').hidden=view!=='model';
+    $('view-caption').textContent=view==='gantt'?'Klik en aktivitet for at rette den. Stregen viser det valgte tidspunkt.':view==='takt'?'Samme plan, grupperet efter område og takt. Lange aktiviteter fylder flere taktperioder.':'3D viser aktivitetsstatus og dine udførelsesforslag. Åbn Udførelse under modellen for deling og pladsarbejde.';
+    renderEditor();renderSettings();renderTime();renderTables();renderWarnings();
+    const previousLevel=$('level').value;$('level').innerHTML='<option value="">Alle</option>'+[...new Set(model.elements.map(e=>e.level))].sort().map(l=>'<option>'+esc(l)+'</option>').join('');if([...$('level').options].some(o=>o.value===previousLevel))$('level').value=previousLevel;
+    if(view==='model'){ensureScene();resizeScene();updateScene();}
+    document.dispatchEvent(new CustomEvent('build-plan-render'));
+  }
+  function renderTime(){
+    $('time').max=String(result.horizon);$('time').value=String(time);
+    $('time-label').textContent=time>=result.horizon?'Afsluttet · '+date(result.calendar.dateAt(result.horizon-1)):'Dag '+(Math.floor(time)+1)+' · '+date(result.calendar.dateAt(Math.floor(time)))+(time%1?' · midt på dagen':' · morgen');
+    const rows=C.snapshot(result,time);$('time-budget').textContent=money(rows.reduce((s,t)=>s+(t.allocatedBudget??0),0))+' kr.'+(result.budgetIncomplete?' + ukendt':'');
+    $('play').disabled=$('time').disabled=!plan.tasks.length;if(!plan.tasks.length){$('time-label').textContent='Tilføj aktiviteter eller importér en kalkulation';$('time-budget').textContent='Intet grundlag';}
+    $('legend').innerHTML='<span class="legend-item"><i class="dot" style="background:#c6ccc6"></i>Færdig</span><span class="legend-item"><i class="dot" style="background:#16787a"></i>I gang (farve pr. aktivitet)</span><span class="legend-item"><i class="dot" style="background:#e8ece7"></i>Kommende</span><span>Budget fordeles jævnt over planlagt arbejdstid; det er ikke faktiske betalinger.</span>';
+  }
+  function windowDays(){if($('time-scale')?.value==='months')return {from:0,to:result.horizon};let from=Math.floor(Math.min(time,result.horizon-1)/30)*30;return {from,to:Math.min(result.horizon,from+30)};}
+  function renderTables(){
+    const {from,to}=windowDays(),days=to-from,monthly=$('time-scale')?.value==='months',rows=C.snapshot(result,time),columns=[];
+    for(let d=from;d<to;d++){const ym=result.calendar.dateAt(d).slice(0,7),last=columns[columns.length-1];if(monthly&&last?.ym===ym)last.days++;else columns.push({ym,day:d,days:1});}
+    const w=monthly?Math.max(540,columns.length*110):days*30;
+    let header='<table style="min-width:'+(220+w)+'px"><thead><tr><th class="row-label">Aktivitet / område</th>';
+    for(const col of columns){const label=monthly?new Intl.DateTimeFormat('da-DK',{month:'short',year:'numeric'}).format(new Date(result.calendar.dateAt(col.day)+'T12:00:00Z')):date(result.calendar.dateAt(col.day));header+='<th class="day-head" style="width:'+(col.days/days*100)+'%">'+esc(label)+'</th>';}
+    header+='</tr></thead><tbody>';
+    let table=header;
+    for(const t of rows){
+      const left=Math.max(0,t.start-from),right=Math.min(days,t.end-from),storedBase=plan.baseline?.tasks?.find(b=>b.id===t.id),base=storedBase?.startDate&&storedBase?.finishDate&&storedBase.finishDate>=result.calendar.dateAt(0)?{start:result.calendar.indexAt(storedBase.startDate),end:result.calendar.indexAt(storedBase.finishDate)+1}:null,inView=!t.blocked&&right>left;
+      table+='<tr class="'+(selected===t.id?'selected':'')+'"><td class="row-label"><button data-task="'+esc(t.id)+'">'+esc(t.name)+'<span>'+esc(t.id)+' · '+esc(zone(t.zoneId))+' · '+(t.blocked?'Mangler input':t.duration+' dage')+'</span></button></td><td colspan="'+columns.length+'" class="gantt-track" style="--day-width:'+100/days+'%">';
+      if(inView)table+='<button class="gantt-bar" data-task="'+esc(t.id)+'" aria-label="'+esc(t.name+', '+date(t.startDate)+' til '+date(t.finishDate))+'" style="left:'+left/days*100+'%;width:'+(right-left)/days*100+'%;--task-color:'+color(t)+'"><span>'+t.duration+' d</span></button>';
+      if($('show-baseline').checked&&base&&base.start!==null&&base.end>from&&base.start<to)table+='<div class="baseline-bar" style="left:'+Math.max(0,base.start-from)/days*100+'%;width:'+(Math.min(to,base.end)-Math.max(from,base.start))/days*100+'%"></div>';
+      table+='<div class="time-line" style="left:'+Math.max(0,Math.min(100,(time-from)/days*100))+'%"></div></td></tr>';
+    }
+    $('gantt').innerHTML=table+'</tbody></table>';
+    const displayStep=monthly?Math.max(plan.taktDays,Math.ceil(days/24)):plan.taktDays,firstSlot=Math.floor(from/displayStep),lastSlot=Math.ceil(to/displayStep);
+    let takt='<table><thead><tr><th class="row-label">Område</th>';
+    for(let slot=firstSlot;slot<lastSlot;slot++)takt+='<th>Periode '+(slot+1)+'<br><small>'+date(result.calendar.dateAt(slot*displayStep))+'</small></th>';
+    takt+='</tr></thead><tbody>';
+    for(const z of plan.zones){const beat=C.rhythm(plan,{zoneId:z.id});takt+='<tr><th class="row-label">'+esc(zone(z.id))+'<small>'+(beat?'Takt '+beat+' arbejdsdage':'Fri planlægning')+'</small></th>';for(let slot=firstSlot;slot<lastSlot;slot++){const start=slot*displayStep,end=start+displayStep;takt+='<td class="takt-cell '+(time>=start&&time<end?'current':'')+'">';for(const t of rows.filter(t=>t.zoneId===z.id&&!t.blocked&&t.start<end&&t.end>start))takt+='<button data-task="'+esc(t.id)+'" style="--task-color:'+color(t)+'">'+esc(t.name)+'<small>'+esc(t.crewId)+' · '+t.duration+' d</small></button>';takt+='</td>';}takt+='</tr>';}
+    $('takt').innerHTML=takt+'</tbody></table>';
+    document.querySelectorAll('[data-task]').forEach(b=>b.onclick=()=>{if(b.dataset.wasDragged==='1'){b.dataset.wasDragged='0';return;}selectTask(b.dataset.task);});
+    $('gantt').querySelectorAll('.gantt-bar').forEach(b=>{
+      b.addEventListener('pointerdown',e=>{if(e.button!==0)return;const x=e.clientX,t=result.tasks.find(t=>t.id===b.dataset.task),track=b.parentElement,dayWidth=track.clientWidth/days;let delta=0;
+        b.setPointerCapture(e.pointerId);
+        const move=ev=>{delta=Math.round((ev.clientX-x)/dayWidth);b.style.transform='translateX('+(ev.clientX-x)+'px)';};
+        const up=()=>{b.removeEventListener('pointermove',move);b.removeEventListener('pointerup',up);b.style.transform='';if(!delta)return;b.dataset.wasDragged='1';if(!applyForm())return;const n=clone(plan),task=n.tasks.find(a=>a.id===t.id);task.notBefore=result.calendar.dateAt(Math.max(0,t.start+delta));selected=t.id;commit(n,'Tidligste start er flyttet. Afhængigheder og hold kan stadig udskyde aktiviteten.');};
+        b.addEventListener('pointermove',move);b.addEventListener('pointerup',up,{once:true});
+      });
+    });
+  }
+  function renderWarnings(){
+    const known=new Set(model.elements.map(e=>e.uniqueId)),unmapped=new Set(known),extra=[];
+    plan.tasks.forEach(t=>t.elementIds.forEach(id=>{unmapped.delete(id);if(!known.has(id))extra.push({message:t.name+': element '+id+' findes ikke i modeludtrækket.'});}));
+    if(unmapped.size)extra.push({message:unmapped.size+' modeldele er endnu ikke knyttet til aktiviteter.'});
+    if(plan.models.length>1)extra.push({message:'Fagmodeller kan indeholde samme fysiske bygningsdel. Mængder og pris må kun tælles fra den aftalte ansvarlige kilde.'});
+    plan.models.filter(m=>!m.coordinatesReviewed).forEach(m=>extra.push({message:m.name+': fælles koordinater er ikke kontrolleret.'}));
+    if(plan.modelKey!==model.modelKey||plan.modelExported!==model.exported)extra.push({message:'Planens modelreference afviger fra det indlæste udtræk. Kontrollér tilknytningerne.'});
+    for(const t of plan.tasks)if(t.execution?.schema==='issana-execution/1'){const check=BuildSceneModel.executionStatus(model,t);if(check.reviewState==='stale')extra.push({message:t.name+': udførelsesforslaget er forældet. Kildegeometrien vises, indtil et nyt forslag er lavet.'});}
+    const all=[...result.warnings,...extra];$('issue-count').textContent=all.length?'Kontrol af planen · '+all.length+' opmærksomhedspunkter':'Kontrol af planen · ingen fund i de automatiske kontroller';
+    $('issue-list').innerHTML=all.map(w=>'<li>'+esc(w.message)+'</li>').join('')+'<li>Automatiske kontroller dækker tider, referencer og hold. Faglig rækkefølge, logistik og sikkerhed kræver projektgennemgang.</li>';
+  }
+  function renderSettings(){const f=$('settings-form');for(const k of ['startDate','hoursPerDay','taktDays'])f.elements[k].value=plan[k];f.elements.holidays.value=plan.holidays.join('\n');}
+  function renderEditor(){
+    const t=plan.tasks.find(t=>t.id===selected),f=$('task-form');f.hidden=!t;if(!t){$('task-id').textContent='';mappingText();return;}
+    $('task-id').textContent=t.id;f.elements.zoneId.innerHTML=plan.zones.map(z=>'<option value="'+esc(z.id)+'">'+esc(zone(z.id))+'</option>').join('');
+    for(const k of ['name','zoneId','enterprise','crewId','crewSize','mode','hours','fixedDays','budget','notBefore','lagDays','source','notes'])f.elements[k].value=t[k]??'';
+    $('days-field').hidden=t.mode!=='fixed';$('hours-field').hidden=t.mode!=='hours';
+    $('dependency-title').textContent='Efter '+t.predecessors.length+' andre aktiviteter';
+    $('dependencies').innerHTML=plan.tasks.filter(x=>x.id!==t.id).map(x=>'<label><input type="checkbox" name="predecessor" value="'+esc(x.id)+'" '+(t.predecessors.includes(x.id)?'checked':'')+'>'+esc(x.id+' · '+zone(x.zoneId)+' · '+x.name)+'</label>').join('');
+    const r=result.tasks.find(x=>x.id===t.id);$('calculated').textContent=r.blocked?r.reason:date(r.startDate)+' → '+date(r.finishDate)+' · '+r.duration+' arbejdsdage'+(r.resourceDelay?' · '+r.resourceDelay+' dage flyttet pga. hold':'');
+    mappingText();
+  }
+  function mappingText(){
+    const t=plan.tasks.find(t=>t.id===selected),e=model.elements.find(e=>e.uniqueId===picked);$('mapping-count').textContent=(t?.elementIds.length||0)+' modeldele knyttet til aktiviteten.';
+    $('picked-description').textContent=e?'Valgt: '+e.category+' · '+e.id+' · '+e.level:'Vælg en bygningsdel i 3D for at ændre tilknytningen.';
+    $('attach').disabled=!t||!e||t.elementIds.includes(picked);$('detach').disabled=!t||!e||!t.elementIds.includes(picked);
+  }
+  function applyForm(){
+    if(!formDirty)return true;const f=$('task-form');if(!f.reportValidity())return false;const next=clone(plan),t=next.tasks.find(t=>t.id===selected);if(!t)return false;
+    for(const k of ['name','zoneId','enterprise','crewId','mode','notBefore','source','notes'])t[k]=f.elements[k].value.trim();
+    for(const k of ['crewSize','fixedDays','lagDays'])t[k]=Number(f.elements[k].value);
+    for(const k of ['hours','budget'])t[k]=f.elements[k].value===''?null:Number(f.elements[k].value);
+    if(f.elements.taktDays)t.taktDays=f.elements.taktDays.value===''?null:Number(f.elements.taktDays.value);
+    t.predecessors=[...f.querySelectorAll('[name=predecessor]:checked')].map(x=>x.value);return commit(next,'Aktiviteten er opdateret i alle visninger.');
+  }
+  function ensureScene(){
+    if(renderer)return;try{
+      renderer=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});renderer.setPixelRatio(Math.min(devicePixelRatio||1,1.5));renderer.setClearColor('#edf0e9');$('canvas-host').replaceChildren(renderer.domElement);
+      scene=new THREE.Scene();camera=new THREE.PerspectiveCamera(42,1,.05,2000);camera.up.set(0,0,1);controls=new THREE.OrbitControls(camera,renderer.domElement);controls.enableDamping=false;controls.screenSpacePanning=true;controls.addEventListener('change',draw);
+      scene.add(new THREE.AmbientLight(0xffffff,.9));const light=new THREE.DirectionalLight(0xfff4dc,1.7);light.position.set(30,-30,60);scene.add(light);const fill=new THREE.DirectionalLight(0xe2eeff,.6);fill.position.set(-20,25,10);scene.add(fill);
+      group=new THREE.Group();siteGroup=new THREE.Group();scene.add(group,siteGroup);loadGeometry();
+      let down;renderer.domElement.addEventListener('pointerdown',e=>down=[e.clientX,e.clientY]);renderer.domElement.addEventListener('pointerup',e=>{if(!down||Math.hypot(e.clientX-down[0],e.clientY-down[1])>6)return;pick(e);});
+      new ResizeObserver(resizeScene).observe($('canvas-host'));
+    }catch(e){$('canvas-host').textContent='3D kunne ikke startes: '+e.message;renderer=null;}
+  }
+  function center(){return model.bbox.min.map((n,i)=>(n+model.bbox.max[i])/2);}
+  function loadGeometry(){
+    if(!renderer)return;
+    modelScene?.dispose();group.clear();modelScene=BuildSceneModel.create(THREE,group,model,center());meshes=modelScene.meshes;
+    loadSite();fit();
+  }
+  function draw(){if(renderer&&camera&&view==='model')renderer.render(scene,camera);}
+  function resizeScene(){if(!renderer||view!=='model'||capturing)return;const host=$('canvas-host'),w=host.clientWidth,h=host.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();draw();}
+  function fit(top=false){if(!camera)return;const size=model.bbox.max.map((n,i)=>n-model.bbox.min[i]),d=Math.max(...size,10);camera.position.set(top?0:d*.95,top?.001:-d*1.25,top?d*1.8:d);camera.near=d/1000;camera.far=d*30;camera.updateProjectionMatrix();controls.target.set(0,0,0);controls.update();draw();}
+  function updateScene(){
+    if(!renderer)return;const rows=C.snapshot(result,time);
+    meshes=modelScene.update(plan,rows,{level:$('level').value,ghost:$('ghost').checked,focus:$('execution-focus')?.value||'all',picked,selectedIds:plan.tasks.find(t=>t.id===selected)?.elementIds||[]});
+    for(const obj of siteGroup.children){const spec=plan.siteObjects?.find(s=>s.id===obj.userData.siteId);obj.visible=$('site-visible')?.checked!==false&&!!spec&&(!spec.taskIds?.length||rows.some(t=>spec.taskIds.includes(t.id)&&t.state==='active'));}
+    draw();
+  }
+  function pick(e){const rect=renderer.domElement.getBoundingClientRect(),p=new THREE.Vector2((e.clientX-rect.left)/rect.width*2-1,-(e.clientY-rect.top)/rect.height*2+1),ray=new THREE.Raycaster();ray.setFromCamera(p,camera);const hit=ray.intersectObjects(meshes.filter(m=>m.visible&&m.material.opacity>.1),false)[0];if(!hit)return;picked=hit.object.userData.key;const el=model.elements.find(x=>x.uniqueId===picked);$('model-pick').textContent=el.category+' · '+el.name+' · '+el.level+' · ID '+el.id;const owner=C.snapshot(result,time).find(t=>t.elementIds.includes(picked)&&t.state==='active')||plan.tasks.find(t=>t.elementIds.includes(picked));if(owner&&!formDirty){selected=owner.id;renderEditor();}else mappingText();updateScene();document.dispatchEvent(new CustomEvent('build-plan-pick'));}
+  function validateSite(p){
+    if(p.siteObjects!==undefined&&!Array.isArray(p.siteObjects))throw new Error('Pladsobjekter skal være en JSON-liste.');
+    if((p.siteObjects||[]).length>100)throw new Error('Højst 100 pladsobjekter i prøveudgaven.');const ids=new Set();
+    for(const o of p.siteObjects||[]){if(!o.id||ids.has(o.id))throw new Error('Pladsobjekter skal have unikke ID’er.');ids.add(o.id);if(!['worker','crane','fence','zone'].includes(o.type)||!Array.isArray(o.position)||o.position.length!==3||o.position.some(n=>!Number.isFinite(n)||Math.abs(n)>1e8))throw new Error('Pladsobjektet '+o.id+' har ugyldig type eller position.');for(const k of ['height','length','width'])if(o[k]!==undefined&&(!Number.isFinite(o[k])||o[k]<=0||o[k]>200))throw new Error(o.id+': dimensioner skal være større end 0 og højst 200 m.');if(!Array.isArray(o.taskIds)||o.taskIds.some(id=>!p.tasks.some(t=>t.id===id)))throw new Error(o.id+': en aktivitet findes ikke.');}
+  }
+  function loadSite(){
+    if(!siteGroup)return;siteGroup.traverse(o=>{o.geometry?.dispose();o.material?.dispose();});siteGroup.clear();const c=center();
+    for(const o of plan.siteObjects||[]){const g=new THREE.Group(),col=o.type==='worker'?0xde9a34:o.type==='fence'?0xc46d3d:0xd4a144;g.userData.siteId=o.id;g.position.set(...o.position.map((n,i)=>n-c[i]));
+      const box=(x,y,z,px,py,pz,hex=col)=>{const m=new THREE.Mesh(new THREE.BoxGeometry(x,y,z),new THREE.MeshLambertMaterial({color:hex}));m.position.set(px,py,pz);g.add(m);};
+      if(o.type==='worker'){box(.4,.25,.75,0,0,.95);box(.14,.16,.65,-.12,0,.325,0x36515a);box(.14,.16,.65,.12,0,.325,0x36515a);const head=new THREE.Mesh(new THREE.SphereGeometry(.18,10,8),new THREE.MeshLambertMaterial({color:0xe0b56b}));head.position.z=1.55;g.add(head);box(.17,.17,.6,-.31,0,1);box(.17,.17,.6,.31,0,1);}
+      else if(o.type==='crane'){const h=o.height||18,l=o.length||22;box(.6,.6,h,0,0,h/2);box(l,.4,.5,l*.28,0,h);box(.035,.035,h*.75,l*.65,0,h*.625,0x485553);box(.7,.5,.3,l*.65,0,h*.25,0x485553);box(3,3,.4,0,0,.2,0x87928c);}
+      else if(o.type==='fence'){const l=o.length||12,h=o.height||1.2;for(let x=0;x<=l;x+=2)box(.08,.08,h,x,0,h/2);box(l,.08,.1,l/2,0,h*.8);box(l,.08,.1,l/2,0,h*.35);}
+      else {const mat=new THREE.MeshBasicMaterial({color:0xdba84f,transparent:true,opacity:.3,side:THREE.DoubleSide});const m=new THREE.Mesh(new THREE.PlaneGeometry(o.length||8,o.width||5),mat);m.position.z=.05;g.add(m);}
+      siteGroup.add(g);
+    }updateScene();
+  }
+  function download(name,text,type){const blob=new Blob([text],{type});if(window.parent!==window&&location.origin!=='null'){window.parent.postMessage({type:'issana-byggeplan-download',name,blob},location.origin);return;}const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),10000);}
+  function payload(){return {schema:'issana-byggeplan-package/2',plan,models:entries};}
+  async function saveHtml(){if(!applyForm()||capturing)return;stop();const revision=plan.revision,copy=document.documentElement.cloneNode(true);copy.querySelector('#bootstrap-data').textContent=C.escapeJson(payload());
+    try{for(const script of copy.querySelectorAll('script[src]')){const url=new URL(script.getAttribute('src'),document.baseURI);if(url.origin!==location.origin)throw new Error('HTML-eksport kræver lokale biblioteker fra samme vært.');const response=await fetch(url.href);if(!response.ok)throw new Error('Biblioteket kunne ikke medtages i HTML-kopien.');script.removeAttribute('src');script.textContent=(await response.text()).replace(/<\/script/gi,'<\\/script');}
+      copy.querySelectorAll('dialog').forEach(d=>d.removeAttribute('open'));copy.querySelectorAll('canvas').forEach(c=>c.remove());copy.querySelector('body').classList.remove('waiting-for-model');download('ISSANA-Byggeplan.html','<!doctype html>\n'+copy.outerHTML,'text/html;charset=utf-8');if(plan.revision===revision)dirty=false;$('save-status').textContent='HTML-kopi er sendt til browserens downloads.';toast('HTML-filen indeholder plan, modeller og biblioteker til genåbning.');
+    }catch(e){error(e);}
+  }
+  function replaceProject(data){if(capturing)throw new Error('Vent til videoeksporten er færdig.');let loaded;if(data.schema==='issana-byggeplan/2'){loaded=P.upgrade({schema:'issana-byggeplan-package/2',plan:data,models:entries});}else if(data.schema==='issana-byggeplan/1'){const source=entries.find(e=>e.model.modelKey===data.modelKey&&e.model.exported===data.modelExported);if(!source)throw new Error('Den gamle JSON-plan kræver sin oprindelige model og revision.');loaded=P.upgrade({plan:data,model:source.model});}else loaded=P.upgrade(data);P.validate(loaded.plan);C.schedule(loaded.plan);validateSite(loaded.plan);model=loaded.model;entries=loaded.entries;plan=loaded.plan;plan.modelExported=model.exported;history=[];dirty=false;formDirty=false;picked=null;selected=plan.tasks[0]?.id;time=0;stop();if(renderer)loadGeometry();render();toast('Plan og fagmodeller er indlæst.');}
+  function openFile(file){if(!file)return;if(file.size>150000000)return error(new Error('Filen er over 150 MB. Brug et mindre udtræk.'));if((dirty||formDirty)&&!confirm('Åbn en anden plan? Gem først, hvis du vil beholde de aktuelle ændringer.'))return;file.text().then(text=>replaceProject(JSON.parse(text))).catch(error).finally(()=>$('file').value='');}
+  $('task-form').addEventListener('input',()=>{formDirty=true;const mode=$('task-form').elements.mode.value;$('days-field').hidden=mode!=='fixed';$('hours-field').hidden=mode!=='hours';});
+  localSubmit($('task-form'),()=>applyForm());
+  localSubmit($('settings-form'),()=>{if(!applyForm())return;const f=$('settings-form'),n=clone(plan);n.startDate=f.elements.startDate.value;n.hoursPerDay=Number(f.elements.hoursPerDay.value);n.taktDays=Number(f.elements.taktDays.value);n.holidays=f.elements.holidays.value.split(/[\s,;]+/).filter(Boolean);if(commit(n,'Planens rammer er opdateret.'))$('settings').open=false;});
+  document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>{if(!applyForm())return;view=b.dataset.view;render();});
+  $('time').oninput=()=>{stop();time=Number($('time').value);renderTime();renderTables();if(view==='model')updateScene();};
+  $('play').onclick=()=>{if(timer){stop();return;}if(!applyForm())return;if(time>=result.horizon)time=0;$('play').textContent='Pause';timer=setInterval(()=>{time=Math.min(result.horizon,time+.5);renderTime();if(view==='model')updateScene();else renderTables();if(time>=result.horizon)stop();},window.matchMedia('(prefers-reduced-motion: reduce)').matches?1600:700);};
+  $('add').onclick=()=>{if(!applyForm())return;const n=clone(plan);let i=1;while(n.tasks.some(t=>t.id==='ny-'+i))i++;const id='ny-'+i;n.tasks.push({id,name:'Ny aktivitet',zoneId:n.zones[0].id,enterprise:'Egen entreprise',crewId:'Nyt hold',crewSize:1,mode:'hours',hours:null,fixedDays:1,lagDays:0,notBefore:'',predecessors:[],elementIds:[],budget:null,color:'#326e73',source:'Skal udfyldes',notes:''});selected=id;commit(n,'Ny aktivitet oprettet. Udfyld timer og budget.');};
+  $('delete').onclick=()=>{const dependent=plan.tasks.filter(t=>t.predecessors.includes(selected));if(dependent.length)return error(new Error('Ret først afhængighederne i: '+dependent.map(t=>t.id).join(', ')));const n=clone(plan);n.tasks=n.tasks.filter(t=>t.id!==selected);for(const o of n.siteObjects||[])o.taskIds=o.taskIds.filter(id=>id!==selected);commit(n,'Aktiviteten er fjernet. Fortryd kan gendanne den.');};
+  $('undo').onclick=()=>{if(formDirty&&!confirm('Forkast formularændringer og fortryd sidste ændring?'))return;if(!history.length)return;const revision=plan.revision+1,old=history.pop();plan=old.plan;plan.revision=revision;entries=old.entries;model=P.federate(plan,entries);plan.modelExported=model.exported;dirty=true;formDirty=false;stop();if(renderer)loadGeometry();render();toast('Sidste ændring er fortrudt.');};
+  $('save').onclick=saveHtml;$('json').onclick=()=>{if(!applyForm())return;download('ISSANA-Byggeplan.json',JSON.stringify(plan,null,2),'application/json');dirty=false;$('save-status').textContent='JSON-plan er sendt til downloads; modellen ligger fortsat i HTML-filen.';};
+  $('csv').onclick=()=>{if(applyForm())download('ISSANA-Tidsplan.csv',C.csv(result),'text/csv;charset=utf-8');};
+  $('baseline').onclick=()=>{if(!applyForm())return;if(plan.baseline&&!confirm('Erstat den eksisterende referenceplan med de nuværende datoer?'))return;const n=clone(plan);n.baseline={captured:new Date().toISOString(),startDate:n.startDate,tasks:result.tasks.map(t=>({id:t.id,start:t.start,end:t.end,startDate:t.startDate,finishDate:t.finishDate,budget:t.budget}))};commit(n,'Referenceplanen er fastholdt.');$('show-baseline').checked=true;renderTables();};
+  $('show-baseline').onchange=()=>{if($('show-baseline').checked&&!plan.baseline){$('show-baseline').checked=false;toast('Fasthold først en referenceplan under Flere.');}renderTables();};
+  $('open').onclick=()=>$('file').click();$('file').onchange=e=>openFile(e.target.files[0]);$('close-error').onclick=()=>$('error-dialog').close();
+  $('fit').onclick=()=>fit();$('plan-camera').onclick=()=>fit(true);$('ghost').onchange=updateScene;$('level').onchange=updateScene;
+  for(const action of ['attach','detach'])$(action).onclick=()=>{if(!applyForm())return;const n=clone(plan),t=n.tasks.find(t=>t.id===selected);if(!t||!picked)return;if(action==='attach')t.elementIds=[...new Set([...t.elementIds,picked])];else t.elementIds=t.elementIds.filter(id=>id!==picked);commit(n,'Tilknytningen er ændret i planen.');};
+  $('print').onclick=()=>{if(!applyForm())return;view='gantt';render();if(result.horizon>30)toast('Udskrift viser det aktuelle udsnit på højst 30 arbejdsdage. Brug CSV eller XML til hele planen.');window.print();};
+  window.addEventListener('beforeunload',e=>{if(dirty||formDirty){e.preventDefault();e.returnValue='';}});window.addEventListener('pagehide',stop);
+  document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='s'){e.preventDefault();saveHtml();}});
+  // Advanced site objects remain data in the same JSON plan; illustrations are not engineering checks.
+  document.querySelectorAll('.site-controls,#site-dialog,#xml-export,#json-package').forEach(el=>el.remove());
+  const extraMenu=$('csv').parentElement;const xmlButton=document.createElement('button');xmlButton.id='xml-export';xmlButton.textContent='Eksportér til MS Project (XML)';extraMenu.append(xmlButton);xmlButton.onclick=()=>{try{if(applyForm())download('ISSANA-MS-Project.xml',BuildProjectXml.exportXml(plan),'application/xml');}catch(e){error(e);}};
+  const packageButton=document.createElement('button');packageButton.id='json-package';packageButton.textContent='Gem JSON med hele modellen';extraMenu.append(packageButton);packageButton.onclick=()=>{if(applyForm())download('ISSANA-Byggeplan-med-model.json',JSON.stringify(payload()),'application/json');};
+  const siteControls=document.createElement('span');siteControls.className='site-controls';siteControls.innerHTML='<label class="check"><input id="site-visible" type="checkbox" checked> Pladsillustration</label><button id="site-edit">Pladsobjekter (JSON)</button>';$('model-view').querySelector('.model-controls').append(siteControls);
+  const siteDialog=document.createElement('dialog');siteDialog.id='site-dialog';siteDialog.innerHTML='<h2>Pladsobjekter</h2><p>Illustrationer i modelkoordinater (meter). Typer: worker, crane, fence og zone. taskIds bestemmer, hvornår objektet vises. Ingen kontrol af løft eller sikkerhedsafstande.</p><textarea id="site-json" rows="16" aria-label="Pladsobjekter som JSON"></textarea><div class="editor-actions"><button id="site-apply" class="primary">Anvend objekter</button><button id="site-close">Luk</button></div>';document.body.append(siteDialog);
+  $('site-visible').onchange=updateScene;$('site-edit').onclick=()=>{$('site-json').value=JSON.stringify(plan.siteObjects||[],null,2);siteDialog.showModal();};$('site-close').onclick=()=>siteDialog.close();$('site-apply').onclick=()=>{try{const n=clone(plan);n.siteObjects=JSON.parse($('site-json').value);if(commit(n,'Pladsobjekterne er opdateret.')){loadSite();siteDialog.close();}}catch(e){error(e);}};
+  window.BuildWorkspace={current:()=>({plan,model,entries,result,selected,picked,time,view}),commit,applyForm,replaceProject,selectTask,error,toast,download,render,refreshScene:updateScene,localSubmit,
+    showModel:()=>{view='model';render();},seek:n=>{stop();time=Math.max(0,Math.min(result.horizon,n));renderTime();updateScene();},
+    camera:()=>{ensureScene();const c=center();return {position:camera.position.toArray().map((v,i)=>v+c[i]),target:controls.target.toArray().map((v,i)=>v+c[i])};},
+    setCamera:shot=>{ensureScene();const c=center();camera.position.set(...shot.position.map((v,i)=>v-c[i]));controls.target.set(...shot.target.map((v,i)=>v-c[i]));controls.update();draw();},
+    beginCapture:(w,h)=>{view='model';render();if(!renderer)throw new Error('3D-rendering er ikke tilgængelig.');capturing=true;renderer.setPixelRatio(1);renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();controls.enabled=false;draw();return renderer.domElement;},
+    endCapture:()=>{capturing=false;if(renderer){renderer.setPixelRatio(Math.min(devicePixelRatio||1,1.5));controls.enabled=true;resizeScene();}render();}
+  };
+  validateSite(plan);render();if(window.BuildExtensions)BuildExtensions.start(window.BuildWorkspace);if(window.BuildExecutionUI)BuildExecutionUI.start(window.BuildWorkspace);
+  }
+  const initial=JSON.parse(document.getElementById('bootstrap-data').textContent);
+  if(initial)boot(initial);
+  else{
+    document.getElementById('project-title').textContent='Byggeplan · klar til modellen';
+    document.getElementById('source-note').textContent='Aktivér byggeplanen fra ISSANA 3D for at bruge den åbne model.';
+    document.body.classList.add('waiting-for-model');
+    window.addEventListener('message',e=>{
+      if(window.parent===window||location.origin==='null'||e.source!==window.parent||e.origin!==location.origin||e.data?.type!=='issana-byggeplan-init')return;
+      try{
+        if(booted){if(!confirm('Indlæs en ny model og begynd en ny plan? Gem først dine ændringer.'))return;window.BuildWorkspace.replaceProject(e.data.model);}
+        else{BuildProject.upgrade(e.data.model);boot(e.data.model);document.body.classList.remove('waiting-for-model');}
+      }catch(err){const text=document.getElementById('source-note');text.textContent=err.message||String(err);}
+    });
+    if(window.parent!==window&&location.origin!=='null')window.parent.postMessage({type:'issana-byggeplan-ready'},location.origin);
+  }
+})();
+</script>
+</body></html>

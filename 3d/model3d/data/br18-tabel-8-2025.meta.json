@@ -1,0 +1,8 @@
+{
+  "fil": "br18-tabel-8-2025.json",
+  "beskrivelse": "BR18 bilag 2 tabel 8 (2025): emissionsfaktorer for energi (8.1: el, fjernvarme, gas pr. år) og brændsler (8.2). Versionslåst kopi fra ISSANA LCA. LCA-fanen laver B6-posterne med tabel 8.1 (lca-projekt.js energiPoster, via br18-tabel-8-2025.js), og Rust kontrollerer hver faktor mod sin indbyggede kopi.",
+  "kopieretFra": "D:/ISSANA/22_ISSANA_LCA/prototype/data/br18-tabel-8-2025.json",
+  "kopieret": "2026-11-01",
+  "sha256": "773bb519e2840d71dd76600f37418b9d5113daa5c87953787b9d3054d787d4ca",
+  "kilde": { "side": "https://www.bygningsreglementet.dk/historisk/version-18/bilag/b2/bilag_2/tabel_8/" }
+}

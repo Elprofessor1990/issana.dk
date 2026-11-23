@@ -1,0 +1,186 @@
+{
+  "schema": "issana-student-exercise/1",
+  "id": "to-rum-01",
+  "version": 2,
+  "title": "To rum – fra manglende input til tre faglige kontroller",
+  "description": "En syntetisk model med to rum à 20 m². Ret få input og kontroller lyd gennem skillevæggen, transmission gennem én ydervæg og betonens A1–A3-bidrag.",
+  "variants": {
+    "student": "elev.issana3d.json",
+    "teacher": "laerer.issana3d.json"
+  },
+  "reference": "facit.json",
+  "provenance": {
+    "synthetic": true,
+    "source": "Syntetisk øvelsesværdi – ingen prøvningsrapport eller produktdokumentation",
+    "productData": "Ingen produktprøvning eller verificeret EPD er opdigtet. LCA-faktoren kommer fra den medfølgende generiske tabel 7.",
+    "statutoryCompliance": false
+  },
+  "geometry": {
+    "roomIds": [
+      1001,
+      1002
+    ],
+    "elementIds": [
+      2001,
+      2007
+    ],
+    "floor": "Plan 0",
+    "eachRoomAreaM2": 20,
+    "eachRoomVolumeM3": 56,
+    "partitionAreaM2": 14,
+    "partitionThicknessM": 0.2
+  },
+  "completeLca": {
+    "project": "laerer-lca.projekt.json",
+    "assumptions": "lca-forudsaetninger.json",
+    "expectedEngineStatus": "calculated_draft",
+    "scope": "Alle ti syntetiske modeldele, generiske installationer og eksplicit antaget drift/byggeplads. Ikke et virkeligt byggeprojekt eller en myndighedseftervisning.",
+    "action": "issana_lca_beregn",
+    "payloadProperty": "projekt",
+    "resultIsNotBuildingApproval": true,
+    "comparison": "Denne komplette lærerberegning omfatter mere end elevens skillevægsudsnit. Sammenlign samme omfang."
+  },
+  "steps": [
+    {
+      "id": "lyd",
+      "discipline": "lyd",
+      "title": "Lyd mellem rum A og B",
+      "roomIds": [
+        1001,
+        1002
+      ],
+      "elementIds": [
+        2007
+      ],
+      "scope": "Kun direkte lydtransmission; ingen flankeveje, døre eller gennemføringer.",
+      "fields": [
+        {
+          "id": "wallRw",
+          "target": "type",
+          "targetId": 3002,
+          "path": "bygdata.data.lyd.dokumenteret.vaerdi",
+          "unit": "dB",
+          "answer": 55
+        },
+        {
+          "id": "roomT",
+          "target": "room",
+          "targetId": 1001,
+          "path": "bygdata.data.lyd.efterklang.vaerdi",
+          "unit": "s",
+          "answer": 0.6
+        }
+      ],
+      "calculation": {
+        "api": "IssanaLyd.luftlydMellemRum",
+        "input": {
+          "skillevaeg": {
+            "Rw": 55,
+            "areal": 14
+          },
+          "flanker": [],
+          "modtagerVolumen": 56,
+          "T0": 0.5
+        },
+        "output": "Rw_mark"
+      },
+      "assumptions": [
+        "Rw=55 dB er en syntetisk undervisningsværdi.",
+        "Ingen flanker er en bevidst forenkling og vil typisk overvurdere isolation.",
+        "Efterklang 0,6 s er et oplyst øvelsesinput. ISSANA beregner ikke efterklang; T0=0,5 s i standardiseringen er et andet tal."
+      ]
+    },
+    {
+      "id": "energi",
+      "discipline": "energi",
+      "title": "Varmetab gennem sydvæggen i rum A",
+      "roomIds": [
+        1001
+      ],
+      "elementIds": [
+        2001
+      ],
+      "scope": "Kun den opake ydervæg på 9,48 m². Vindue, ventilation, kuldebroer og resten af bygningen indgår ikke.",
+      "fields": [
+        {
+          "id": "wallU",
+          "target": "element",
+          "targetId": 2001,
+          "path": "uValue",
+          "unit": "W/(m² K)",
+          "answer": 0.2
+        }
+      ],
+      "calculation": {
+        "api": "IssanaEnergiBeregning.transmission",
+        "input": {
+          "konstruktioner": [
+            {
+              "b": 1,
+              "u": 0.2,
+              "total_area": 9.48,
+              "td_out": -12,
+              "aabninger": []
+            }
+          ],
+          "kuldebroer": []
+        },
+        "output": "dim"
+      },
+      "assumptions": [
+        "Inde 20 °C, ude −12 °C og b=1 er eksplicitte øvelsesantagelser.",
+        "Den almindelige Energi-fane bruger yderligere standardantagelser; dens årsenergi er ikke dette facit."
+      ]
+    },
+    {
+      "id": "lca",
+      "discipline": "lca",
+      "title": "Betonen i skillevæggen",
+      "roomIds": [
+        1001,
+        1002
+      ],
+      "elementIds": [
+        2007
+      ],
+      "scope": "Materialeudsnit, kun A1–A3. Resultatet er ikke en helbygnings-LCA eller kontrol mod en klimagrænse.",
+      "fields": [
+        {
+          "id": "genericProduct",
+          "target": "exercise",
+          "path": "lca.selectedCatalogueKey",
+          "answer": "#B1425@24"
+        }
+      ],
+      "calculation": {
+        "quantity": 2.8,
+        "unit": "m³",
+        "catalogue": "../../br18-tabel-7-2025.json",
+        "catalogueKey": "#B1425@24",
+        "module": "a1a3",
+        "factor": 215,
+        "unitResult": "kg CO₂e",
+        "choices": [
+          {
+            "key": "#B1425@24",
+            "name": "Fabriksbeton (C20/25 SCC) i eksponeringsklasserne X0 og XC1"
+          },
+          {
+            "key": "#B1433@25",
+            "name": "Fabriksbeton (C25/30) i eksponeringsklasserne X0 og XC1"
+          }
+        ]
+      },
+      "assumptions": [
+        "14 m² × 0,20 m = 2,80 m³ beton uden armering eller overflader.",
+        "Generiske branchedata bruges som øvelsesvalg; ingen bestemt producent eller virkelig væg er dokumenteret."
+      ]
+    }
+  ],
+  "limits": [
+    "Ingen statisk bæreevnekontrol",
+    "Ingen timeberegning af overophedning",
+    "Skyggevisning er ikke dokumentation for sommerkomfort",
+    "Ingen faktisk elevundersøgelse eller live Revit-test i dette facit"
+  ]
+}

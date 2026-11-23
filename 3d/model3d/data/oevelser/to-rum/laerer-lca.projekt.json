@@ -1,0 +1,1689 @@
+{
+  "schema_version": 3,
+  "kind": "issana_lca_project",
+  "id": "58a6e8f0-900f-4b87-896a-d8566afbe605",
+  "name": "ØVELSE – to rum, fuldt oplyst syntetisk LCA-scenarie",
+  "test_data": true,
+  "building_use": "other",
+  "reference_area_m2": 49.28,
+  "heated_area_m2": 49.28,
+  "period_years": 50,
+  "source_lcabyg": null,
+  "catalogues": [
+    {
+      "id": "br18-tabel-7-2025@b450eb32046e",
+      "title": "BR18 bilag 2 tabel 7 (2025) · lokalt katalog",
+      "file": "prototype/data/br18-tabel-7-2025.json",
+      "sha256": "b450eb32046e1be036c63dda5c73f84bb6317ec50c067286394d3b4657ea1c86",
+      "source_workbook_sha256": "3ac0babdd803cc688e058c9b1096c9871c849362014d4da80564000b73bcdb18"
+    }
+  ],
+  "building_model": {
+    "parts": [
+      {
+        "id": "d-indervaegge",
+        "name": "Indervægge",
+        "category": "ISSANA 3D › Indervægge",
+        "source": "SYNTETISK ØVELSE: ISSANA 3D: bygningsdel efter lca-bygningsdele.json (Revit-kategori, funktion, laveste niveau, CCI) i ØVELSE – to rum (lærer).",
+        "import_ref": null,
+        "installation_category": null
+      },
+      {
+        "id": "d-tage",
+        "name": "Tage",
+        "category": "ISSANA 3D › Tage",
+        "source": "SYNTETISK ØVELSE: ISSANA 3D: bygningsdel efter lca-bygningsdele.json (Revit-kategori, funktion, laveste niveau, CCI) i ØVELSE – to rum (lærer).",
+        "import_ref": null,
+        "installation_category": null
+      },
+      {
+        "id": "d-terraendaek",
+        "name": "Terrændæk",
+        "category": "ISSANA 3D › Terrændæk",
+        "source": "SYNTETISK ØVELSE: ISSANA 3D: bygningsdel efter lca-bygningsdele.json (Revit-kategori, funktion, laveste niveau, CCI) i ØVELSE – to rum (lærer).",
+        "import_ref": null,
+        "installation_category": null
+      },
+      {
+        "id": "d-vinduer-doere",
+        "name": "Vinduer, døre, glasfacader",
+        "category": "ISSANA 3D › Vinduer, døre, glasfacader",
+        "source": "SYNTETISK ØVELSE: ISSANA 3D: bygningsdel efter lca-bygningsdele.json (Revit-kategori, funktion, laveste niveau, CCI) i ØVELSE – to rum (lærer).",
+        "import_ref": null,
+        "installation_category": null
+      },
+      {
+        "id": "d-ydervaegge",
+        "name": "Ydervægge",
+        "category": "ISSANA 3D › Ydervægge",
+        "source": "SYNTETISK ØVELSE: ISSANA 3D: bygningsdel efter lca-bygningsdele.json (Revit-kategori, funktion, laveste niveau, CCI) i ØVELSE – to rum (lærer).",
+        "import_ref": null,
+        "installation_category": null
+      }
+    ],
+    "constructions": [
+      {
+        "id": "k-indervaegge-3002",
+        "part_id": "d-indervaegge",
+        "name": "ØVELSE: skillevæg beton 200 mm",
+        "quantity": 14,
+        "unit": "m2",
+        "quantity_source": "SYNTETISK ØVELSE: øvelsesmodel via ISSANA 3D: 1 elementer af typen «ØVELSE: skillevæg beton 200 mm» (type-id 3002), samlet areal 14 m² (elementernes areal i issana-3d-eksporten).",
+        "import_ref": null
+      },
+      {
+        "id": "k-tage-3004",
+        "part_id": "d-tage",
+        "name": "ØVELSE: tag",
+        "quantity": 49.28,
+        "unit": "m2",
+        "quantity_source": "SYNTETISK ØVELSE: øvelsesmodel via ISSANA 3D: 1 elementer af typen «ØVELSE: tag» (type-id 3004), samlet areal 49,28 m² (elementernes areal i issana-3d-eksporten).",
+        "import_ref": null
+      },
+      {
+        "id": "k-terraendaek-3003",
+        "part_id": "d-terraendaek",
+        "name": "ØVELSE: terrændæk",
+        "quantity": 41,
+        "unit": "m2",
+        "quantity_source": "SYNTETISK ØVELSE: øvelsesmodel via ISSANA 3D: 1 elementer af typen «ØVELSE: terrændæk» (type-id 3003), samlet areal 41 m² (elementernes areal i issana-3d-eksporten).",
+        "import_ref": null
+      },
+      {
+        "id": "k-vinduer-doere-3005",
+        "part_id": "d-vinduer-doere",
+        "name": "ØVELSE: vindue 1600 × 1250",
+        "quantity": 4,
+        "unit": "m2",
+        "quantity_source": "SYNTETISK ØVELSE: øvelsesmodel via ISSANA 3D: 2 elementer af typen «ØVELSE: vindue 1600 × 1250» (type-id 3005), samlet areal 4 m² (elementernes areal i issana-3d-eksporten).",
+        "import_ref": null
+      },
+      {
+        "id": "k-ydervaegge-3001",
+        "part_id": "d-ydervaegge",
+        "name": "ØVELSE: ydervæg",
+        "quantity": 73.28,
+        "unit": "m2",
+        "quantity_source": "SYNTETISK ØVELSE: øvelsesmodel via ISSANA 3D: 5 elementer af typen «ØVELSE: ydervæg» (type-id 3001), samlet areal 73,28 m² (elementernes areal i issana-3d-eksporten).",
+        "import_ref": null
+      }
+    ],
+    "products": [
+      {
+        "id": "p-indervaegge-3002-0",
+        "construction_id": "k-indervaegge-3002",
+        "name": "Fabriksbeton C20/25 SCC",
+        "amount": 0.2,
+        "unit": "m3",
+        "per_unit": "m2",
+        "quantity_source": "SYNTETISK ØVELSE: øvelsesmodel-typen «ØVELSE: skillevæg beton 200 mm», lag 1 «Fabriksbeton C20/25 SCC» 200 mm: lagtykkelse 200 mm fra øvelsesmodel-typen = 0,2 m³ pr. m².",
+        "service_life_years": null,
+        "service_life_source": null,
+        "environmental_data_id": "m-b1425-24",
+        "conversion": null,
+        "import_ref": null,
+        "service_life_ref": {
+          "table": "build-levetidstabel-2021@1fdb4998faeb",
+          "row": "22/(22)2",
+          "column": "f2,f3"
+        }
+      },
+      {
+        "id": "p-tage-3004-0",
+        "construction_id": "k-tage-3004",
+        "name": "Beton",
+        "amount": 0.2,
+        "unit": "m3",
+        "per_unit": "m2",
+        "quantity_source": "SYNTETISK ØVELSE: øvelsesmodel-typen «ØVELSE: tag», lag 1 «Beton» 200 mm: lagtykkelse 200 mm fra øvelsesmodel-typen = 0,2 m³ pr. m².",
+        "service_life_years": null,
+        "service_life_source": null,
+        "environmental_data_id": "m-b1425-24",
+        "conversion": null,
+        "import_ref": null,
+        "service_life_ref": {
+          "table": "build-levetidstabel-2021@1fdb4998faeb",
+          "row": "27/(27)1",
+          "column": "f2,f3"
+        }
+      },
+      {
+        "id": "p-tage-3004-1",
+        "construction_id": "k-tage-3004",
+        "name": "Mineraluld",
+        "amount": 1,
+        "unit": "m2",
+        "per_unit": "m2",
+        "quantity_source": "SYNTETISK ØVELSE: øvelsesmodel-typen «ØVELSE: tag», lag 2 «Mineraluld» 300 mm: 1 m² pr. m² konstruktion, lagtykkelse 300 mm fra øvelsesmodel-typen; omregnet til m² ved R=1 med λ fra datasættets navn.",
+        "service_life_years": null,
+        "service_life_source": null,
+        "environmental_data_id": "m-d1541-83",
+        "conversion": {
+          "from_unit": "m2",
+          "to_unit": "m² with R=1 m²K/W",
+          "multiplier": 8.108108108108109,
+          "source": "R = tykkelse ÷ λ = 0,3 m ÷ 0.037 W/mK (kl. 37 i datasættets navn, BR18 bilag 2 tabel 7 (2025), #D1541@83)"
+        },
+        "import_ref": null,
+        "service_life_ref": {
+          "table": "build-levetidstabel-2021@1fdb4998faeb",
+          "row": "27/(27)3",
+          "column": "m1"
+        }
+      },
+      {
+        "id": "p-terraendaek-3003-0",
+        "construction_id": "k-terraendaek-3003",
+        "name": "Beton",
+        "amount": 0.2,
+        "unit": "m3",
+        "per_unit": "m2",
+        "quantity_source": "SYNTETISK ØVELSE: øvelsesmodel-typen «ØVELSE: terrændæk», lag 1 «Beton» 200 mm: lagtykkelse 200 mm fra øvelsesmodel-typen = 0,2 m³ pr. m².",
+        "service_life_years": null,
+        "service_life_source": null,
+        "environmental_data_id": "m-b1425-24",
+        "conversion": null,
+        "import_ref": null,
+        "service_life_ref": {
+          "table": "build-levetidstabel-2021@1fdb4998faeb",
+          "row": "13/(13)2",
+          "column": "f2,f3"
+        }
+      },
+      {
+        "id": "p-vinduer-doere-3005-0",
+        "construction_id": "k-vinduer-doere-3005",
+        "name": "ØVELSE: vindue 1600 × 1250",
+        "amount": 1,
+        "unit": "m2",
+        "per_unit": "m2",
+        "quantity_source": "SYNTETISK ØVELSE: øvelsesmodel-typen «ØVELSE: vindue 1600 × 1250», lag 1 «ØVELSE: vindue 1600 × 1250»: 1 m² byggevare pr. m² konstruktion (datasættet er pr. m²).",
+        "service_life_years": null,
+        "service_life_source": null,
+        "environmental_data_id": "m-d1634-170",
+        "conversion": null,
+        "import_ref": null,
+        "service_life_ref": {
+          "table": "build-levetidstabel-2021@1fdb4998faeb",
+          "row": "31/(31)4",
+          "column": "i1"
+        }
+      },
+      {
+        "id": "p-ydervaegge-3001-0",
+        "construction_id": "k-ydervaegge-3001",
+        "name": "Beton",
+        "amount": 0.15,
+        "unit": "m3",
+        "per_unit": "m2",
+        "quantity_source": "SYNTETISK ØVELSE: øvelsesmodel-typen «ØVELSE: ydervæg», lag 1 «Beton» 150 mm: lagtykkelse 150 mm fra øvelsesmodel-typen = 0,15 m³ pr. m².",
+        "service_life_years": null,
+        "service_life_source": null,
+        "environmental_data_id": "m-b1425-24",
+        "conversion": null,
+        "import_ref": null,
+        "service_life_ref": {
+          "table": "build-levetidstabel-2021@1fdb4998faeb",
+          "row": "21/(21)3",
+          "column": "f2,f3"
+        }
+      },
+      {
+        "id": "p-ydervaegge-3001-1",
+        "construction_id": "k-ydervaegge-3001",
+        "name": "Mineraluld",
+        "amount": 1,
+        "unit": "m2",
+        "per_unit": "m2",
+        "quantity_source": "SYNTETISK ØVELSE: øvelsesmodel-typen «ØVELSE: ydervæg», lag 2 «Mineraluld» 150 mm: 1 m² pr. m² konstruktion, lagtykkelse 150 mm fra øvelsesmodel-typen; omregnet til m² ved R=1 med λ fra datasættets navn.",
+        "service_life_years": null,
+        "service_life_source": null,
+        "environmental_data_id": "m-d1541-83",
+        "conversion": {
+          "from_unit": "m2",
+          "to_unit": "m² with R=1 m²K/W",
+          "multiplier": 4.054054054054054,
+          "source": "R = tykkelse ÷ λ = 0,15 m ÷ 0.037 W/mK (kl. 37 i datasættets navn, BR18 bilag 2 tabel 7 (2025), #D1541@83)"
+        },
+        "import_ref": null,
+        "service_life_ref": {
+          "table": "build-levetidstabel-2021@1fdb4998faeb",
+          "row": "21/(21)5",
+          "column": "m1"
+        }
+      }
+    ],
+    "environmental_data": [
+      {
+        "id": "m-b1425-24",
+        "origin": "official_catalogue",
+        "dataset_id": "#B1425@24",
+        "dataset_name": "Fabriksbeton (C20/25 SCC) i eksponeringsklasserne X0 og XC1",
+        "catalogue_id": "br18-tabel-7-2025@b450eb32046e",
+        "catalogue_key": "#B1425@24",
+        "source": "BR18 bilag 2 tabel 7 (2025), #B1425@24, række 24; https://www.bygningsreglementet.dk/historisk/version-18/bilag/b2/bilag_2/tabel_7/; underliggende kilde: https://www.epddanmark.dk/media/qoelm3vd/md-20011-da_rev1-dansk-beton-fabriksbetonforeningen.pdf",
+        "declared_unit": "m³",
+        "modules": {
+          "a1a3": {
+            "status": "declared",
+            "value": 215
+          },
+          "c3": {
+            "status": "declared",
+            "value": 6.94
+          },
+          "c4": {
+            "status": "declared",
+            "value": 5.13
+          },
+          "d": {
+            "status": "declared",
+            "value": -4.74
+          }
+        },
+        "valid_until": null,
+        "epd": null
+      },
+      {
+        "id": "m-d1541-83",
+        "origin": "official_catalogue",
+        "dataset_id": "#D1541@83",
+        "dataset_name": "Mineraluld, murbatts, kl. 37",
+        "catalogue_id": "br18-tabel-7-2025@b450eb32046e",
+        "catalogue_key": "#D1541@83",
+        "source": "BR18 bilag 2 tabel 7 (2025), #D1541@83, række 83; https://www.bygningsreglementet.dk/historisk/version-18/bilag/b2/bilag_2/tabel_7/; underliggende kilde: https://vbn.aau.dk/da/publications/udvikling-af-dansk-generisk-lca-data?",
+        "declared_unit": "m² with R=1 m²K/W",
+        "modules": {
+          "a1a3": {
+            "status": "declared",
+            "value": 0.5511
+          },
+          "c3": {
+            "status": "declared",
+            "value": 0
+          },
+          "c4": {
+            "status": "declared",
+            "value": 0.018271000000000006
+          },
+          "d": {
+            "status": "declared",
+            "value": -0.025740000000000002
+          }
+        },
+        "valid_until": null,
+        "epd": null
+      },
+      {
+        "id": "m-d1634-170",
+        "origin": "official_catalogue",
+        "dataset_id": "#D1634@170",
+        "dataset_name": "Træ-alu vindue med 3-lags rude",
+        "catalogue_id": "br18-tabel-7-2025@b450eb32046e",
+        "catalogue_key": "#D1634@170",
+        "source": "BR18 bilag 2 tabel 7 (2025), #D1634@170, række 170; https://www.bygningsreglementet.dk/historisk/version-18/bilag/b2/bilag_2/tabel_7/; underliggende kilde: https://www.epddanmark.dk/media/m2bfi4ei/md-22040-da.pdf",
+        "declared_unit": "m²",
+        "modules": {
+          "a1a3": {
+            "status": "declared",
+            "value": 90.58500000000002
+          },
+          "c3": {
+            "status": "declared",
+            "value": 20.680000000000003
+          },
+          "c4": {
+            "status": "declared",
+            "value": 1.1990000000000003
+          },
+          "d": {
+            "status": "declared",
+            "value": -29.1
+          }
+        },
+        "valid_until": null,
+        "epd": null
+      }
+    ]
+  },
+  "installations": {
+    "area_m2": 49.28,
+    "area_definition": "Samlet opvarmet etageareal jf. § 256, stk. 3, plus opvarmet kælderareal (BR18 bilag 2, tabel 7).",
+    "area_source": "Opvarmet etageareal angivet i ISSANA 3D (B6).",
+    "lines": [
+      {
+        "id": "installation-afloeb",
+        "category": "afloeb",
+        "catalogue_id": "br18-tabel-7-2025@b450eb32046e",
+        "standard_key": "#S0013@506",
+        "name": "Øvrige bygninger, afløb",
+        "area_share": 1,
+        "a1a3": 0.061,
+        "c3": 0.069,
+        "c4": 0,
+        "d": -0.037,
+        "source": "BR18 bilag 2 tabel 7 (2025), #S0013@506, række 506; https://www.bygningsreglementet.dk/historisk/version-18/bilag/b2/bilag_2/tabel_7/; underliggende kilde: https://vbn.aau.dk/da/publications/klimap%C3%A5virkning-fra-nybyggeri-analytisk-grundlag-til-fastl%C3%A6ggelse?"
+      },
+      {
+        "id": "installation-vand",
+        "category": "vand",
+        "catalogue_id": "br18-tabel-7-2025@b450eb32046e",
+        "standard_key": "#S0014@507",
+        "name": "Øvrige bygninger, vand",
+        "area_share": 1,
+        "a1a3": 0.064,
+        "c3": 0.014,
+        "c4": 0,
+        "d": -0.018,
+        "source": "BR18 bilag 2 tabel 7 (2025), #S0014@507, række 507; https://www.bygningsreglementet.dk/historisk/version-18/bilag/b2/bilag_2/tabel_7/; underliggende kilde: https://vbn.aau.dk/da/publications/klimap%C3%A5virkning-fra-nybyggeri-analytisk-grundlag-til-fastl%C3%A6ggelse?"
+      },
+      {
+        "id": "installation-varme_ventilation_koel",
+        "category": "varme_ventilation_koel",
+        "catalogue_id": "br18-tabel-7-2025@b450eb32046e",
+        "standard_key": "#S0015@508",
+        "name": "Øvrige bygninger, varme, ventilation og køl",
+        "area_share": 1,
+        "a1a3": 1.059,
+        "c3": 0.03,
+        "c4": 0,
+        "d": -0.672,
+        "source": "BR18 bilag 2 tabel 7 (2025), #S0015@508, række 508; https://www.bygningsreglementet.dk/historisk/version-18/bilag/b2/bilag_2/tabel_7/; underliggende kilde: https://vbn.aau.dk/da/publications/klimap%C3%A5virkning-fra-nybyggeri-analytisk-grundlag-til-fastl%C3%A6ggelse?"
+      }
+    ]
+  },
+  "energy": [
+    {
+      "id": "b6-el-electricity-2026-0",
+      "carrier": "El",
+      "from_year": 0,
+      "to_year": 1,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.07058,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!6, kalenderår 2026; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-1",
+      "carrier": "El",
+      "from_year": 1,
+      "to_year": 2,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.06106,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!7, kalenderår 2027; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-2",
+      "carrier": "El",
+      "from_year": 2,
+      "to_year": 3,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.05154,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!8, kalenderår 2028; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-3",
+      "carrier": "El",
+      "from_year": 3,
+      "to_year": 4,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.04202,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!9, kalenderår 2029; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-4",
+      "carrier": "El",
+      "from_year": 4,
+      "to_year": 5,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0325,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!10, kalenderår 2030; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-5",
+      "carrier": "El",
+      "from_year": 5,
+      "to_year": 6,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.03182,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!11, kalenderår 2031; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-6",
+      "carrier": "El",
+      "from_year": 6,
+      "to_year": 7,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.03114,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!12, kalenderår 2032; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-7",
+      "carrier": "El",
+      "from_year": 7,
+      "to_year": 8,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.03046,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!13, kalenderår 2033; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-8",
+      "carrier": "El",
+      "from_year": 8,
+      "to_year": 9,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.02978,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!14, kalenderår 2034; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-9",
+      "carrier": "El",
+      "from_year": 9,
+      "to_year": 10,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0291,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!15, kalenderår 2035; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-10",
+      "carrier": "El",
+      "from_year": 10,
+      "to_year": 11,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.028980000000000002,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!16, kalenderår 2036; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-11",
+      "carrier": "El",
+      "from_year": 11,
+      "to_year": 12,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.02886,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!17, kalenderår 2037; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-12",
+      "carrier": "El",
+      "from_year": 12,
+      "to_year": 13,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.02874,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!18, kalenderår 2038; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-13",
+      "carrier": "El",
+      "from_year": 13,
+      "to_year": 14,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.02862,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!19, kalenderår 2039; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-14",
+      "carrier": "El",
+      "from_year": 14,
+      "to_year": 15,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0285,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!20, kalenderår 2040; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-15",
+      "carrier": "El",
+      "from_year": 15,
+      "to_year": 16,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.02802,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!21, kalenderår 2041; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-16",
+      "carrier": "El",
+      "from_year": 16,
+      "to_year": 17,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.027540000000000002,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!22, kalenderår 2042; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-17",
+      "carrier": "El",
+      "from_year": 17,
+      "to_year": 18,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.02706,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!23, kalenderår 2043; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-18",
+      "carrier": "El",
+      "from_year": 18,
+      "to_year": 19,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.026580000000000003,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!24, kalenderår 2044; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-19",
+      "carrier": "El",
+      "from_year": 19,
+      "to_year": 20,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0261,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!25, kalenderår 2045; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-20",
+      "carrier": "El",
+      "from_year": 20,
+      "to_year": 21,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.025840000000000002,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!26, kalenderår 2046; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-21",
+      "carrier": "El",
+      "from_year": 21,
+      "to_year": 22,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.025580000000000002,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!27, kalenderår 2047; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-22",
+      "carrier": "El",
+      "from_year": 22,
+      "to_year": 23,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.02532,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!28, kalenderår 2048; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-23",
+      "carrier": "El",
+      "from_year": 23,
+      "to_year": 24,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.02506,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!29, kalenderår 2049; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-24",
+      "carrier": "El",
+      "from_year": 24,
+      "to_year": 25,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0248,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2050; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-25",
+      "carrier": "El",
+      "from_year": 25,
+      "to_year": 26,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0248,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2051 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-26",
+      "carrier": "El",
+      "from_year": 26,
+      "to_year": 27,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0248,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2052 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-27",
+      "carrier": "El",
+      "from_year": 27,
+      "to_year": 28,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0248,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2053 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-28",
+      "carrier": "El",
+      "from_year": 28,
+      "to_year": 29,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0248,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2054 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-29",
+      "carrier": "El",
+      "from_year": 29,
+      "to_year": 30,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0248,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2055 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-30",
+      "carrier": "El",
+      "from_year": 30,
+      "to_year": 31,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0248,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2056 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-31",
+      "carrier": "El",
+      "from_year": 31,
+      "to_year": 32,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0248,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2057 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-32",
+      "carrier": "El",
+      "from_year": 32,
+      "to_year": 33,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0248,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2058 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-33",
+      "carrier": "El",
+      "from_year": 33,
+      "to_year": 34,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0248,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2059 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-34",
+      "carrier": "El",
+      "from_year": 34,
+      "to_year": 35,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0248,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2060 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-35",
+      "carrier": "El",
+      "from_year": 35,
+      "to_year": 36,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0248,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2061 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-36",
+      "carrier": "El",
+      "from_year": 36,
+      "to_year": 37,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0248,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2062 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-37",
+      "carrier": "El",
+      "from_year": 37,
+      "to_year": 38,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0248,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2063 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-38",
+      "carrier": "El",
+      "from_year": 38,
+      "to_year": 39,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0248,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2064 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-39",
+      "carrier": "El",
+      "from_year": 39,
+      "to_year": 40,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0248,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2065 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-40",
+      "carrier": "El",
+      "from_year": 40,
+      "to_year": 41,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0248,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2066 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-41",
+      "carrier": "El",
+      "from_year": 41,
+      "to_year": 42,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0248,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2067 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-42",
+      "carrier": "El",
+      "from_year": 42,
+      "to_year": 43,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0248,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2068 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-43",
+      "carrier": "El",
+      "from_year": 43,
+      "to_year": 44,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0248,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2069 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-44",
+      "carrier": "El",
+      "from_year": 44,
+      "to_year": 45,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0248,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2070 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-45",
+      "carrier": "El",
+      "from_year": 45,
+      "to_year": 46,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0248,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2071 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-46",
+      "carrier": "El",
+      "from_year": 46,
+      "to_year": 47,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0248,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2072 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-47",
+      "carrier": "El",
+      "from_year": 47,
+      "to_year": 48,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0248,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2073 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-48",
+      "carrier": "El",
+      "from_year": 48,
+      "to_year": 49,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0248,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2074 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-el-electricity-2026-49",
+      "carrier": "El",
+      "from_year": 49,
+      "to_year": 50,
+      "annual_quantity": 197.12,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0248,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2075 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): el til bygningsdrift 4 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-0",
+      "carrier": "Fjernvarme",
+      "from_year": 0,
+      "to_year": 1,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.037059999999999996,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!6, kalenderår 2026; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-1",
+      "carrier": "Fjernvarme",
+      "from_year": 1,
+      "to_year": 2,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.03232,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!7, kalenderår 2027; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-2",
+      "carrier": "Fjernvarme",
+      "from_year": 2,
+      "to_year": 3,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.02758,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!8, kalenderår 2028; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-3",
+      "carrier": "Fjernvarme",
+      "from_year": 3,
+      "to_year": 4,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.02284,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!9, kalenderår 2029; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-4",
+      "carrier": "Fjernvarme",
+      "from_year": 4,
+      "to_year": 5,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0181,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!10, kalenderår 2030; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-5",
+      "carrier": "Fjernvarme",
+      "from_year": 5,
+      "to_year": 6,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.01728,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!11, kalenderår 2031; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-6",
+      "carrier": "Fjernvarme",
+      "from_year": 6,
+      "to_year": 7,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.016460000000000002,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!12, kalenderår 2032; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-7",
+      "carrier": "Fjernvarme",
+      "from_year": 7,
+      "to_year": 8,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.01564,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!13, kalenderår 2033; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-8",
+      "carrier": "Fjernvarme",
+      "from_year": 8,
+      "to_year": 9,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.01482,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!14, kalenderår 2034; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-9",
+      "carrier": "Fjernvarme",
+      "from_year": 9,
+      "to_year": 10,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.014,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!15, kalenderår 2035; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-10",
+      "carrier": "Fjernvarme",
+      "from_year": 10,
+      "to_year": 11,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.01388,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!16, kalenderår 2036; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-11",
+      "carrier": "Fjernvarme",
+      "from_year": 11,
+      "to_year": 12,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.01376,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!17, kalenderår 2037; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-12",
+      "carrier": "Fjernvarme",
+      "from_year": 12,
+      "to_year": 13,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.013640000000000001,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!18, kalenderår 2038; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-13",
+      "carrier": "Fjernvarme",
+      "from_year": 13,
+      "to_year": 14,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.01352,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!19, kalenderår 2039; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-14",
+      "carrier": "Fjernvarme",
+      "from_year": 14,
+      "to_year": 15,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0134,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!20, kalenderår 2040; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-15",
+      "carrier": "Fjernvarme",
+      "from_year": 15,
+      "to_year": 16,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.01336,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!21, kalenderår 2041; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-16",
+      "carrier": "Fjernvarme",
+      "from_year": 16,
+      "to_year": 17,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.01332,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!22, kalenderår 2042; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-17",
+      "carrier": "Fjernvarme",
+      "from_year": 17,
+      "to_year": 18,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.01328,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!23, kalenderår 2043; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-18",
+      "carrier": "Fjernvarme",
+      "from_year": 18,
+      "to_year": 19,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.01324,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!24, kalenderår 2044; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-19",
+      "carrier": "Fjernvarme",
+      "from_year": 19,
+      "to_year": 20,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0132,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!25, kalenderår 2045; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-20",
+      "carrier": "Fjernvarme",
+      "from_year": 20,
+      "to_year": 21,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0132,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!26, kalenderår 2046; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-21",
+      "carrier": "Fjernvarme",
+      "from_year": 21,
+      "to_year": 22,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0132,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!27, kalenderår 2047; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-22",
+      "carrier": "Fjernvarme",
+      "from_year": 22,
+      "to_year": 23,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0132,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!28, kalenderår 2048; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-23",
+      "carrier": "Fjernvarme",
+      "from_year": 23,
+      "to_year": 24,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0132,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!29, kalenderår 2049; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-24",
+      "carrier": "Fjernvarme",
+      "from_year": 24,
+      "to_year": 25,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0132,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2050; https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-25",
+      "carrier": "Fjernvarme",
+      "from_year": 25,
+      "to_year": 26,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0132,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2051 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-26",
+      "carrier": "Fjernvarme",
+      "from_year": 26,
+      "to_year": 27,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0132,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2052 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-27",
+      "carrier": "Fjernvarme",
+      "from_year": 27,
+      "to_year": 28,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0132,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2053 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-28",
+      "carrier": "Fjernvarme",
+      "from_year": 28,
+      "to_year": 29,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0132,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2054 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-29",
+      "carrier": "Fjernvarme",
+      "from_year": 29,
+      "to_year": 30,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0132,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2055 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-30",
+      "carrier": "Fjernvarme",
+      "from_year": 30,
+      "to_year": 31,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0132,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2056 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-31",
+      "carrier": "Fjernvarme",
+      "from_year": 31,
+      "to_year": 32,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0132,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2057 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-32",
+      "carrier": "Fjernvarme",
+      "from_year": 32,
+      "to_year": 33,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0132,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2058 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-33",
+      "carrier": "Fjernvarme",
+      "from_year": 33,
+      "to_year": 34,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0132,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2059 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-34",
+      "carrier": "Fjernvarme",
+      "from_year": 34,
+      "to_year": 35,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0132,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2060 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-35",
+      "carrier": "Fjernvarme",
+      "from_year": 35,
+      "to_year": 36,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0132,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2061 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-36",
+      "carrier": "Fjernvarme",
+      "from_year": 36,
+      "to_year": 37,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0132,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2062 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-37",
+      "carrier": "Fjernvarme",
+      "from_year": 37,
+      "to_year": 38,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0132,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2063 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-38",
+      "carrier": "Fjernvarme",
+      "from_year": 38,
+      "to_year": 39,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0132,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2064 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-39",
+      "carrier": "Fjernvarme",
+      "from_year": 39,
+      "to_year": 40,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0132,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2065 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-40",
+      "carrier": "Fjernvarme",
+      "from_year": 40,
+      "to_year": 41,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0132,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2066 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-41",
+      "carrier": "Fjernvarme",
+      "from_year": 41,
+      "to_year": 42,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0132,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2067 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-42",
+      "carrier": "Fjernvarme",
+      "from_year": 42,
+      "to_year": 43,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0132,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2068 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-43",
+      "carrier": "Fjernvarme",
+      "from_year": 43,
+      "to_year": 44,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0132,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2069 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-44",
+      "carrier": "Fjernvarme",
+      "from_year": 44,
+      "to_year": 45,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0132,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2070 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-45",
+      "carrier": "Fjernvarme",
+      "from_year": 45,
+      "to_year": 46,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0132,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2071 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-46",
+      "carrier": "Fjernvarme",
+      "from_year": 46,
+      "to_year": 47,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0132,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2072 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-47",
+      "carrier": "Fjernvarme",
+      "from_year": 47,
+      "to_year": 48,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0132,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2073 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-48",
+      "carrier": "Fjernvarme",
+      "from_year": 48,
+      "to_year": 49,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0132,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2074 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    },
+    {
+      "id": "b6-varme-district_heat-2026-49",
+      "carrier": "Fjernvarme",
+      "from_year": 49,
+      "to_year": 50,
+      "annual_quantity": 1724.8,
+      "unit": "kWh",
+      "factor_kgco2e_per_unit": 0.0132,
+      "factor_source": "BR18 bilag 2 tabel 8.1 (2025), Ark1!30, kalenderår 2075 (2050-værdi videreført); https://www.bygningsreglementet.dk/media/xoontk4a/tabel-81.xlsx",
+      "quantity_source": "Angivne øvelsestal (SYNTETISK UNDERVISNINGSANTAGELSE; ikke Be18-beregnet eller målt): varme 35 kWh/m²/år uden tillæg × opvarmet etageareal 49,28 m²"
+    }
+  ],
+  "b6_not_applicable_reason": null,
+  "process": null,
+  "migration": null,
+  "b6_supplies": [
+    {
+      "id": "forsyning-el",
+      "carrier": "electricity",
+      "energy_source": "El fra nettet · angivet i ISSANA 3D",
+      "period_ids": [
+        "b6-el-electricity-2026-0",
+        "b6-el-electricity-2026-1",
+        "b6-el-electricity-2026-2",
+        "b6-el-electricity-2026-3",
+        "b6-el-electricity-2026-4",
+        "b6-el-electricity-2026-5",
+        "b6-el-electricity-2026-6",
+        "b6-el-electricity-2026-7",
+        "b6-el-electricity-2026-8",
+        "b6-el-electricity-2026-9",
+        "b6-el-electricity-2026-10",
+        "b6-el-electricity-2026-11",
+        "b6-el-electricity-2026-12",
+        "b6-el-electricity-2026-13",
+        "b6-el-electricity-2026-14",
+        "b6-el-electricity-2026-15",
+        "b6-el-electricity-2026-16",
+        "b6-el-electricity-2026-17",
+        "b6-el-electricity-2026-18",
+        "b6-el-electricity-2026-19",
+        "b6-el-electricity-2026-20",
+        "b6-el-electricity-2026-21",
+        "b6-el-electricity-2026-22",
+        "b6-el-electricity-2026-23",
+        "b6-el-electricity-2026-24",
+        "b6-el-electricity-2026-25",
+        "b6-el-electricity-2026-26",
+        "b6-el-electricity-2026-27",
+        "b6-el-electricity-2026-28",
+        "b6-el-electricity-2026-29",
+        "b6-el-electricity-2026-30",
+        "b6-el-electricity-2026-31",
+        "b6-el-electricity-2026-32",
+        "b6-el-electricity-2026-33",
+        "b6-el-electricity-2026-34",
+        "b6-el-electricity-2026-35",
+        "b6-el-electricity-2026-36",
+        "b6-el-electricity-2026-37",
+        "b6-el-electricity-2026-38",
+        "b6-el-electricity-2026-39",
+        "b6-el-electricity-2026-40",
+        "b6-el-electricity-2026-41",
+        "b6-el-electricity-2026-42",
+        "b6-el-electricity-2026-43",
+        "b6-el-electricity-2026-44",
+        "b6-el-electricity-2026-45",
+        "b6-el-electricity-2026-46",
+        "b6-el-electricity-2026-47",
+        "b6-el-electricity-2026-48",
+        "b6-el-electricity-2026-49"
+      ],
+      "factor_basis": "table_8_1",
+      "commissioning_year": 2026
+    },
+    {
+      "id": "forsyning-varme",
+      "carrier": "district_heat",
+      "energy_source": "Fjernvarme · angivet i ISSANA 3D",
+      "period_ids": [
+        "b6-varme-district_heat-2026-0",
+        "b6-varme-district_heat-2026-1",
+        "b6-varme-district_heat-2026-2",
+        "b6-varme-district_heat-2026-3",
+        "b6-varme-district_heat-2026-4",
+        "b6-varme-district_heat-2026-5",
+        "b6-varme-district_heat-2026-6",
+        "b6-varme-district_heat-2026-7",
+        "b6-varme-district_heat-2026-8",
+        "b6-varme-district_heat-2026-9",
+        "b6-varme-district_heat-2026-10",
+        "b6-varme-district_heat-2026-11",
+        "b6-varme-district_heat-2026-12",
+        "b6-varme-district_heat-2026-13",
+        "b6-varme-district_heat-2026-14",
+        "b6-varme-district_heat-2026-15",
+        "b6-varme-district_heat-2026-16",
+        "b6-varme-district_heat-2026-17",
+        "b6-varme-district_heat-2026-18",
+        "b6-varme-district_heat-2026-19",
+        "b6-varme-district_heat-2026-20",
+        "b6-varme-district_heat-2026-21",
+        "b6-varme-district_heat-2026-22",
+        "b6-varme-district_heat-2026-23",
+        "b6-varme-district_heat-2026-24",
+        "b6-varme-district_heat-2026-25",
+        "b6-varme-district_heat-2026-26",
+        "b6-varme-district_heat-2026-27",
+        "b6-varme-district_heat-2026-28",
+        "b6-varme-district_heat-2026-29",
+        "b6-varme-district_heat-2026-30",
+        "b6-varme-district_heat-2026-31",
+        "b6-varme-district_heat-2026-32",
+        "b6-varme-district_heat-2026-33",
+        "b6-varme-district_heat-2026-34",
+        "b6-varme-district_heat-2026-35",
+        "b6-varme-district_heat-2026-36",
+        "b6-varme-district_heat-2026-37",
+        "b6-varme-district_heat-2026-38",
+        "b6-varme-district_heat-2026-39",
+        "b6-varme-district_heat-2026-40",
+        "b6-varme-district_heat-2026-41",
+        "b6-varme-district_heat-2026-42",
+        "b6-varme-district_heat-2026-43",
+        "b6-varme-district_heat-2026-44",
+        "b6-varme-district_heat-2026-45",
+        "b6-varme-district_heat-2026-46",
+        "b6-varme-district_heat-2026-47",
+        "b6-varme-district_heat-2026-48",
+        "b6-varme-district_heat-2026-49"
+      ],
+      "factor_basis": "table_8_1",
+      "commissioning_year": 2026
+    }
+  ],
+  "process_defaults": {
+    "table": "br18-tabel-10-11-2025@76db8ecf459b",
+    "material_transport": [
+      {
+        "product_id": "p-indervaegge-3002-0",
+        "group": "Beton / Fabriksbeton"
+      },
+      {
+        "product_id": "p-tage-3004-0",
+        "group": "Beton / Fabriksbeton"
+      },
+      {
+        "product_id": "p-tage-3004-1",
+        "group": "Isolering / Mineraluld",
+        "mass_kg_per_unit": 1.073,
+        "mass_source": "λ 0.037 m (kl. 37 i datasættets navn) × tabel 7 #D1541@83 massefaktor 29 kg/m³"
+      },
+      {
+        "product_id": "p-terraendaek-3003-0",
+        "group": "Beton / Fabriksbeton"
+      },
+      {
+        "product_id": "p-vinduer-doere-3005-0",
+        "group": "Facadeåbninger / Vinduer og døre"
+      },
+      {
+        "product_id": "p-ydervaegge-3001-0",
+        "group": "Beton / Fabriksbeton"
+      },
+      {
+        "product_id": "p-ydervaegge-3001-1",
+        "group": "Isolering / Mineraluld",
+        "mass_kg_per_unit": 1.073,
+        "mass_source": "λ 0.037 m (kl. 37 i datasættets navn) × tabel 7 #D1541@83 massefaktor 29 kg/m³"
+      }
+    ],
+    "equipment_transport_default": true,
+    "soil_removal_default": false,
+    "waste_removal_default": true,
+    "site_energy": [
+      {
+        "id": "el",
+        "label": "Byggepladsens el",
+        "carrier": "electricity",
+        "quantity": 100,
+        "unit": "kWh",
+        "calendar_year": 2026,
+        "source": "SYNTETISK UNDERVISNINGSANTAGELSE: 100kWh el,20kWh varme,0liter diesel og20kg betonaffald; ingen bortkørt jord"
+      },
+      {
+        "id": "varme",
+        "label": "Byggevarme (fjernvarme)",
+        "carrier": "district_heat",
+        "quantity": 20,
+        "unit": "kWh",
+        "calendar_year": 2026,
+        "source": "SYNTETISK UNDERVISNINGSANTAGELSE: 100kWh el,20kWh varme,0liter diesel og20kg betonaffald; ingen bortkørt jord"
+      }
+    ],
+    "waste_treatment": [
+      {
+        "id": "affald-1",
+        "label": "Byggeaffald: Beton",
+        "fraction": "Beton",
+        "mass_kg": 20,
+        "source": "SYNTETISK UNDERVISNINGSANTAGELSE: 100kWh el,20kWh varme,0liter diesel og20kg betonaffald; ingen bortkørt jord"
+      }
+    ]
+  }
+}

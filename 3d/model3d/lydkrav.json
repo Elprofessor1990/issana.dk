@@ -1,0 +1,426 @@
+{
+  "_doc": {
+    "hvad": "Lydkrav pr. bygningstype og rumfunktion til Lyd-fanen i ISSANA 3D (lydkrav.js). Filen er et UDKAST og skal godkendes fagligt, før den bruges som grundlag for rådgivning.",
+    "grundlag": "BR18 kap. 17 Lydforhold (§§ 368-376), Bygningsreglementets vejledning om lydforhold og DS 490:2018 lydklasse C. Kun værdier, der er kendt derfra, er skrevet ind; alt andet er null med en note.",
+    "saadan_retter_du": [
+      "1. Et krav er et objekt {vaerdi, kilde, status, note}. vaerdi er et tal i kravtypens enhed (se kravtyper). kilde er paragraf eller vejledningsafsnit. status er 'udkast' eller 'godkendt'.",
+      "2. Kender du ikke værdien, så skriv vaerdi: null og forklar i note. Skriv aldrig et gæt. Stilles der slet ikke krav, så skriv vaerdi: null og kraevesIkke: true.",
+      "3. Ny bygningstype: kopiér en blok under bygningstyper, giv den et nyt id (små bogstaver, uden mellemrum) og ret navn, kilde og rumfunktioner.",
+      "4. Ny rumfunktion: tilføj den under rumfunktioner med navn og rumbrug (den værdi, der skrives i Revit-parameteren 'ISSANA Instance Room Use'), og tilføj kravene under de bygningstyper, hvor den findes.",
+      "5. Rumbrug -> rumfunktion: rumbrugTilRumfunktion er en opslagstabel fra værdien i 'ISSANA Instance Room Use' (samme ord som i CCI-rumanvendelser.csv) til et rumfunktions-id. rumnavnMoenstre bruges KUN til forslag ud fra Revit-rumnavnet; et forslag tæller ikke som rumfunktion, før brugeren har godkendt det.",
+      "6. Gem filen som UTF-8. Tjek at den stadig er gyldig JSON (fx node -e \"JSON.parse(require('fs').readFileSync('lydkrav.json','utf8'))\"). Testen tests/web-model3d/lydkrav.test.mjs kontrollerer formen."
+    ],
+    "kravtyper_forklaring": "kravtyper fastlægger størrelse, enhed og retning én gang for alle krav af samme slags. retning 'min' betyder, at den beregnede værdi skal være mindst kravet (isolation); 'max' betyder højst kravet (niveauer og tider).",
+    "forbehold": "Sammenligningen i ISSANA er en forenklet ISO 12354-beregning mod disse tal; den er ikke en lydberegning efter standardens fulde metode og ikke en myndighedsvurdering."
+  },
+  "schema": "issana-lydkrav/1",
+  "version": "2026-10-31",
+  "status": "udkast",
+
+  "kravtyper": {
+    "luftlyd":      { "navn": "Luftlydisolation mellem rum (mod naborum i anden enhed)", "stoerrelse": "R'w",   "enhed": "dB", "retning": "min" },
+    "luftlydGang":  { "navn": "Luftlydisolation mod fælles gang/trappe",                  "stoerrelse": "R'w",   "enhed": "dB", "retning": "min" },
+    "doerFaelles":  { "navn": "Dør mellem bolig og fællesrum",                            "stoerrelse": "R'w",   "enhed": "dB", "retning": "min" },
+    "trinlyd":      { "navn": "Trinlydniveau fra rum ovenover",                           "stoerrelse": "L'n,w", "enhed": "dB", "retning": "max" },
+    "trinlydFaelles": { "navn": "Trinlydniveau fra fælles trapper og gange samt bad/wc i andre boliger", "stoerrelse": "L'n,w", "enhed": "dB", "retning": "max" },
+    "facade":       { "navn": "Indendørs støj fra vejtrafik (facadeisolation)",            "stoerrelse": "Lden",  "enhed": "dB", "retning": "max" },
+    "efterklang":   { "navn": "Efterklangstid",                                           "stoerrelse": "T",     "enhed": "s",  "retning": "max" },
+    "installation": { "navn": "Støj fra tekniske installationer",                         "stoerrelse": "LAeq",  "enhed": "dB", "retning": "max" }
+  },
+
+  "rumfunktioner": {
+    "opholdsrum":       { "navn": "Opholdsrum (stue, alrum, fællesrum)",  "rumbrug": "ophold" },
+    "soverum":          { "navn": "Soverum / værelse / hotelværelse",     "rumbrug": "soverum" },
+    "koekken":          { "navn": "Køkken",                                "rumbrug": "køkken/alrum" },
+    "bad":              { "navn": "Bad / wc",                              "rumbrug": "bad/wc" },
+    "gang":             { "navn": "Gang / entré (fælles eller i enheden)", "rumbrug": "gang/entré" },
+    "trappe":           { "navn": "Trapperum (fælles)",                    "rumbrug": "trapperum" },
+    "undervisningsrum": { "navn": "Undervisningsrum / klasserum",          "rumbrug": "undervisning" },
+    "kontor":           { "navn": "Kontor (enkelt- og storrum)",           "rumbrug": "kontor" },
+    "moederum":         { "navn": "Møderum",                               "rumbrug": "mødelokale" },
+    "teknikrum":        { "navn": "Teknikrum",                             "rumbrug": "teknik" },
+    "depot":            { "navn": "Depot / lager",                         "rumbrug": "depot" },
+    "andet":            { "navn": "Andet (ingen krav slået op)",           "rumbrug": "andet" }
+  },
+
+  "rumbrugTilRumfunktion": {
+    "ophold": "opholdsrum",
+    "soverum": "soverum",
+    "hotelværelse": "soverum",
+    "køkken/alrum": "koekken",
+    "bad/wc": "bad",
+    "gang/entré": "gang",
+    "trapperum": "trappe",
+    "teknik": "teknikrum",
+    "depot": "depot",
+    "kontor": "kontor",
+    "undervisning": "undervisningsrum",
+    "mødelokale": "moederum",
+    "andet": "andet"
+  },
+
+  "rumnavnMoenstre": [
+    { "indeholder": ["stue", "dagligstue", "alrum", "opholds", "fællesrum"], "rumfunktion": "opholdsrum" },
+    { "indeholder": ["soveværelse", "sovevaerelse", "værelse", "vaerelse", "hotelværelse"], "rumfunktion": "soverum" },
+    { "indeholder": ["køkken", "koekken"], "rumfunktion": "koekken" },
+    { "indeholder": ["bad", "badeværelse", "baderum", "wc", "toilet", "bryggers"], "rumfunktion": "bad" },
+    { "indeholder": ["gang", "entré", "entre", "forstue", "vindfang", "korridor", "svalegang", "forrum"], "rumfunktion": "gang" },
+    { "indeholder": ["trappe", "trapperum", "opgang"], "rumfunktion": "trappe" },
+    { "indeholder": ["klasse", "undervisning", "faglokale", "auditorium"], "rumfunktion": "undervisningsrum" },
+    { "indeholder": ["kontor"], "rumfunktion": "kontor" },
+    { "indeholder": ["møde", "moede"], "rumfunktion": "moederum" },
+    { "indeholder": ["teknik", "varme", "ventilation", "fyrrum", "vvs", "sprinkler", "tavlerum"], "rumfunktion": "teknikrum" },
+    { "indeholder": ["depot", "lager", "pulterrum", "kælderrum"], "rumfunktion": "depot" }
+  ],
+
+  "materialer": {
+    "_doc": "Bruges kun til skøn af Rw og Ln,w ud fra Revit-typens lag, når der ikke er dokumenterede værdier. Ordene matches i materialets navn; det længste ord vinder. art: tung (massivt mineralsk), plade (tæller med i massen), let (træ/metal, kan ikke skønnes af massen), isolering, hulrum, inhomogen (fx huldæk).",
+    "liste": [
+      { "indeholder": ["beton", "concrete", "in-situ"], "art": "tung", "rho": 2400, "kilde": "BygFys materialedata std-155/std-016: DS/EN ISO 10456:2008 tabel 3" },
+      { "indeholder": ["letklinker", "letbeton", "leca"], "art": "tung", "rho": 1000, "kilde": "BygFys materialedata std-014: EPD" },
+      { "indeholder": ["porebeton", "gasbeton", "ytong"], "art": "tung", "rho": 500, "kilde": "BygFys materialedata std-015: EPD Ytong" },
+      { "indeholder": ["tegl", "brick", "mursten", "murværk", "masonry"], "art": "tung", "rho": 1800, "kilde": "BygFys materialedata std-011: EPD Teglindustrien" },
+      { "indeholder": ["kalksandsten", "calcium silicate"], "art": "tung", "rho": 1800, "kilde": "BygFys materialedata std-013: DS 418:2026 figur G.1 og DS/EN ISO 10456:2008 tabel 4" },
+      { "indeholder": ["gips", "gypsum", "plasterboard", "gyproc"], "art": "plade", "rho": 900, "kilde": "BygFys materialedata std-023: DS 418:2026 tabel G.2" },
+      { "indeholder": ["gipsfiber", "fermacell"], "art": "plade", "rho": 1180, "kilde": "BygFys materialedata std-024" },
+      { "indeholder": ["puds", "plaster", "mørtel", "mortar"], "art": "plade", "rho": 1900, "kilde": "BygFys materialedata std-027: cementpuds" },
+      { "indeholder": ["træ", "trae", "timber", "wood", "krydsfiner", "plywood", "osb", "spån", "clt", "stolpe", "stud", "stål", "steel", "metal"], "art": "let", "rho": null, "kilde": "Lette konstruktioner kan ikke skønnes af massen (BygFys: kræver dokumenteret værdi)" },
+      { "indeholder": ["isolering", "insulation", "mineraluld", "stenuld", "glasuld", "rockwool", "batts", "eps", "xps", "pir"], "art": "isolering", "rho": null, "kilde": "Tæller ikke med i massen" },
+      { "indeholder": ["luft", "hulrum", "air", "cavity"], "art": "hulrum", "rho": null, "kilde": "Tæller ikke med i massen" },
+      { "indeholder": ["huldæk", "huldaek", "hollow", "hulplade"], "art": "inhomogen", "rho": null, "kilde": "Masseformlen gælder homogene dæk (DS/EN ISO 12354-2 anneks B)" }
+    ]
+  },
+
+  "bygningstyper": {
+    "etagebolig": {
+      "navn": "Boliger, etageboliger",
+      "brugEnheder": true,
+      "kilde": "BR18 § 369 (boliger og lignende bygninger benyttet til overnatning): lydklasse C i DS 490:2018 anses for at opfylde kravet",
+      "rumfunktioner": {
+        "opholdsrum": {
+          "luftlyd":      { "vaerdi": 55, "kilde": "DS 490:2018, lydklasse C, luftlydisolation mellem boliger", "status": "udkast" },
+          "luftlydGang":  { "vaerdi": 55, "kilde": "DS 490:2018 tabel 1, lydklasse C: mellem en bolig og rum uden for boligen (vægkonstruktion; døren har sit eget krav i doerFaelles)", "status": "udkast" },
+          "doerFaelles":  { "vaerdi": 32, "kilde": "DS 490:2018 tabel 1, lydklasse C: dør mellem bolig og fællesrum", "status": "udkast" },
+          "trinlyd":      { "vaerdi": 53, "kilde": "DS 490:2018, lydklasse C, trinlydniveau i beboelsesrum fra andre boliger og fællesrum", "status": "udkast" },
+          "trinlydFaelles": { "vaerdi": 58, "kilde": "DS 490:2018 tabel 2, lydklasse C: i beboelsesrum og køkkener fra fælles trapperum og gange, altaner samt toilet- og baderum i andre boliger", "status": "udkast", "note": "DS 490 afsnit 5.2 undtager gulve i toilet- og baderum og rum under 2,5 m²; rum under 2,5 m² regnes derfor ikke." },
+          "facade":       { "vaerdi": 33, "kilde": "DS 490:2018, lydklasse C / BR18 § 369 og vejledningen: indendørs støjniveau fra vejtrafik i beboelsesrum, Lden", "status": "udkast" },
+          "efterklang":   { "vaerdi": null, "kraevesIkke": true, "kilde": "DS 490:2018", "status": "udkast", "note": "Der stilles ikke krav til efterklangstiden i boligens egne rum." },
+          "installation": { "vaerdi": 30, "kilde": "DS 490:2018, lydklasse C, støj fra tekniske installationer i beboelsesrum og køkkener, LAeq", "status": "udkast" }
+        },
+        "soverum": {
+          "luftlyd":      { "vaerdi": 55, "kilde": "DS 490:2018, lydklasse C, luftlydisolation mellem boliger", "status": "udkast" },
+          "luftlydGang":  { "vaerdi": 55, "kilde": "DS 490:2018, lydklasse C, mellem bolig og fælles trapperum/gang", "status": "udkast" },
+          "doerFaelles":  { "vaerdi": 32, "kilde": "DS 490:2018 tabel 1, lydklasse C: dør mellem bolig og fællesrum", "status": "udkast" },
+          "trinlyd":      { "vaerdi": 53, "kilde": "DS 490:2018, lydklasse C, trinlydniveau i beboelsesrum", "status": "udkast" },
+          "trinlydFaelles": { "vaerdi": 58, "kilde": "DS 490:2018 tabel 2, lydklasse C: i beboelsesrum og køkkener fra fælles trapperum og gange, altaner samt toilet- og baderum i andre boliger", "status": "udkast", "note": "DS 490 afsnit 5.2 undtager gulve i toilet- og baderum og rum under 2,5 m²; rum under 2,5 m² regnes derfor ikke." },
+          "facade":       { "vaerdi": 33, "kilde": "DS 490:2018, lydklasse C / BR18 § 369: indendørs Lden fra vejtrafik", "status": "udkast" },
+          "efterklang":   { "vaerdi": null, "kraevesIkke": true, "kilde": "DS 490:2018", "status": "udkast", "note": "Intet krav i boligens egne rum." },
+          "installation": { "vaerdi": 30, "kilde": "DS 490:2018, lydklasse C, LAeq i beboelsesrum", "status": "udkast" }
+        },
+        "koekken": {
+          "luftlyd":      { "vaerdi": 55, "kilde": "DS 490:2018, lydklasse C, luftlydisolation mellem boliger", "status": "udkast" },
+          "luftlydGang":  { "vaerdi": 55, "kilde": "DS 490:2018, lydklasse C, mellem bolig og fælles trapperum/gang", "status": "udkast" },
+          "doerFaelles":  { "vaerdi": 32, "kilde": "DS 490:2018 tabel 1, lydklasse C: dør mellem bolig og fællesrum", "status": "udkast" },
+          "trinlyd":      { "vaerdi": 53, "kilde": "DS 490:2018, lydklasse C, trinlydniveau i beboelsesrum og køkkener", "status": "udkast" },
+          "trinlydFaelles": { "vaerdi": 58, "kilde": "DS 490:2018 tabel 2, lydklasse C: i beboelsesrum og køkkener fra fælles trapperum og gange, altaner samt toilet- og baderum i andre boliger", "status": "udkast", "note": "DS 490 afsnit 5.2 undtager gulve i toilet- og baderum og rum under 2,5 m²; rum under 2,5 m² regnes derfor ikke." },
+          "facade":       { "vaerdi": 33, "kilde": "DS 490:2018 tabel 5, lydklasse C: indendørs Lden fra trafik i beboelsesrum, køkkener og fælles opholdsrum", "status": "udkast" },
+          "efterklang":   { "vaerdi": null, "kraevesIkke": true, "kilde": "DS 490:2018", "status": "udkast" },
+          "installation": { "vaerdi": 30, "kilde": "DS 490:2018, lydklasse C, LAeq i beboelsesrum og køkkener", "status": "udkast" }
+        },
+        "bad": {
+          "luftlyd":      { "vaerdi": 55, "kilde": "DS 490:2018, lydklasse C, luftlydisolation mellem boliger (gælder skillekonstruktionen uanset rumtype)", "status": "udkast" },
+          "luftlydGang":  { "vaerdi": 55, "kilde": "DS 490:2018, lydklasse C, mellem bolig og fælles trapperum/gang", "status": "udkast" },
+          "doerFaelles":  { "vaerdi": 32, "kilde": "DS 490:2018 tabel 1, lydklasse C: dør mellem bolig og fællesrum", "status": "udkast" },
+          "trinlyd":      { "vaerdi": null, "kraevesIkke": true, "kilde": "DS 490:2018 afsnit 5.2 og tabel 2", "status": "udkast", "note": "Tabel 2 gælder i beboelsesrum og køkkener, ikke i bad/wc." },
+          "facade":       { "vaerdi": null, "kraevesIkke": true, "kilde": "DS 490:2018", "status": "udkast", "note": "Kravet til indendørs trafikstøj gælder beboelsesrum." },
+          "efterklang":   { "vaerdi": null, "kraevesIkke": true, "kilde": "DS 490:2018", "status": "udkast" },
+          "installation": { "vaerdi": null, "kraevesIkke": true, "kilde": "DS 490:2018 tabel 4", "status": "udkast", "note": "Tabel 4 omfatter beboelsesrum, køkkener og fælles opholdsrum." }
+        },
+        "gang": {
+          "luftlyd":      { "vaerdi": null, "kraevesIkke": true, "kilde": "DS 490:2018", "status": "udkast", "note": "Kravet stilles fra boligens side (se luftlydGang i beboelsesrummene)." },
+          "trinlyd":      { "vaerdi": null, "kraevesIkke": true, "kilde": "DS 490:2018", "status": "udkast" },
+          "facade":       { "vaerdi": null, "kraevesIkke": true, "kilde": "DS 490:2018", "status": "udkast" },
+          "efterklang":   { "vaerdi": 1.3, "kilde": "DS 490:2018 tabel 3, lydklasse C: trapperum og gange med adgang til mere end 2 boliger eller erhvervsenheder", "status": "udkast", "note": "Gælder ikke gange inde i en bolig; placeringen afgør det." },
+          "installation": { "vaerdi": null, "kraevesIkke": true, "kilde": "DS 490:2018", "status": "udkast" }
+        },
+        "trappe": {
+          "luftlyd":      { "vaerdi": null, "kraevesIkke": true, "kilde": "DS 490:2018", "status": "udkast", "note": "Kravet stilles fra boligens side (luftlydGang)." },
+          "trinlyd":      { "vaerdi": null, "kraevesIkke": true, "kilde": "DS 490:2018", "status": "udkast" },
+          "facade":       { "vaerdi": null, "kraevesIkke": true, "kilde": "DS 490:2018", "status": "udkast" },
+          "efterklang":   { "vaerdi": 1.3, "kilde": "DS 490:2018, lydklasse C, efterklangstid i fælles trapperum", "status": "udkast" },
+          "installation": { "vaerdi": null, "kraevesIkke": true, "kilde": "DS 490:2018", "status": "udkast" }
+        },
+        "teknikrum": {
+          "luftlyd":      { "vaerdi": null, "kraevesIkke": true, "kilde": "DS 490:2018", "status": "udkast", "note": "Teknikrummet er kilde, ikke modtager; kravet ligger i naborummene (installation)." },
+          "trinlyd":      { "vaerdi": null, "kraevesIkke": true, "kilde": "DS 490:2018", "status": "udkast" },
+          "facade":       { "vaerdi": null, "kraevesIkke": true, "kilde": "DS 490:2018", "status": "udkast" },
+          "efterklang":   { "vaerdi": null, "kraevesIkke": true, "kilde": "DS 490:2018", "status": "udkast" },
+          "installation": { "vaerdi": null, "kraevesIkke": true, "kilde": "DS 490:2018", "status": "udkast" }
+        },
+        "depot": {
+          "luftlyd":      { "vaerdi": null, "kraevesIkke": true, "kilde": "DS 490:2018", "status": "udkast" },
+          "trinlyd":      { "vaerdi": null, "kraevesIkke": true, "kilde": "DS 490:2018", "status": "udkast" },
+          "facade":       { "vaerdi": null, "kraevesIkke": true, "kilde": "DS 490:2018", "status": "udkast" },
+          "efterklang":   { "vaerdi": null, "kraevesIkke": true, "kilde": "DS 490:2018", "status": "udkast" },
+          "installation": { "vaerdi": null, "kraevesIkke": true, "kilde": "DS 490:2018", "status": "udkast" }
+        }
+      }
+    },
+
+    "raekkehus": {
+      "navn": "Rækkehuse, kædehuse og dobbelthuse",
+      "brugEnheder": true,
+      "kilde": "BR18 § 369: lydklasse C i DS 490:2018. Samme tal som etageboliger for lydklasse C; højere lydklasser (B/A) har skærpede krav til rækkehuse.",
+      "rumfunktioner": {
+        "opholdsrum": {
+          "luftlyd":      { "vaerdi": 55, "kilde": "DS 490:2018, lydklasse C, luftlydisolation mellem boliger", "status": "udkast" },
+          "luftlydGang":  { "vaerdi": null, "kraevesIkke": true, "kilde": "DS 490:2018", "status": "udkast", "note": "Rækkehuse har normalt ingen fælles gang/trappe." },
+          "trinlyd":      { "vaerdi": 53, "kilde": "DS 490:2018, lydklasse C, trinlydniveau i beboelsesrum fra andre boliger", "status": "udkast" },
+          "trinlydFaelles": { "vaerdi": 58, "kilde": "DS 490:2018 tabel 2, lydklasse C: i beboelsesrum og køkkener fra fælles trapperum og gange, altaner samt toilet- og baderum i andre boliger", "status": "udkast", "note": "DS 490 afsnit 5.2 undtager gulve i toilet- og baderum og rum under 2,5 m²; rum under 2,5 m² regnes derfor ikke." },
+          "facade":       { "vaerdi": 33, "kilde": "DS 490:2018, lydklasse C / BR18 § 369: indendørs Lden fra vejtrafik", "status": "udkast" },
+          "efterklang":   { "vaerdi": null, "kraevesIkke": true, "kilde": "DS 490:2018", "status": "udkast" },
+          "installation": { "vaerdi": 30, "kilde": "DS 490:2018, lydklasse C, LAeq i beboelsesrum", "status": "udkast" }
+        },
+        "soverum": {
+          "luftlyd":      { "vaerdi": 55, "kilde": "DS 490:2018, lydklasse C, luftlydisolation mellem boliger", "status": "udkast" },
+          "luftlydGang":  { "vaerdi": null, "kraevesIkke": true, "kilde": "DS 490:2018", "status": "udkast" },
+          "trinlyd":      { "vaerdi": 53, "kilde": "DS 490:2018, lydklasse C, trinlydniveau i beboelsesrum", "status": "udkast" },
+          "trinlydFaelles": { "vaerdi": 58, "kilde": "DS 490:2018 tabel 2, lydklasse C: i beboelsesrum og køkkener fra fælles trapperum og gange, altaner samt toilet- og baderum i andre boliger", "status": "udkast", "note": "DS 490 afsnit 5.2 undtager gulve i toilet- og baderum og rum under 2,5 m²; rum under 2,5 m² regnes derfor ikke." },
+          "facade":       { "vaerdi": 33, "kilde": "DS 490:2018, lydklasse C / BR18 § 369: indendørs Lden fra vejtrafik", "status": "udkast" },
+          "efterklang":   { "vaerdi": null, "kraevesIkke": true, "kilde": "DS 490:2018", "status": "udkast" },
+          "installation": { "vaerdi": 30, "kilde": "DS 490:2018, lydklasse C, LAeq i beboelsesrum", "status": "udkast" }
+        },
+        "koekken": {
+          "luftlyd":      { "vaerdi": 55, "kilde": "DS 490:2018, lydklasse C, luftlydisolation mellem boliger", "status": "udkast" },
+          "trinlyd":      { "vaerdi": 53, "kilde": "DS 490:2018, lydklasse C, trinlydniveau i beboelsesrum og køkkener", "status": "udkast" },
+          "trinlydFaelles": { "vaerdi": 58, "kilde": "DS 490:2018 tabel 2, lydklasse C: i beboelsesrum og køkkener fra fælles trapperum og gange, altaner samt toilet- og baderum i andre boliger", "status": "udkast", "note": "DS 490 afsnit 5.2 undtager gulve i toilet- og baderum og rum under 2,5 m²; rum under 2,5 m² regnes derfor ikke." },
+          "facade":       { "vaerdi": 33, "kilde": "DS 490:2018 tabel 5, lydklasse C: indendørs Lden fra trafik i beboelsesrum, køkkener og fælles opholdsrum", "status": "udkast" },
+          "efterklang":   { "vaerdi": null, "kraevesIkke": true, "kilde": "DS 490:2018", "status": "udkast" },
+          "installation": { "vaerdi": 30, "kilde": "DS 490:2018, lydklasse C, LAeq i beboelsesrum og køkkener", "status": "udkast" }
+        },
+        "bad": {
+          "luftlyd":      { "vaerdi": 55, "kilde": "DS 490:2018, lydklasse C, luftlydisolation mellem boliger", "status": "udkast" },
+          "trinlyd":      { "vaerdi": null, "kraevesIkke": true, "kilde": "DS 490:2018 afsnit 5.2 og tabel 2", "status": "udkast", "note": "Tabel 2 gælder i beboelsesrum og køkkener, ikke i bad/wc." },
+          "facade":       { "vaerdi": null, "kraevesIkke": true, "kilde": "DS 490:2018", "status": "udkast" },
+          "efterklang":   { "vaerdi": null, "kraevesIkke": true, "kilde": "DS 490:2018", "status": "udkast" },
+          "installation": { "vaerdi": null, "kraevesIkke": true, "kilde": "DS 490:2018 tabel 4", "status": "udkast", "note": "Tabel 4 omfatter beboelsesrum, køkkener og fælles opholdsrum." }
+        }
+      }
+    },
+
+    "plejebolig": {
+      "navn": "Plejeboliger, kollegier og døgninstitutioner (lignende bygninger benyttet til overnatning)",
+      "brugEnheder": true,
+      "kilde": "BR18 § 369 omfatter boliger og lignende bygninger benyttet til overnatning; DS 490:2018 lydklasse C",
+      "rumfunktioner": {
+        "soverum": {
+          "luftlyd":      { "vaerdi": null, "kilde": "DS 490:2018", "status": "udkast", "note": "DS 490 har egne tal for plejeboliger og kollegier (mellem værelser og mod fællesrum). De er ikke skrevet ind; indsæt fra standarden." },
+          "luftlydGang":  { "vaerdi": null, "kilde": "DS 490:2018", "status": "udkast", "note": "Indsæt fra DS 490 (værelse mod fælles gang, inkl. døren)." },
+          "trinlyd":      { "vaerdi": null, "kilde": "DS 490:2018", "status": "udkast", "note": "Indsæt fra DS 490." },
+          "facade":       { "vaerdi": 33, "kilde": "DS 490:2018, lydklasse C / BR18 § 369: indendørs Lden fra vejtrafik i beboelsesrum", "status": "udkast" },
+          "efterklang":   { "vaerdi": null, "kilde": "DS 490:2018", "status": "udkast", "note": "DS 490 kan stille krav til efterklangstiden i fællesrum i plejeboliger; afklar." },
+          "installation": { "vaerdi": 30, "kilde": "DS 490:2018, lydklasse C, LAeq i beboelsesrum", "status": "udkast" }
+        },
+        "opholdsrum": {
+          "luftlyd":      { "vaerdi": null, "kilde": "DS 490:2018", "status": "udkast", "note": "Indsæt fra DS 490 (fællesrum i plejeboliger)." },
+          "trinlyd":      { "vaerdi": null, "kilde": "DS 490:2018", "status": "udkast", "note": "Indsæt fra DS 490." },
+          "facade":       { "vaerdi": 33, "kilde": "DS 490:2018, lydklasse C / BR18 § 369: indendørs Lden fra vejtrafik", "status": "udkast" },
+          "efterklang":   { "vaerdi": null, "kilde": "DS 490:2018", "status": "udkast", "note": "Afklar krav til fællesrum." },
+          "installation": { "vaerdi": 30, "kilde": "DS 490:2018, lydklasse C, LAeq i beboelsesrum", "status": "udkast" }
+        }
+      }
+    },
+
+    "hotel": {
+      "navn": "Hoteller og lignende overnatning",
+      "brugEnheder": true,
+      "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning), tabel 2.1-2.4. Vejledningen har ingen særskilte tal for hoteller",
+      "rumfunktioner": {
+        "soverum": {
+          "luftlyd":      { "vaerdi": 55, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning), tabel 2.1: mellem en bolig og rum uden for boligen", "status": "udkast" },
+          "luftlydGang":  { "vaerdi": 55, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning), tabel 2.1: mellem en bolig og rum uden for boligen", "status": "udkast" },
+          "doerFaelles":  { "vaerdi": 32, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning), tabel 2.1: dør mellem bolig og fællesrum", "status": "udkast" },
+          "trinlyd":      { "vaerdi": 53, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning), tabel 2.1: i beboelsesrum fra andre boliger og fællesrum", "status": "udkast" },
+          "trinlydFaelles": { "vaerdi": 58, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning), tabel 2.1: i beboelsesrum fra fælles trapperum og gange", "status": "udkast" },
+          "facade":       { "vaerdi": 33, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning), tabel 2.2: indendørs Lden fra trafik", "status": "udkast" },
+          "efterklang":   { "vaerdi": null, "kraevesIkke": true, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning), tabel 2.4", "status": "udkast" },
+          "installation": { "vaerdi": 30, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning), tabel 2.3: LAeq i beboelsesrum", "status": "udkast" }
+        },
+        "bad": {
+          "luftlyd":      { "vaerdi": 55, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning), tabel 2.1 (gælder skellet uanset rumtype)", "status": "udkast" },
+          "luftlydGang":  { "vaerdi": 55, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning), tabel 2.1", "status": "udkast" },
+          "trinlyd":      { "vaerdi": null, "kraevesIkke": true, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning), tabel 2.1", "status": "udkast", "note": "Tabellen gælder i beboelsesrum og køkkener." },
+          "facade":       { "vaerdi": null, "kraevesIkke": true, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning), tabel 2.2", "status": "udkast" },
+          "efterklang":   { "vaerdi": null, "kraevesIkke": true, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning), tabel 2.4", "status": "udkast" },
+          "installation": { "vaerdi": null, "kraevesIkke": true, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning), tabel 2.3", "status": "udkast" }
+        },
+        "gang": {
+          "luftlyd":      { "vaerdi": null, "kraevesIkke": true, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning)", "status": "udkast", "note": "Kravet stilles fra værelsets side." },
+          "trinlyd":      { "vaerdi": null, "kraevesIkke": true, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning)", "status": "udkast" },
+          "facade":       { "vaerdi": null, "kraevesIkke": true, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning)", "status": "udkast" },
+          "efterklang":   { "vaerdi": 1.3, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning), tabel 2.4: trapperum og gange med adgang til mere end 2 boliger eller erhvervsenheder", "status": "udkast" },
+          "installation": { "vaerdi": null, "kraevesIkke": true, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning)", "status": "udkast" }
+        },
+        "trappe": {
+          "luftlyd":      { "vaerdi": null, "kraevesIkke": true, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning)", "status": "udkast", "note": "Kravet stilles fra værelsets side." },
+          "trinlyd":      { "vaerdi": null, "kraevesIkke": true, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning)", "status": "udkast" },
+          "facade":       { "vaerdi": null, "kraevesIkke": true, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning)", "status": "udkast" },
+          "efterklang":   { "vaerdi": 1.3, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning), tabel 2.4", "status": "udkast" },
+          "installation": { "vaerdi": null, "kraevesIkke": true, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning)", "status": "udkast" }
+        },
+        "koekken": {
+          "luftlyd":      { "vaerdi": null, "kraevesIkke": true, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning)", "status": "udkast", "note": "Ikke et beboelsesrum i et hotel; kravet stilles fra værelsets side." },
+          "trinlyd":      { "vaerdi": null, "kraevesIkke": true, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning)", "status": "udkast" },
+          "facade":       { "vaerdi": null, "kraevesIkke": true, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning)", "status": "udkast" },
+          "efterklang":   { "vaerdi": null, "kraevesIkke": true, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning)", "status": "udkast" },
+          "installation": { "vaerdi": null, "kraevesIkke": true, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning)", "status": "udkast" }
+        },
+        "andet": {
+          "luftlyd":      { "vaerdi": null, "kraevesIkke": true, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning)", "status": "udkast", "note": "Ikke et beboelsesrum i et hotel; kravet stilles fra værelsets side." },
+          "trinlyd":      { "vaerdi": null, "kraevesIkke": true, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning)", "status": "udkast" },
+          "facade":       { "vaerdi": null, "kraevesIkke": true, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning)", "status": "udkast" },
+          "efterklang":   { "vaerdi": null, "kraevesIkke": true, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning)", "status": "udkast" },
+          "installation": { "vaerdi": null, "kraevesIkke": true, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning)", "status": "udkast" }
+        },
+        "teknikrum": {
+          "luftlyd":      { "vaerdi": null, "kraevesIkke": true, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning)", "status": "udkast", "note": "Kilde, ikke modtager." },
+          "trinlyd":      { "vaerdi": null, "kraevesIkke": true, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning)", "status": "udkast" },
+          "facade":       { "vaerdi": null, "kraevesIkke": true, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning)", "status": "udkast" },
+          "efterklang":   { "vaerdi": null, "kraevesIkke": true, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning)", "status": "udkast" },
+          "installation": { "vaerdi": null, "kraevesIkke": true, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning)", "status": "udkast" }
+        },
+        "depot": {
+          "luftlyd":      { "vaerdi": null, "kraevesIkke": true, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning)", "status": "udkast" },
+          "trinlyd":      { "vaerdi": null, "kraevesIkke": true, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning)", "status": "udkast" },
+          "facade":       { "vaerdi": null, "kraevesIkke": true, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning)", "status": "udkast" },
+          "efterklang":   { "vaerdi": null, "kraevesIkke": true, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning)", "status": "udkast" },
+          "installation": { "vaerdi": null, "kraevesIkke": true, "kilde": "BR18-vejledningen, afsnit 2.0 (boliger og andre bygninger til overnatning)", "status": "udkast" }
+        }
+      }
+    },
+
+    "undervisning": {
+      "navn": "Undervisningsbygninger (skoler, gymnasier, videregående uddannelser)",
+      "kilde": "BR18 § 370 og Bygningsreglementets vejledning om lydforhold, afsnittet om undervisningsbygninger",
+      "rumfunktioner": {
+        "undervisningsrum": {
+          "luftlyd":      { "vaerdi": 48, "kilde": "BR-vejledning om lydforhold, undervisningsbygninger: luftlydisolation mellem undervisningsrum", "status": "udkast", "note": "Mod rum med støjende aktivitet (musik, sløjd, idræt) gælder et skærpet krav, som ikke er skrevet ind." },
+          "luftlydGang":  { "vaerdi": null, "kilde": "BR-vejledning om lydforhold, undervisningsbygninger", "status": "udkast", "note": "Kravet mellem undervisningsrum og fællesgang (væg og dør) er ikke skrevet ind; indsæt fra vejledningen." },
+          "trinlyd":      { "vaerdi": 58, "kilde": "BR-vejledning om lydforhold, undervisningsbygninger: trinlydniveau i undervisningsrum fra andre rum", "status": "udkast", "note": "Fra rum med stor trinlydbelastning (idræt, gange med hård belægning) gælder et skærpet tal, som ikke er skrevet ind." },
+          "facade":       { "vaerdi": 33, "kilde": "BR-vejledning om lydforhold, undervisningsbygninger: indendørs støjniveau fra vejtrafik, Lden", "status": "udkast" },
+          "efterklang":   { "vaerdi": 0.6, "kilde": "BR-vejledning om lydforhold, undervisningsbygninger: efterklangstid i almindelige undervisningsrum", "status": "udkast", "note": "Rum til elever med særlige behov (fx hørehæmmede) har et skærpet krav (0,4 s); faglokaler, fællesrum, idrætshaller og svømmehaller har egne tal." },
+          "installation": { "vaerdi": 30, "kilde": "BR-vejledning om lydforhold, undervisningsbygninger: støj fra tekniske installationer i undervisningsrum, LAeq", "status": "udkast" }
+        },
+        "opholdsrum": {
+          "luftlyd":      { "vaerdi": null, "kilde": "BR-vejledning om lydforhold, undervisningsbygninger", "status": "udkast", "note": "Fællesrum/opholdsarealer: indsæt fra vejledningen." },
+          "trinlyd":      { "vaerdi": null, "kilde": "BR-vejledning om lydforhold, undervisningsbygninger", "status": "udkast", "note": "Indsæt fra vejledningen." },
+          "facade":       { "vaerdi": null, "kilde": "BR-vejledning om lydforhold, undervisningsbygninger", "status": "udkast", "note": "Indsæt fra vejledningen." },
+          "efterklang":   { "vaerdi": null, "kilde": "BR-vejledning om lydforhold, undervisningsbygninger", "status": "udkast", "note": "Fællesrum og gange har et eget krav til efterklangstid/absorptionsareal; indsæt fra vejledningen." },
+          "installation": { "vaerdi": null, "kilde": "BR-vejledning om lydforhold, undervisningsbygninger", "status": "udkast", "note": "Indsæt fra vejledningen." }
+        },
+        "gang": {
+          "luftlyd":      { "vaerdi": null, "kraevesIkke": true, "kilde": "BR-vejledning om lydforhold", "status": "udkast", "note": "Kravet stilles fra undervisningsrummets side (luftlydGang)." },
+          "trinlyd":      { "vaerdi": null, "kraevesIkke": true, "kilde": "BR-vejledning om lydforhold", "status": "udkast" },
+          "facade":       { "vaerdi": null, "kraevesIkke": true, "kilde": "BR-vejledning om lydforhold", "status": "udkast" },
+          "efterklang":   { "vaerdi": null, "kilde": "BR-vejledning om lydforhold, undervisningsbygninger", "status": "udkast", "note": "Gange har et krav til efterklangstid eller absorptionsareal; indsæt fra vejledningen." },
+          "installation": { "vaerdi": null, "kraevesIkke": true, "kilde": "BR-vejledning om lydforhold", "status": "udkast" }
+        },
+        "kontor": {
+          "luftlyd":      { "vaerdi": null, "kilde": "BR-vejledning om lydforhold", "status": "udkast", "note": "Lærerværelse/kontorer i skoler: indsæt fra vejledningen." },
+          "trinlyd":      { "vaerdi": null, "kilde": "BR-vejledning om lydforhold", "status": "udkast", "note": "Indsæt fra vejledningen." },
+          "facade":       { "vaerdi": null, "kilde": "BR-vejledning om lydforhold", "status": "udkast", "note": "Indsæt fra vejledningen." },
+          "efterklang":   { "vaerdi": null, "kilde": "BR-vejledning om lydforhold", "status": "udkast", "note": "Indsæt fra vejledningen." },
+          "installation": { "vaerdi": null, "kilde": "BR-vejledning om lydforhold", "status": "udkast", "note": "Indsæt fra vejledningen." }
+        }
+      }
+    },
+
+    "daginstitution": {
+      "navn": "Daginstitutioner (vuggestuer, børnehaver, SFO)",
+      "kilde": "BR18 § 371 og Bygningsreglementets vejledning om lydforhold, afsnittet om daginstitutionsbygninger",
+      "rumfunktioner": {
+        "opholdsrum": {
+          "luftlyd":      { "vaerdi": null, "kilde": "BR-vejledning om lydforhold, daginstitutioner", "status": "udkast", "note": "Luftlydisolation mellem opholdsrum (grupperum) er ikke skrevet ind; indsæt fra vejledningen." },
+          "luftlydGang":  { "vaerdi": null, "kilde": "BR-vejledning om lydforhold, daginstitutioner", "status": "udkast", "note": "Indsæt fra vejledningen." },
+          "trinlyd":      { "vaerdi": null, "kilde": "BR-vejledning om lydforhold, daginstitutioner", "status": "udkast", "note": "Indsæt fra vejledningen." },
+          "facade":       { "vaerdi": 33, "kilde": "BR-vejledning om lydforhold, daginstitutioner: indendørs støjniveau fra vejtrafik i opholdsrum, Lden", "status": "udkast" },
+          "efterklang":   { "vaerdi": 0.4, "kilde": "BR-vejledning om lydforhold, daginstitutioner: efterklangstid i opholdsrum", "status": "udkast" },
+          "installation": { "vaerdi": 30, "kilde": "BR-vejledning om lydforhold, daginstitutioner: støj fra tekniske installationer i opholdsrum, LAeq", "status": "udkast" }
+        },
+        "soverum": {
+          "luftlyd":      { "vaerdi": null, "kilde": "BR-vejledning om lydforhold, daginstitutioner", "status": "udkast", "note": "Soverum/hvilerum: indsæt fra vejledningen." },
+          "trinlyd":      { "vaerdi": null, "kilde": "BR-vejledning om lydforhold, daginstitutioner", "status": "udkast", "note": "Indsæt fra vejledningen." },
+          "facade":       { "vaerdi": 33, "kilde": "BR-vejledning om lydforhold, daginstitutioner: indendørs Lden fra vejtrafik i opholdsrum", "status": "udkast" },
+          "efterklang":   { "vaerdi": 0.4, "kilde": "BR-vejledning om lydforhold, daginstitutioner: efterklangstid i opholdsrum", "status": "udkast" },
+          "installation": { "vaerdi": 30, "kilde": "BR-vejledning om lydforhold, daginstitutioner: LAeq i opholdsrum", "status": "udkast" }
+        },
+        "gang": {
+          "luftlyd":      { "vaerdi": null, "kraevesIkke": true, "kilde": "BR-vejledning om lydforhold", "status": "udkast" },
+          "trinlyd":      { "vaerdi": null, "kraevesIkke": true, "kilde": "BR-vejledning om lydforhold", "status": "udkast" },
+          "facade":       { "vaerdi": null, "kraevesIkke": true, "kilde": "BR-vejledning om lydforhold", "status": "udkast" },
+          "efterklang":   { "vaerdi": null, "kilde": "BR-vejledning om lydforhold, daginstitutioner", "status": "udkast", "note": "Gange og garderober har et eget krav; indsæt fra vejledningen." },
+          "installation": { "vaerdi": null, "kraevesIkke": true, "kilde": "BR-vejledning om lydforhold", "status": "udkast" }
+        }
+      }
+    },
+
+    "kontor": {
+      "navn": "Kontorbyggeri og lignende",
+      "kilde": "BR18 § 372 og Bygningsreglementets vejledning om lydforhold, afsnittet om kontorbyggeri m.v.",
+      "rumfunktioner": {
+        "kontor": {
+          "luftlyd":      { "vaerdi": null, "kilde": "BR-vejledning om lydforhold, kontorbyggeri", "status": "udkast", "note": "Vejledningens tal for luftlydisolation mellem kontorer er ikke skrevet ind; indsæt fra vejledningen (afhænger af rummenes fortrolighedsbehov)." },
+          "luftlydGang":  { "vaerdi": null, "kilde": "BR-vejledning om lydforhold, kontorbyggeri", "status": "udkast", "note": "Indsæt fra vejledningen." },
+          "trinlyd":      { "vaerdi": null, "kilde": "BR-vejledning om lydforhold, kontorbyggeri", "status": "udkast", "note": "Indsæt fra vejledningen." },
+          "facade":       { "vaerdi": 38, "kilde": "BR-vejledning om lydforhold, kontorbyggeri: indendørs støjniveau fra vejtrafik i kontorer, Lden", "status": "udkast" },
+          "efterklang":   { "vaerdi": 0.6, "kilde": "BR-vejledning om lydforhold, kontorbyggeri: efterklangstid i kontorer og møderum", "status": "udkast", "note": "For storrumskontorer angiver vejledningen i stedet et absorptionsareal i forhold til gulvarealet; det er ikke modelleret." },
+          "installation": { "vaerdi": 35, "kilde": "BR-vejledning om lydforhold, kontorbyggeri: støj fra tekniske installationer i kontorer, LAeq", "status": "udkast" }
+        },
+        "moederum": {
+          "luftlyd":      { "vaerdi": null, "kilde": "BR-vejledning om lydforhold, kontorbyggeri", "status": "udkast", "note": "Indsæt fra vejledningen (møderum har typisk et skærpet krav i forhold til kontorer)." },
+          "luftlydGang":  { "vaerdi": null, "kilde": "BR-vejledning om lydforhold, kontorbyggeri", "status": "udkast", "note": "Indsæt fra vejledningen." },
+          "trinlyd":      { "vaerdi": null, "kilde": "BR-vejledning om lydforhold, kontorbyggeri", "status": "udkast", "note": "Indsæt fra vejledningen." },
+          "facade":       { "vaerdi": 38, "kilde": "BR-vejledning om lydforhold, kontorbyggeri: indendørs Lden fra vejtrafik", "status": "udkast" },
+          "efterklang":   { "vaerdi": 0.6, "kilde": "BR-vejledning om lydforhold, kontorbyggeri: efterklangstid i kontorer og møderum", "status": "udkast" },
+          "installation": { "vaerdi": 35, "kilde": "BR-vejledning om lydforhold, kontorbyggeri: LAeq i kontorer", "status": "udkast" }
+        },
+        "gang": {
+          "luftlyd":      { "vaerdi": null, "kraevesIkke": true, "kilde": "BR-vejledning om lydforhold", "status": "udkast" },
+          "trinlyd":      { "vaerdi": null, "kraevesIkke": true, "kilde": "BR-vejledning om lydforhold", "status": "udkast" },
+          "facade":       { "vaerdi": null, "kraevesIkke": true, "kilde": "BR-vejledning om lydforhold", "status": "udkast" },
+          "efterklang":   { "vaerdi": null, "kilde": "BR-vejledning om lydforhold, kontorbyggeri", "status": "udkast", "note": "Indsæt fra vejledningen." },
+          "installation": { "vaerdi": null, "kraevesIkke": true, "kilde": "BR-vejledning om lydforhold", "status": "udkast" }
+        },
+        "teknikrum": {
+          "luftlyd":      { "vaerdi": null, "kraevesIkke": true, "kilde": "BR-vejledning om lydforhold", "status": "udkast", "note": "Kilde, ikke modtager." },
+          "trinlyd":      { "vaerdi": null, "kraevesIkke": true, "kilde": "BR-vejledning om lydforhold", "status": "udkast" },
+          "facade":       { "vaerdi": null, "kraevesIkke": true, "kilde": "BR-vejledning om lydforhold", "status": "udkast" },
+          "efterklang":   { "vaerdi": null, "kraevesIkke": true, "kilde": "BR-vejledning om lydforhold", "status": "udkast" },
+          "installation": { "vaerdi": null, "kraevesIkke": true, "kilde": "BR-vejledning om lydforhold", "status": "udkast" }
+        }
+      }
+    },
+
+    "hospital": {
+      "navn": "Hospitaler og sundhedsbygninger",
+      "kilde": "BR18 kap. 17 (§ 368 generelt). Ingen tal i BR18/vejledningen er skrevet ind; sundhedsbygninger projekteres normalt efter bygherrens egne lydkrav (fx DS 490 lydklasse for plejeboliger eller et projektspecifikt lydprogram).",
+      "rumfunktioner": {
+        "soverum": {
+          "luftlyd":      { "vaerdi": null, "kilde": "Projektets lydprogram", "status": "udkast", "note": "Sengestuer: ingen BR18-tal skrevet ind; indsæt projektets krav." },
+          "luftlydGang":  { "vaerdi": null, "kilde": "Projektets lydprogram", "status": "udkast", "note": "Indsæt projektets krav." },
+          "trinlyd":      { "vaerdi": null, "kilde": "Projektets lydprogram", "status": "udkast", "note": "Indsæt projektets krav." },
+          "facade":       { "vaerdi": null, "kilde": "Projektets lydprogram", "status": "udkast", "note": "Indsæt projektets krav." },
+          "efterklang":   { "vaerdi": null, "kilde": "Projektets lydprogram", "status": "udkast", "note": "Indsæt projektets krav." },
+          "installation": { "vaerdi": null, "kilde": "Projektets lydprogram", "status": "udkast", "note": "Indsæt projektets krav." }
+        },
+        "kontor": {
+          "luftlyd":      { "vaerdi": null, "kilde": "Projektets lydprogram", "status": "udkast", "note": "Indsæt projektets krav." },
+          "trinlyd":      { "vaerdi": null, "kilde": "Projektets lydprogram", "status": "udkast", "note": "Indsæt projektets krav." },
+          "facade":       { "vaerdi": null, "kilde": "Projektets lydprogram", "status": "udkast", "note": "Indsæt projektets krav." },
+          "efterklang":   { "vaerdi": null, "kilde": "Projektets lydprogram", "status": "udkast", "note": "Indsæt projektets krav." },
+          "installation": { "vaerdi": null, "kilde": "Projektets lydprogram", "status": "udkast", "note": "Indsæt projektets krav." }
+        }
+      }
+    }
+  }
+}
