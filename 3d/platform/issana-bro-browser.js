@@ -18,7 +18,7 @@
   try { gemt = localStorage.getItem("issana-platform-url"); } catch (e) { /* privat tilstand */ }
   var BASE = (gemt || (lokal ? location.origin : "http://127.0.0.1:4111")).replace(/\/$/, "");
   var AGENT = "revit-agent";
-  var forbundet = false, platform = false;
+  var forbundet = false, platform = false, harNoegle = null;
   var lyttere = {};
 
   function udsend(navn, data) {
@@ -58,6 +58,7 @@
   function tjek() {
     return hent("/revit/status", {}, 4000).then(function (s) { return s.json(); }).then(function (s) {
       platform = true; forbundet = !!(s && s.forbundet);
+      harNoegle = s && typeof s.noegle === "boolean" ? s.noegle : null;
     }, function () { platform = false; forbundet = false; }).then(function () { visStatus(); udsend("status", { platform: platform, revit: forbundet }); });
   }
 
@@ -93,10 +94,13 @@
     }, function (e) { samtale.pop(); throw e; });
   }
 
-  var chip, panel, log, felt, send;
+  var chip, panel, log, felt, send, noegleBoks, noegleFelt, noegleVist = false;
   function el(tag, stil, tekst) { var e = document.createElement(tag); if (stil) e.style.cssText = stil; if (tekst) e.textContent = tekst; return e; }
   function visStatus() {
+    // Siden skjuler knapperne «Hent fra Revit» og «Vis i Revit» uden denne klasse (ellers sættes den kun i Revits WebView).
+    if (document.body && !window.ISSANA_STUDENT_MODE) document.body.classList.toggle("issana-i-revit", forbundet);
     if (!chip) return;
+    if (noegleBoks) noegleBoks.style.display = platform && (harNoegle === false || noegleVist) ? "block" : "none";
     chip.textContent = !platform ? "Platform: ikke startet" : forbundet ? "Revit: forbundet" : "Revit: ikke forbundet";
     chip.style.background = forbundet ? "#1f6f43" : platform ? "#8a6d1a" : "#7a2e2e";
     chip.title = !platform ? "ISSANA Platform kører ikke på " + BASE : forbundet ? "«Hent fra Revit» og «Gem i Revit» virker" : "Åbn Revit, og slå ISSANA MCP-forbindelsen til";
@@ -111,17 +115,38 @@
     felt.value = ""; linje("du", t);
     var venter = linje("agent", "…"); send.disabled = true;
     spoerg(t).then(function (svar) { venter.textContent = svar; }, function (e) {
-      venter.remove(); linje("fejl", "Agenten kunne ikke svare: " + (e && e.message || e) + "\nTjek, at platformen kører, og at der står en nøgle i platform\\.env.");
+      venter.remove(); linje("fejl", "Agenten kunne ikke svare: " + (e && e.message || e) + "\nTjek, at platformen kører, og at du har sat en API-nøgle ind (knappen «Nøgle» øverst).");
     }).then(function () { send.disabled = false; log.scrollTop = log.scrollHeight; felt.focus(); });
+  }
+  /** Nøglen sendes kun til platformen på denne pc, som gemmer den i platform\.env. Den gemmes ikke i browseren. */
+  function gemNoegle() {
+    var n = noegleFelt.value.trim(); if (!n) return;
+    hent("/revit/noegle", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ noegle: n }) }, 10000)
+      .then(function (svar) { return svar.json().then(function (d) { if (!svar.ok) throw new Error((d && d.error && d.error.message) || ("Fejl " + svar.status)); }); })
+      .then(function () { noegleFelt.value = ""; harNoegle = true; noegleVist = false; visStatus(); linje("agent", "Nøglen er gemt på din pc. Du kan skrive til agenten nu."); felt.focus(); },
+        function (e) { linje("fejl", "Nøglen blev ikke gemt: " + (e && e.message || e) + (platform ? "" : "\nStart platformen på din pc først.")); });
   }
   function byg() {
     if (!document.body || window.ISSANA_STUDENT_MODE) return;
     var boks = el("div", "position:fixed;right:14px;bottom:64px;z-index:99999;font:13px/1.4 system-ui,Segoe UI,sans-serif;color:#f1f1f1;display:flex;flex-direction:column;align-items:flex-end;gap:6px");
     boks.id = "issanaPlatform";
     panel = el("div", "display:none;width:340px;max-width:90vw;height:420px;max-height:70vh;background:#1c1c20;border:1px solid #44444c;border-radius:10px;box-shadow:0 8px 28px rgba(0,0,0,.45);flex-direction:column;overflow:hidden");
-    panel.appendChild(el("div", "padding:9px 12px;border-bottom:1px solid #3a3a42;font-weight:600", "ISSANA-agent"));
+    var hoved = el("div", "display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-bottom:1px solid #3a3a42;font-weight:600", "ISSANA-agent");
+    var noegleKnap = el("button", "background:none;color:#9fc3ee;border:0;cursor:pointer;font:inherit;font-weight:400;font-size:12px;padding:0", "Nøgle");
+    noegleKnap.title = "Sæt eller skift API-nøglen til agenten";
+    noegleKnap.onclick = function () { noegleVist = !noegleVist; visStatus(); if (noegleBoks.style.display !== "none") noegleFelt.focus(); };
+    hoved.appendChild(noegleKnap); panel.appendChild(hoved);
     log = el("div", "flex:1;overflow:auto;padding:8px 10px");
     panel.appendChild(log);
+    noegleBoks = el("div", "display:none;padding:8px;border-top:1px solid #3a3a42;background:#232329");
+    noegleBoks.appendChild(el("div", "font-size:12px;margin-bottom:6px;color:#c9c9d1", "Indsæt din Anthropic API-nøgle. Den gemmes kun på din egen pc (platform\\.env)."));
+    var nr = el("div", "display:flex;gap:6px");
+    noegleFelt = el("input", "flex:1;min-width:0;background:#26262b;color:#f1f1f1;border:1px solid #44444c;border-radius:6px;padding:6px;font:inherit");
+    noegleFelt.type = "password"; noegleFelt.autocomplete = "off"; noegleFelt.placeholder = "sk-ant-…";
+    noegleFelt.addEventListener("keydown", function (ev) { if (ev.key === "Enter") { ev.preventDefault(); gemNoegle(); } ev.stopPropagation(); });
+    var gem = el("button", "background:#2f6fb5;color:#fff;border:0;border-radius:6px;padding:0 12px;cursor:pointer;font:inherit", "Gem");
+    gem.onclick = gemNoegle;
+    nr.appendChild(noegleFelt); nr.appendChild(gem); noegleBoks.appendChild(nr); panel.appendChild(noegleBoks);
     linje("agent", "Spørg om den åbne Revit-model, fx «hvor mange vægge er der?». Ændringer i modellen skal du altid selv godkende i Revit.");
     var bund = el("div", "display:flex;gap:6px;padding:8px;border-top:1px solid #3a3a42");
     felt = el("textarea", "flex:1;resize:none;height:44px;background:#26262b;color:#f1f1f1;border:1px solid #44444c;border-radius:6px;padding:6px;font:inherit");
