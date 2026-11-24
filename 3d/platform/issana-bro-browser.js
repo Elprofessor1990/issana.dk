@@ -105,6 +105,27 @@
     chip.style.background = forbundet ? "#1f6f43" : platform ? "#8a6d1a" : "#7a2e2e";
     chip.title = !platform ? "ISSANA Platform kører ikke på " + BASE : forbundet ? "«Hent fra Revit» og «Gem i Revit» virker" : "Åbn Revit, og slå ISSANA MCP-forbindelsen til";
   }
+  /** Viser agentens svar med enkel formatering (fed, kode, punktlister, overskrifter). Bygger kun tekstnoder, aldrig HTML. */
+  function formater(b, tekst) {
+    b.textContent = ""; b.style.whiteSpace = "normal";
+    String(tekst).replace(/\r/g, "").split("\n").forEach(function (l) {
+      var m, r = el("div");
+      if (!l.trim()) { r.style.height = "6px"; b.appendChild(r); return; }
+      if ((m = /^\s*#{1,6}\s+(.*)$/.exec(l))) { r.style.fontWeight = "600"; l = m[1]; }
+      else if ((m = /^(\s*)(?:[-*•]|(\d+)[.)])\s+(.*)$/.exec(l))) {
+        r.style.cssText = "display:flex;gap:6px;padding-left:" + (4 + m[1].length * 6) + "px";
+        r.appendChild(el("span", "flex:none", m[2] ? m[2] + "." : "•"));
+        var ind = el("span", "min-width:0"); r.appendChild(ind); b.appendChild(r); r = ind; l = m[3];
+      }
+      l.split(/(\*\*[^*]+\*\*|`[^`]+`)/).forEach(function (d) {
+        if (!d) return;
+        if (/^\*\*.+\*\*$/.test(d)) r.appendChild(el("b", "", d.slice(2, -2)));
+        else if (/^`.+`$/.test(d)) r.appendChild(el("code", "background:#3a3a42;border-radius:4px;padding:0 4px;font-size:12px", d.slice(1, -1)));
+        else r.appendChild(document.createTextNode(d));
+      });
+      if (!r.parentNode) b.appendChild(r);
+    });
+  }
   function linje(hvem, tekst) {
     var b = el("div", "margin:6px 0;padding:7px 9px;border-radius:8px;white-space:pre-wrap;word-break:break-word;" +
       (hvem === "du" ? "background:#2b4a6f;margin-left:28px" : hvem === "fejl" ? "background:#5a2626" : "background:#2d2d33;margin-right:28px"), tekst);
@@ -114,7 +135,7 @@
     var t = felt.value.trim(); if (!t || send.disabled) return;
     felt.value = ""; linje("du", t);
     var venter = linje("agent", "…"); send.disabled = true;
-    spoerg(t).then(function (svar) { venter.textContent = svar; }, function (e) {
+    spoerg(t).then(function (svar) { formater(venter, svar); }, function (e) {
       venter.remove(); linje("fejl", "Agenten kunne ikke svare: " + (e && e.message || e) + "\nTjek, at platformen kører, og at du har sat en API-nøgle ind (knappen «Nøgle» øverst).");
     }).then(function () { send.disabled = false; log.scrollTop = log.scrollHeight; felt.focus(); });
   }
